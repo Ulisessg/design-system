@@ -1,0 +1,41 @@
+@import "_variables"
+@import "_default"
+.main
+  display: flex
+  flex-direction: column
+  justify-content: space-evenly
+  height 100vh
+  max-width 50vw
+  &__description--welcome, &__targets--target
+    font-small()
+    padding-bottom: unity
+  & a
+    text-decoration: underline
+
+@media screen and (max-width 320px)
+  .main
+    &__description--welcome
+      font-small()
+    &__targets--target
+      font-small()
+
+@media screen and (max-height 500px)
+  .main
+    height 140vh
+  .main__version
+    font-small()
+  .main__description--welcome
+    font-small()
+
+@media screen and (min-width 700px)
+  .main__version
+    font-h1()
+
+  .main__description--welcome
+    font-normal()
+  .main__targets--do-for
+    padding-bottom: unity
+    font-h2()
+
+  .main__targets--target
+      font-big()
