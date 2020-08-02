@@ -1,4 +1,11 @@
-include ../../../components/nav.pug
+-linkPrincipios = "../../html/principios/principios.html"
+-linkSistema = "../../html/sistema/sistema.html"
+-linkFoundations = "../../html/foundations/foundations.html"
+-linkComponentes = "#"
+-linkIteracion = "../../html/iteracion/iteracion.html"
+
+
+include ../../../components/nav
 <!DOCTYPE html>
 html(lang="es")
   head
@@ -8,4 +15,4 @@ html(lang="es")
     link(rel="stylesheet", href="../../css/styles-components.css")
     title Componentes
   body
-    +links
+    +links(linkPrincipios, linkSistema,linkFoundations,linkComponentes,linkIteracion)
