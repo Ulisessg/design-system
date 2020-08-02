@@ -1,3 +1,5 @@
+include ../components/nav.pug
+-linkPrincipios = "./src/sections/html/principios/principios.html"
 <!DOCTYPE html>
 html(lang="es")
   head
@@ -8,5 +10,5 @@ html(lang="es")
     link(rel="stylesheet", href="./styles.css")
     title Design system
   body
-    include ../components/nav
+    +links(linkPrincipios)
     include main

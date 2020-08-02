@@ -1,13 +1,14 @@
-header(class="header animate__animated animate__fadeInLeft")
-  nav(class="nav")
-    ul(class="nav__list")
-      li(class="nav__list--element")
-        a(href="./src/sections/html/principios/principios.html") Principios
-      li(class="nav__list--element")
-        a(href="./src/sections/html/sistema/sistema.html") Sistema
-      li(class="nav__list--element")
-        a(href="./src/sections/html/foundations/foundations.html") Foundations
-      li(class="nav__list--element")
-        a(href="./src/sections/html/componentes/componentes.html") Componentes
-      li(class="nav__list--element")
-        a(href="./src/sections/html/iteracion/iteracion.html") Iteración
+mixin links(principios)
+  header(class="header animate__animated animate__fadeInLeft")
+      nav(class="nav")
+        ul(class="nav__list")
+          li(class="nav__list--element")
+            a(href=principios) Principios
+          li(class="nav__list--element")
+            a(href=sistema) Sistema
+          li(class="nav__list--element")
+            a(href=foundations) Foundations
+          li(class="nav__list--element")
+            a(href=componentes) Componentes
+          li(class="nav__list--element")
+            a(href=iteracion) Iteración
