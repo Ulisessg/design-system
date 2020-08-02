@@ -1,10 +1,4 @@
--linkPrincipios = "../../html/principios/principios.html"
--linkSistema = "../../html/sistema/sistema.html"
--linkFoundations = "../../html/foundations/foundations.html"
--linkComponentes = "#"
--linkIteracion = "../../html/iteracion/iteracion.html"
-
-
+include ../enlaces
 include ../../../components/nav
 <!DOCTYPE html>
 html(lang="es")
@@ -15,4 +9,4 @@ html(lang="es")
     link(rel="stylesheet", href="../../css/styles-components.css")
     title Componentes
   body
-    +links(linkPrincipios, linkSistema,linkFoundations,linkComponentes,linkIteracion)
+    +links(linkPrincipios, linkSistema,linkFoundations,"#",linkIteracion)
