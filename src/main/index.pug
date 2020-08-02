@@ -1,5 +1,10 @@
 include ../components/nav.pug
 -linkPrincipios = "./src/sections/html/principios/principios.html"
+-linkSistema = "./src/sections/html/sistema/sistema.html"
+-linkFoundations = "./src/sections/html/foundations/foundations.html"
+-linkComponentes = "./src/sections/html/componentes/componentes.html"
+-linkIteracion = "./src/sections/html/iteracion/iteracion.html"
+
 <!DOCTYPE html>
 html(lang="es")
   head
@@ -10,5 +15,5 @@ html(lang="es")
     link(rel="stylesheet", href="./styles.css")
     title Design system
   body
-    +links(linkPrincipios)
+    +links(linkPrincipios, linkSistema,linkFoundations, linkComponentes, linkIteracion)
     include main
