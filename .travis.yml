@@ -6,8 +6,6 @@ node_js:
   - '12'
 git:
   depth: 3
-script:
-  - yarn build
 deploy:
   provider: pages
   edge: true
