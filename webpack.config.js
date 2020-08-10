@@ -38,11 +38,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve('src/pages', 'iteration.pug'),
-      filename: 'iteraciones.html'
+      filename: 'iteracion.html'
     }),
     new HtmlWebpackPlugin({
       template: path.resolve('src/pages', 'values.pug'),
-      filename: 'valores.html'
+      filename: 'principios.html'
     }),
   ]
 }
