@@ -1,13 +1,14 @@
-include ../enlaces
-include ../../components/nav
-<!DOCTYPE html>
+include ../routes/links.pug
+include ./templates/nav.pug
+DOCTYPE html
 html(lang="es")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css")
-    link(rel="stylesheet", href="./css/styles-sistema.css")
+    //- link(rel="stylesheet", href="./css/styles-sistema.css")
     title Sistema
   body
+    h1 Sistema
     +links(linkInicio,linkPrincipios,"#",linkFoundations,linkComponentes,linkIteracion)
     iframe(width='853' height='480' src='https://embed.coggle.it/diagram/XyDeyMZTxnVFkJmI/74b30ef0035990dc96e6d5454db5cfde4d3456230770d72d37392fc4a771aade' frameborder='0' allowfullscreen)
