@@ -1,0 +1,16 @@
+// mixin links(inicio,principios, sistema, foundations, componentes, iteracion)
+//   header(class="header animate__animated animate__fadeInLeft")
+//       nav(class="nav")
+//         ul(class="nav__list")
+//           li(class="nav__list--element")
+//             a(href=inicio) Inicio
+//           li(class="nav__list--element")
+//             a(href=principios) Principios
+//           li(class="nav__list--element")
+//             a(href=sistema) Sistema
+//           li(class="nav__list--element")
+//             a(href=foundations) Foundations
+//           li(class="nav__list--element")
+//             a(href=componentes) Componentes
+//           li(class="nav__list--element")
+//             a(href=iteracion) Iteración
