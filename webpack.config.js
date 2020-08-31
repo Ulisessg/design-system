@@ -5,7 +5,10 @@ const { HotModuleReplacementPlugin } = require('webpack');
 module.exports = {
   entry: {
     components: path.resolve(__dirname, 'src/pages/components/components.js'),
-    foundations: path.resolve(__dirname, 'src/pages/foundations/foundations.js'),
+    foundations: path.resolve(
+      __dirname,
+      'src/pages/foundations/foundations.js',
+    ),
     index: path.resolve(__dirname, 'src/pages/index/index.js'),
     iterations: path.resolve(__dirname, 'src/pages/iterations/iterations.js'),
     system: path.resolve(__dirname, 'src/pages/system/system.js'),
@@ -13,7 +16,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.styl'],
@@ -76,6 +79,7 @@ module.exports = {
     index: 'index.html',
     watchOptions: {
       poll: 420,
+      ignored: ['files/**/*.js', 'node_modules/**'],
     },
   },
 };
