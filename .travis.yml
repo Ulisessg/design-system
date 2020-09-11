@@ -14,3 +14,16 @@ deploy:
   token:
     secure: '$DESIGN_TOKEN'
   message: 'New Deploy'
+
+language: node_js
+node_js: 12
+cache: yarn
+jobs:
+  include:
+    - stage: build
+      script:
+        - "npm run build"
+    - stage: deploy
+      script:
+        - yarn global add firebase-tools
+        - firebase deploy --token=${DESIGN_TOKEN}
