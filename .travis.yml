@@ -1,20 +1,21 @@
 language: node_js
 cache:
   directories:
+    - node_modules
     - ~/.npm
 node_js:
   - '12'
+install:
+  - npm install -g firebase-tools
 git:
   depth: 3
 script:
   - yarn build
 deploy:
-  provider: pages
+  provider: firebase
+  token:
+    secure: $DESIGN_TOKEN
+  project: 'design-system'
   edge: true
-  keep-history: true
-  github-token: $GITHUB_TOKEN
-  local-dir: public/
-  target-branch: gh-pages
-  commit_message: 'Deploy Release'
-  on:
-    branch: master
+  keep_history: true
+  message: 'New deploy'
