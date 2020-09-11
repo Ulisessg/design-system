@@ -12,5 +12,5 @@ script:
 deploy:
   provider: firebase
   token:
-    secure: '$DESIGN_TOKEN'
+    secure: 'DESIGN_TOKEN'
   message: 'New Deploy'
