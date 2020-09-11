@@ -1,28 +1,11 @@
 language: node_js
-cache:
-  directories:
-    - node_modules
-    - ~/.npm
-node_js:
-  - '12'
-git:
-  depth: 3
-script:
-  - yarn build
-deploy:
-  provider: firebase
-  token:
-    secure: '$DESIGN_TOKEN'
-  message: 'New Deploy'
-
-language: node_js
 node_js: 12
 cache: yarn
 jobs:
   include:
-    - stage: build
+    - stage: test
       script:
-        - "npm run build"
+        - 'npm run build'
     - stage: deploy
       script:
         - yarn global add firebase-tools
