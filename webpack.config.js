@@ -79,7 +79,6 @@ module.exports = {
     index: 'index.html',
     watchOptions: {
       poll: 420,
-      ignored: ['files/**/*.js', 'node_modules/**'],
     },
   },
 };

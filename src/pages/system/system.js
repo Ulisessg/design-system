@@ -1,4 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-ReactDom.render(<h1>Hello system</h1>, document.getElementById('root'));
+import '../../styles/default_styles/_default.styl';
+
+import Header from '../../components/Header';
+
+ReactDom.render(
+  <>
+    <Header />
+  </>,
+  document.getElementById('root'),
+);
