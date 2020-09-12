@@ -6,6 +6,30 @@
     <title>Design System</title>
   </head>
   <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: 'AIzaSyDf8Y_-2xclayTcQfWJz0Ud0I6f0fxjRnA',
+        authDomain: 'web-projects-50e7e.firebaseapp.com',
+        databaseURL: 'https://web-projects-50e7e.firebaseio.com',
+        projectId: 'web-projects-50e7e',
+        storageBucket: 'web-projects-50e7e.appspot.com',
+        messagingSenderId: '637142648492',
+        appId: '1:637142648492:web:d6d00ef67b0a161ce80109',
+        measurementId: 'G-ZDSRC3FRBB',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
     <div id="root"></div>
   </body>
 </html>

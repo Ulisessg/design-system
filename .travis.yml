@@ -1,16 +1,13 @@
 language: node_js
-cache:
-  directories:
-    - node_modules
-    - ~/.npm
 node_js:
-  - '12'
-git:
-  depth: 3
+  - 'node'
+warnings_are_errors: false
+install:
+  - npm install
 script:
   - npm run build
 deploy:
   provider: firebase
+  skip_cleanup: true
   token:
-    secure: 'DESIGN_TOKEN'
-  message: 'New Deploy'
+    secure: $DESIGN_TOKEN
