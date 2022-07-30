@@ -1,14 +1,14 @@
 import React from "react";
 import type { NextPage } from "next";
 import GlobalStyles from "../components/pages/GlobalStyles";
-import Button from "../components/atoms/Button";
+import Link from "../components/atoms/Link";
 
 const Test: NextPage = () => {
   if (process.env.NODE_ENV === "production") return <p>Test</p>;
 
   return (
     <GlobalStyles>
-      <Button type="button" data-a="12" text="Click" size="large" />
+      <Link href="/" text="Go home" />
     </GlobalStyles>
   );
 };
