@@ -8,7 +8,11 @@ import {
 const theme: DefaultTheme = {
   colors: {
     dark1: "#100720",
+    dark2: "#0C4B8E",
+    dark3: "#787878",
     light1: "#d3d3d3eb",
+    light2: "#189BFA",
+    light3: "#5ACFD6",
   },
 };
 
@@ -33,5 +37,8 @@ const Global = createGlobalStyle`
     display: grid;
     justify-content: center;
     width: 100vw;
+  }
+  html {
+    background-color: #fff;
   }
 `;
