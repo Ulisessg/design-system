@@ -8,6 +8,7 @@ import {
 const theme: DefaultTheme = {
   colors: {
     dark1: "#100720",
+    light1: "#d3d3d3eb",
   },
 };
 
