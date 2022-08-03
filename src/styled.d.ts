@@ -6,9 +6,12 @@ declare module "styled-components" {
       dark1: string;
       dark2: string;
       dark3: string;
+      shadow: string;
       light1: string;
       light2: string;
       light3: string;
+      error: string;
+      warning: string;
     };
   }
 }
