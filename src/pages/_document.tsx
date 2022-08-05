@@ -1,5 +1,5 @@
+import React from "react";
 import { Html, Head, Main, NextScript } from "next/document";
-import GlobalStyles from "../components/pages/GlobalStyles";
 
 export default function Document() {
   return (
