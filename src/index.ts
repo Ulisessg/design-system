@@ -6,6 +6,7 @@ export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
 
 // Molecules
 export * from "./components/molecules/Form";
+export { default as SearchBar } from "./components/molecules/SearchBar";
 
 // Pages (design system)
 export * from "./components/pages/404Styles";
