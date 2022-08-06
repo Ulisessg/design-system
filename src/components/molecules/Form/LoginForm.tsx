@@ -11,11 +11,12 @@ export default function LoginForm() {
   };
   return (
     <Form title="Iniciar sesión">
-      <TextInput id="1" label="Username" type="text" />
+      <TextInput id="1" label="Username" type="text" placeholder="Username" />
       <TextInput
         id="2"
         label="Contraseña"
         type={showPassword ? "text" : "password"}
+        placeholder="Contraseña"
       />
 
       <ShowPasswordContainer>
