@@ -3,6 +3,7 @@ import { InputHTMLAttributes } from "react";
 export interface InputElement extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
+  placeholder: string;
 }
 
 export interface TextInputProps extends InputElement {
