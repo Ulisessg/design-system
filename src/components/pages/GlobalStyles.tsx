@@ -41,6 +41,9 @@ const Global = createGlobalStyle`
     border: 0;
     font-family: "Roboto", Arial, sans-serif;
   }
+  #__next {
+    overflow-x: hidden;
+  }
   main {
     display: grid;
     justify-content: center;

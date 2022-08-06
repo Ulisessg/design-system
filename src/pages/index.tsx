@@ -12,13 +12,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Notflix" />
       </Head>
       <GlobalStyles>
-        <main>
-          <h1>Notflix 🏴‍☠️</h1>
-          <Link text="Go Test" href="/test" />
-        </main>
-        <footer>
-          <p>Hecho con amor, café y amor al café ☕</p>
-        </footer>
+        <h1>Design System 🏴‍☠️</h1>
+        <Link text="Go Test" href="/test" />
+        <Link text="Go 404" href="/404" />
       </GlobalStyles>
     </>
   );
