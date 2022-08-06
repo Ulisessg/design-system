@@ -13,10 +13,18 @@ export default function Link(props: LinkComponentProps) {
 interface LinkComponentProps extends LinkProps {
   text: string;
   as?: any;
+  version?: "lighter" | "darker";
 }
 
-const LinkNextStyles = styled.a`
+const LinkNextStyles = styled.a<LinkComponentProps>`
+  color: ${({ version, theme }) => {
+    if (version === "lighter") return;
+    return theme.colors.dark1;
+  }};
   :active {
-    color: ${({ theme }) => theme.colors.dark1};
+    color: ${({ theme, version }) => {
+      if (version === "lighter") return theme.colors.dark1;
+      return theme.colors.dark2;
+    }};
   }
 `;
