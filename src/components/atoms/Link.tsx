@@ -1,19 +1,37 @@
-import React from "react";
+import React, { AnchorHTMLAttributes } from "react";
 import LinkNext, { LinkProps } from "next/link";
 import styled from "styled-components";
 
 export default function Link(props: LinkComponentProps) {
   return (
     <LinkNext {...props}>
-      <LinkNextStyles {...props}>{props.text}</LinkNextStyles>
+      {props.target ? (
+        <LinkNextStyles {...props}>{props.text}</LinkNextStyles>
+      ) : (
+        <LinkNextStyles
+          {...props}
+          target={props.target}
+          rel="noreferrer noopener"
+        >
+          {props.text}
+        </LinkNextStyles>
+      )}
     </LinkNext>
   );
 }
 
-interface LinkComponentProps extends LinkProps {
+interface LinkExternalProps extends AnchorHTMLAttributes<HTMLAnchorElement> {}
+
+interface LinkComponentProps
+  extends LinkProps,
+    Omit<
+      LinkExternalProps,
+      "href" | "onClick" | "onMouseEnter" | "onTouchStart"
+    > {
   text: string;
   as?: any;
   version?: "lighter" | "darker";
+  target?: "_blank" | "_self" | "_parent" | "_top";
 }
 
 const LinkNextStyles = styled.a<LinkComponentProps>`
