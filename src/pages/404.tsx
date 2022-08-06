@@ -1,8 +1,8 @@
 import React from "react";
 import { NextPage } from "next";
 import GlobalStyles from "../components/pages/GlobalStyles";
-import Link from "../components/atoms/Link";
 import { Container } from "../components/pages/404Styles";
+import Link from "../components/atoms/Link";
 
 const NotFound: NextPage = () => {
   return (

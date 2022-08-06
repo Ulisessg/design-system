@@ -46,6 +46,7 @@ const Global = createGlobalStyle`
     justify-content: center;
     justify-items: center;
     width: 100vw;
+    align-content: space-between;
   }
   html {
     background-color: #fff;
