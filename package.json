@@ -1,6 +1,6 @@
 {
   "name": "ds",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "rollup -c ./rollup.config.js && node ./postbuild.js",
