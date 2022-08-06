@@ -21,7 +21,8 @@ const LinkNextStyles = styled.a<LinkComponentProps>`
     if (version === "lighter") return;
     return theme.colors.dark1;
   }};
-  :active {
+  :active,
+  :focus {
     color: ${({ theme, version }) => {
       if (version === "lighter") return theme.colors.dark1;
       return theme.colors.dark2;

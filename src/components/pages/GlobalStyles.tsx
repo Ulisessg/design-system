@@ -23,7 +23,7 @@ export default function GlobalStyles({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider theme={theme}>
       <Global />
-      {children}
+      <main role="main">{children}</main>
     </ThemeProvider>
   );
 }
@@ -36,9 +36,10 @@ const Global = createGlobalStyle`
     border: 0;
     font-family: "Roboto", Arial, sans-serif;
   }
-  #__next {
+  main {
     display: grid;
     justify-content: center;
+    justify-items: center;
     width: 100vw;
   }
   html {
