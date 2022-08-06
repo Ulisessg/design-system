@@ -16,12 +16,17 @@ const ButtonStyles = styled.button<ButtonProps>`
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 20px;
   font-weight: bold;
+  padding: 8px;
+  height: auto;
+  font-size: ${({ size }) => {
+    if (size === "small") return "15px";
+    return "20px";
+  }};
 
   width: ${({ size }) => {
-    if (size === "small") return "70px";
-    if (size === "large") return "120px";
+    if (size === "small") return "160px";
+    if (size === "large") return "200px";
     if (size === "100%") return "100%";
   }};
 
