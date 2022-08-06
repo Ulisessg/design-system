@@ -5,7 +5,7 @@ export default function Button(props: ButtonProps) {
   return <ButtonStyles {...props}>{props.text}</ButtonStyles>;
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   type: "button" | "submit" | "reset";
   size: "small" | "large" | "100%";
