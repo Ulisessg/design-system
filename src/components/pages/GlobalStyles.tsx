@@ -4,6 +4,7 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "styled-components";
+import Footer from "../molecules/Footer";
 
 const theme: DefaultTheme = {
   colors: {
@@ -19,11 +20,15 @@ const theme: DefaultTheme = {
   },
 };
 
-export default function GlobalStyles({ children }: { children: ReactNode }) {
+export default function GlobalStyles({
+  children,
+  footer = true,
+}: GlobalStylesProps) {
   return (
     <ThemeProvider theme={theme}>
       <Global />
       <main role="main">{children}</main>
+      {footer && <Footer />}
     </ThemeProvider>
   );
 }
@@ -46,3 +51,8 @@ const Global = createGlobalStyle`
     background-color: #fff;
   }
 `;
+
+type GlobalStylesProps = {
+  footer?: boolean;
+  children: ReactNode;
+};
