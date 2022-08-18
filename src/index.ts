@@ -3,6 +3,7 @@ export { default as Button } from "./components/atoms/Button";
 export * from "./components/atoms/Input";
 export { default as Link } from "./components/atoms/Link";
 export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
+export { default as Video } from "./components/atoms/Video";
 
 // Molecules
 export * from "./components/molecules/Form";
