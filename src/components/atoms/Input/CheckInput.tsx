@@ -9,4 +9,4 @@ const CheckInputStyles = styled.input<CheckInputProps>`
   cursor: pointer;
 `;
 
-type CheckInputProps = InputHTMLAttributes<HTMLInputElement>;
+export type CheckInputProps = InputHTMLAttributes<HTMLInputElement>;
