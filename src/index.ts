@@ -20,3 +20,6 @@ export { default as Page404 } from "./pages/404";
 export { default as _app } from "./pages/_app";
 export { default as _document } from "./pages/_document";
 export { default as index } from "./pages/index";
+
+// Hooks
+export { default as useInputs } from "./hooks/useInputs";
