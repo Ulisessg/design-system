@@ -4,6 +4,16 @@ export interface InputElement extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
   placeholder: string;
+  name: string;
+  inputMode:
+    | "none"
+    | "text"
+    | "tel"
+    | "url"
+    | "email"
+    | "numeric"
+    | "decimal"
+    | "search";
 }
 
 export interface TextInputProps extends InputElement {
@@ -14,7 +24,8 @@ export interface TextInputProps extends InputElement {
     | "email"
     | "password"
     | "tel"
-    | "url";
+    | "url"
+    | "search";
 }
 
 export interface FileInputProps extends InputElement {
