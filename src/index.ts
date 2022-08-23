@@ -1,15 +1,16 @@
 // Atoms
-export { default as Button } from "./components/atoms/Button";
 export * from "./components/atoms/Input";
+export { default as Button } from "./components/atoms/Button";
 export { default as Link } from "./components/atoms/Link";
 export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
 export { default as Video } from "./components/atoms/Video";
 
 // Molecules
 export * from "./components/molecules/Form";
-export { default as SearchBar } from "./components/molecules/SearchBar";
-export { default as Header } from "./components/molecules/Header";
 export { default as Footer } from "./components/molecules/Footer";
+export { default as Header } from "./components/molecules/Header";
+export { default as SearchBar } from "./components/molecules/SearchBar";
+export { default as Table } from './components/molecules/Table'
 
 // Pages (design system)
 export * from "./components/pages/404Styles";
