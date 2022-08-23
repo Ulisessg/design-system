@@ -16,15 +16,18 @@ function SearchBar({
   inputProps,
   buttonProps,
 }: SearchBarProps) {
+  const randomId = randomIdNumber()
   return (
     <SearchBarStyles>
       <TextInput
         {...inputProps}
-        id={`${id}-${randomIdNumber()}`}
+        type="search"
+        inputMode="search"
+        name="searchbar"
         label={label}
-        type="text"
         placeholder={placeholder}
         onChange={onChange}
+        id={`${id}-${randomId}`}
       />
       <Button
         {...buttonProps}
