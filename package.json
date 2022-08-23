@@ -1,6 +1,6 @@
 {
   "name": "ds",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "rollup -c ./rollup.config.js && node ./postbuild.js",
@@ -17,7 +17,7 @@
     "@rollup/plugin-commonjs": "22.0.2",
     "@rollup/plugin-node-resolve": "13.3.0",
     "@rollup/plugin-typescript": "8.3.4",
-    "@types/node": "18.7.6",
+    "@types/node": "18.7.10",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "@types/styled-components": "5.1.26",
