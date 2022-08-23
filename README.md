@@ -36,6 +36,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - Minimum changes:
  * Packages updates
  * Readme updates
+ * Minimun code refactoring
 
 ## Learn More
 
