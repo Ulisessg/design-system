@@ -8,8 +8,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Notflix</title>
-        <meta name="description" content="Notflix" />
+        <title>Design system</title>
+        <meta name="description" content="Design system" />
       </Head>
       <GlobalStyles>
         <h1>Design System 🏴‍☠️</h1>
