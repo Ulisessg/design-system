@@ -3,7 +3,7 @@
 
 # This git hook will prevent merging withot do an full checkuot
 
-PREVENT_MERGE_BRANCH="test-husky-merge-hook"
+PREVENT_MERGE_BRANCH="main"
 
 if [[ $GIT_REFLOG_ACTION == *merge* ]]; then
 	if [[ $GIT_REFLOG_ACTION == *$PREVENT_MERGE_BRANCH* ]]; then
