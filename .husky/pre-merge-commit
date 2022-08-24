@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint && npm run test && npm run build && npm run build-prod
+# This git hook will prevent merging withot do an full checkuot
+
+FORBIDDEN_BRANCH="main"
+
+if [[ $GIT_REFLOG_ACTION == *merge* ]]; then
+	if [[ $GIT_REFLOG_ACTION == *$FORBIDDEN_BRANCH* ]]; then
+		npm run lint && npm run test && npm run build && npm run build-prod
+	fi
+fi
