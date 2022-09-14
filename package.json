@@ -8,7 +8,8 @@
     "lint": "next lint",
     "build-prod": "next build",
     "prepare": "husky install",
-    "test": "jest --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "next": "12.2.5",
