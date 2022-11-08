@@ -13,7 +13,7 @@ const exp = [
     output: [
       {
         file: packageJson.main,
-        format: "esm",
+        format: "cjs",
         sourcemap: true,
       },
     ],
@@ -28,7 +28,7 @@ const exp = [
   },
   {
     input: "dist/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    output: [{ file: "dist/index.d.ts", format: "cjs" }],
     plugins: [dts()],
   },
 ];

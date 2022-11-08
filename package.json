@@ -1,9 +1,9 @@
 {
   "name": "d-system",
-  "version": "0.17.5",
+  "version": "0.18.0",
   "scripts": {
     "dev": "next dev -p 8080",
-    "build": "rollup --bundleConfigAsCjs -c ./rollup.config.js && node ./postbuild.js",
+    "build": "rollup -c ./rollup.config.js && node ./postbuild.js",
     "start": "next start -p 3030",
     "lint": "next lint",
     "build-prod": "next build",
