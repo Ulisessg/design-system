@@ -40,20 +40,22 @@ const Global = createGlobalStyle`
     padding: 0;
     border: 0;
     font-family: "Roboto", Arial, sans-serif;
-  }
+  };
   #__next {
     overflow-x: hidden;
-  }
+    min-height: 100vh;
+    display: grid;
+  };
   main {
     display: grid;
     justify-content: center;
     justify-items: center;
     width: 100vw;
     align-content: space-between;
-  }
+  };
   html {
     background-color: #fff;
-  }
+  };
 `;
 
 type GlobalStylesProps = {

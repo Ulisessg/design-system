@@ -6,6 +6,7 @@ export default function Footer({ children }: FooterProps) {
   const hackerEthicsBook =
     "https://archive.org/details/la-etica-hacker/mode/2up";
   return (
+    
     <FooterStyles>
       {children}
       <Link
@@ -14,7 +15,7 @@ export default function Footer({ children }: FooterProps) {
         target="_blank"
         version="darker"
         title="La ética del hacker - PDF"
-      />
+        />
       <p>Hecho con amor, café y amor al café ☕</p>
     </FooterStyles>
   );
@@ -32,6 +33,7 @@ const FooterStyles = styled.footer`
   text-align: center;
   margin-top: 20px;
   box-shadow: 0px -5px 8px 1px ${({ theme }) => theme.colors.shadow};
+  min-height:50px;
   background-color: ${({ theme }) => theme.colors.light3};
   & a {
     font-size: 30px;
