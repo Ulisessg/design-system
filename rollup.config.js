@@ -1,13 +1,13 @@
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
-import { terser } from "rollup-plugin-terser";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
+/* @ts-check */
+import resolve from "@rollup/plugin-node-resolve"
+import commonjs from "@rollup/plugin-commonjs"
+import typescript from "@rollup/plugin-typescript"
+import dts from "rollup-plugin-dts"
+import { terser } from "rollup-plugin-terser"
+import peerDepsExternal from "rollup-plugin-peer-deps-external"
+import packageJson from "./package.json"
 
-const packageJson = require("./package.json");
-
-export default [
+const exp = [
   {
     input: "src/index.ts",
     output: [
@@ -32,3 +32,6 @@ export default [
     plugins: [dts()],
   },
 ];
+
+
+export default exp

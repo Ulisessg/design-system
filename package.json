@@ -1,9 +1,9 @@
 {
-  "name": "ds",
+  "name": "d-system",
   "version": "0.17.5",
   "scripts": {
     "dev": "next dev -p 8080",
-    "build": "rollup -c ./rollup.config.js && node ./postbuild.js",
+    "build": "rollup --bundleConfigAsCjs -c ./rollup.config.js && node ./postbuild.js",
     "start": "next start -p 3030",
     "lint": "next lint",
     "build-prod": "next build",
@@ -12,31 +12,33 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "next": "12.3.0",
+    "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.6"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "22.0.2",
-    "@rollup/plugin-node-resolve": "14.1.0",
-    "@rollup/plugin-typescript": "8.5.0",
+    "@rollup/plugin-commonjs": "23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "9.0.2",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/node": "18.7.18",
-    "@types/react": "18.0.20",
-    "@types/react-dom": "18.0.6",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
     "@types/styled-components": "5.1.26",
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.0",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.2",
     "husky": "8.0.1",
-    "jest": "29.0.3",
-    "jest-environment-jsdom": "29.0.3",
+    "jest": "29.3.0",
+    "jest-environment-jsdom": "29.3.0",
+    "rollup": "2.79.1",
     "rollup-plugin-dts": "4.2.2",
+    "rollup-plugin-minification": "0.2.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-terser": "7.0.2",
-    "typescript": "4.8.3"
+    "typescript": "4.8.4"
   },
   "main": "./dist/index.js",
   "files": [
@@ -44,7 +46,7 @@
     "./README.md"
   ],
   "bin": {
-    "ds": "./dist/index.js"
+    "d-system": "./dist/index.js"
   },
   "preferGlobal": false
 }

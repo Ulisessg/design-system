@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function Link(props: LinkComponentProps) {
   return (
-    <LinkNext {...props}>
+   <>
       {props.target ? (
         <LinkNextStyles {...props}>{props.text}</LinkNextStyles>
       ) : (
@@ -16,7 +16,7 @@ export default function Link(props: LinkComponentProps) {
           {props.text}
         </LinkNextStyles>
       )}
-    </LinkNext>
+      </>
   );
 }
 
@@ -34,7 +34,7 @@ interface LinkComponentProps
   target?: "_blank" | "_self" | "_parent" | "_top";
 }
 
-const LinkNextStyles = styled.a<LinkComponentProps>`
+const LinkNextStyles = styled(LinkNext)<LinkComponentProps>`
   color: ${({ version, theme }) => {
     if (version === "lighter") return;
     return theme.colors.dark1;
