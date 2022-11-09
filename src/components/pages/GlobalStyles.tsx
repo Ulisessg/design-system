@@ -23,10 +23,12 @@ const theme: DefaultTheme = {
 export default function GlobalStyles ({
   children,
   footer = true,
+  header
 }: GlobalStylesProps) {
   return (
     <ThemeProvider theme={theme}>
       <Global />
+      {header}
       <main role="main">{children}</main>
       {footer && <Footer />}
     </ThemeProvider>
@@ -63,4 +65,5 @@ const Global = createGlobalStyle`
 type GlobalStylesProps = {
   footer?: boolean
   children: ReactNode
+  header?: ReactNode
 }
