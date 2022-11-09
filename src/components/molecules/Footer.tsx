@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import Link from "../atoms/Link";
+import React from "react"
+import styled from "styled-components"
+import Link from "../atoms/Link"
 
-export default function Footer({ children }: FooterProps) {
+export default function Footer ({ children }: FooterProps) {
   const hackerEthicsBook =
-    "https://archive.org/details/la-etica-hacker/mode/2up";
+    "https://archive.org/details/la-etica-hacker/mode/2up"
   return (
-    
+
     <FooterStyles>
       {children}
       <Link
@@ -15,15 +15,15 @@ export default function Footer({ children }: FooterProps) {
         target="_blank"
         version="darker"
         title="La ética del hacker - PDF"
-        />
+      />
       <p>Hecho con amor, café y amor al café ☕</p>
     </FooterStyles>
-  );
+  )
 }
 
 type FooterProps = {
-  children?: React.ReactNode;
-};
+  children?: React.ReactNode
+}
 
 const FooterStyles = styled.footer`
   display: grid;
@@ -35,8 +35,9 @@ const FooterStyles = styled.footer`
   box-shadow: 0px -5px 8px 1px ${({ theme }) => theme.colors.shadow};
   min-height:50px;
   background-color: ${({ theme }) => theme.colors.light3};
+  align-items: center;
   & a {
     font-size: 30px;
     margin-bottom: 20px;
   }
-`;
+`
