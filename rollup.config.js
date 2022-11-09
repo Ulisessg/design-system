@@ -31,7 +31,7 @@ const exp = [
     output: [{ file: "dist/index.d.ts", format: "cjs" }],
     plugins: [dts()],
   },
-];
+]
 
 
 export default exp
