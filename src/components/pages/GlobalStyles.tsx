@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from "react"
 import {
   createGlobalStyle,
   DefaultTheme,
   ThemeProvider,
-} from "styled-components";
-import Footer from "../molecules/Footer";
+} from "styled-components"
+import Footer from "../molecules/Footer"
 
 const theme: DefaultTheme = {
   colors: {
@@ -18,9 +18,9 @@ const theme: DefaultTheme = {
     error: "#ff0e1a",
     warning: "#EAE509",
   },
-};
+}
 
-export default function GlobalStyles({
+export default function GlobalStyles ({
   children,
   footer = true,
 }: GlobalStylesProps) {
@@ -30,7 +30,7 @@ export default function GlobalStyles({
       <main role="main">{children}</main>
       {footer && <Footer />}
     </ThemeProvider>
-  );
+  )
 }
 
 const Global = createGlobalStyle`
@@ -45,6 +45,8 @@ const Global = createGlobalStyle`
     overflow-x: hidden;
     min-height: 100vh;
     display: grid;
+    justify-content: center;
+    justify-items: center;
   };
   main {
     display: grid;
@@ -56,9 +58,9 @@ const Global = createGlobalStyle`
   html {
     background-color: #fff;
   };
-`;
+`
 
 type GlobalStylesProps = {
-  footer?: boolean;
-  children: ReactNode;
-};
+  footer?: boolean
+  children: ReactNode
+}
