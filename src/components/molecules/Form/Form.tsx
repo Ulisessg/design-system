@@ -13,7 +13,7 @@ export default function Form({ title, children }: LoginFormProps) {
 const FormContainerStyles = styled.form`
   display: grid;
   justify-items: center;
-  width: 80vw;
+  width: 100%;
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0px 1px 8px 0px ${({ theme }) => theme.colors.shadow};
