@@ -2,21 +2,25 @@ import React, { AnchorHTMLAttributes } from "react"
 import LinkNext, { LinkProps } from "next/link"
 import styled from "styled-components"
 
-export default function Link (props: LinkComponentProps) {
+export default function Link ({text, target,href,...rest}: LinkComponentProps) {
+  if(typeof target === 'undefined') {
+    return<LinkNext href={href} legacyBehavior>
+      <LinkNextStyles href={href} text={text} {...rest} >{text}</LinkNextStyles>
+    </LinkNext>
+  }
   return (
-    <>
-      {props.target ? (
-        <LinkNextStyles {...props}>{props.text}</LinkNextStyles>
-      ) : (
-        <LinkNextStyles
-          {...props}
-          target={props.target}
-          rel="noreferrer noopener"
+    <LinkNext
+          href={href}
+          legacyBehavior
         >
-          {props.text}
-        </LinkNextStyles>
-      )}
-    </>
+          <LinkNextStyles 
+            {...rest}
+            href={href}
+            text={text}
+            target={target}
+            rel="noreferrer noopener"
+          >{text}</LinkNextStyles>
+        </LinkNext>
   )
 }
 
@@ -34,13 +38,13 @@ interface LinkComponentProps
   target?: "_blank" | "_self" | "_parent" | "_top"
 }
 
-const LinkNextStyles = styled(LinkNext) <LinkComponentProps>`
+const LinkNextStyles = styled.a <LinkComponentProps>`
   color: ${({ version, theme }) => {
     if (version === "lighter") return
     return theme.colors.dark1
   }};
   :active,
-  :focus {
+  :focus, :hover {
     color: ${({ theme, version }) => {
     if (version === "lighter") return theme.colors.dark1
     return theme.colors.dark2
