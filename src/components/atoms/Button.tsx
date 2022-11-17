@@ -6,9 +6,21 @@ export default function Button(props: ButtonProps) {
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Button text content */
   text: string;
+  /** Button type */
   type: "button" | "submit" | "reset";
+  /** Button width size
+   *  Small - 160px
+   *  Large - 200px
+   *  100% - 100%
+   */
   size: "small" | "large" | "100%";
+  /** Button color
+   * Continue - dark2: #0C4B8E
+   * Info - warning: #EAE509
+   * Error - error: #ff0e1a
+   */
   colorMessage: "continue" | "info" | "cancel";
 }
 
