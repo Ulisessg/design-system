@@ -2,6 +2,12 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 type LoadingSpinnerProps = {
+  /** Spinner size
+   * 
+   *  Small: width: 40px - height: 40px
+   * 
+   *  Large: width: 100px - height: 100px
+   */
   size: "small" | "large";
 };
 
