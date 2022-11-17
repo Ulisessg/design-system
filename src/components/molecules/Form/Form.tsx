@@ -1,9 +1,9 @@
 import React, { FormHTMLAttributes } from "react";
 import styled from "styled-components";
 
-export default function Form({ title, children }: LoginFormProps) {
+export default function Form({ title, children, formAttributes }: LoginFormProps) {
   return (
-    <FormContainerStyles>
+    <FormContainerStyles {...formAttributes}>
       <FormTitleStyles>{title}</FormTitleStyles>
       <InputsContainerStyles>{children}</InputsContainerStyles>
     </FormContainerStyles>
@@ -32,7 +32,9 @@ const InputsContainerStyles = styled.div`
 `;
 
 type LoginFormProps = {
+  /** Form tile */
   title: string;
   children: React.ReactNode;
+  /** Html form element attributes */
   formAttributes?: FormHTMLAttributes<HTMLFormElement>;
 };
