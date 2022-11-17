@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "../atoms/Link";
 
 export default function Header({ children }: HeaderProps) {
   return <HeaderStyles>{children}</HeaderStyles>;
