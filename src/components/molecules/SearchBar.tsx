@@ -54,12 +54,17 @@ const SearchBarStyles = styled.div`
 `;
 
 type SearchBarProps = {
+  /** Label text for 'label' element */
   label: string;
+  /** Input id, used for htmlFor prop in label */
   id: string;
+  /** Text for button */
   buttonText: string;
+  /** Input placeholder */
   placeholder: string;
-
+  /** Html button element props */
   buttonProps?: ButtonProps;
+  /** Html input element props */
   inputProps?: TextInputProps;
   onClick?: ButtonProps["onClick"];
   onChange?: TextInputProps["onChange"];
