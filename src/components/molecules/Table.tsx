@@ -46,5 +46,6 @@ const TableStyles = styled.table`
 
 interface TableProps {
   children: ReactNode;
+  /** Text for html caption element */
   caption: string;
 }
