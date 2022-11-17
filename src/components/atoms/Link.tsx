@@ -1,8 +1,8 @@
-import React, { AnchorHTMLAttributes } from "react"
+import React, { AnchorHTMLAttributes, FC } from "react"
 import LinkNext, { LinkProps } from "next/link"
 import styled from "styled-components"
 
-export default function Link ({text, target,href,...rest}: LinkComponentProps) {
+const Link: FC<LinkComponentProps> = ({text, target,href,...rest}) =>{
   if(typeof target === 'undefined') {
     return<LinkNext href={href} legacyBehavior>
       <LinkNextStyles href={href} text={text} {...rest} >{text}</LinkNextStyles>
@@ -24,6 +24,8 @@ export default function Link ({text, target,href,...rest}: LinkComponentProps) {
   )
 }
 
+export default Link
+
 interface LinkExternalProps extends AnchorHTMLAttributes<HTMLAnchorElement> { }
 
 interface LinkComponentProps
@@ -32,9 +34,12 @@ interface LinkComponentProps
     LinkExternalProps,
     "href" | "onClick" | "onMouseEnter" | "onTouchStart"
   > {
+    /** Link text content */
   text: string
   as?: any
+  /** Link color, by default dark2 - #0C4B8E */
   version?: "lighter" | "darker"
+  /** The target attribute specifies where the linked document will open when the link is clicked. The default is the current window. */
   target?: "_blank" | "_self" | "_parent" | "_top"
 }
 
