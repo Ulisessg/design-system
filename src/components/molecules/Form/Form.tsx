@@ -29,6 +29,7 @@ const InputsContainerStyles = styled.div`
   width: 100%;
   margin: 20px;
   display: grid;
+  justify-content: stretch;
 `;
 
 type LoginFormProps = {
