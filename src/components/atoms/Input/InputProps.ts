@@ -1,10 +1,15 @@
 import { InputHTMLAttributes } from "react";
 
 export interface InputElement extends InputHTMLAttributes<HTMLInputElement> {
+  /** Label text for 'label' element */
   label: string;
+  /** Input id, used for htmlFor prop in label */
   id: string;
+  /** Input placeholder */
   placeholder: string;
+  /** Input name */
   name: string;
+  /** Keyboard input mode, mainly for mobile keyboards */
   inputMode:
     | "none"
     | "text"
@@ -17,6 +22,7 @@ export interface InputElement extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export interface TextInputProps extends InputElement {
+  /** defines information field type */
   type:
     | "text"
     | "date"
@@ -29,6 +35,8 @@ export interface TextInputProps extends InputElement {
 }
 
 export interface FileInputProps extends InputElement {
+  /** defines information field type */
   type: "file" | "image";
+  /** File extensions accepted */
   accept: "image/*" | ".pdf";
 }
