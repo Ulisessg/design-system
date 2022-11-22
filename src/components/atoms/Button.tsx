@@ -1,8 +1,32 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, KeyboardEvent, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
 export default function Button(props: ButtonProps) {
-  return <ButtonStyles {...props}>{props.text}</ButtonStyles>;
+  const [isEnterPressed, setIsEnterPressed] = useState<boolean>(false)
+
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const handleKeyDown = (ev: KeyboardEvent<HTMLButtonElement>): void => {
+    if(ev.key === 'Enter') {
+      setIsEnterPressed(true)
+    }
+  }
+  const handleOnKeyUp = (ev: globalThis.KeyboardEvent): void => {
+    if(ev.key === 'Enter') {
+      setIsEnterPressed(false)
+      buttonRef.current?.dispatchEvent(new globalThis.KeyboardEvent('click', {
+        repeat: false
+      }))
+    }
+  }
+
+  useEffect(() => {
+    buttonRef.current?.addEventListener('keyup', handleOnKeyUp)
+    const ref = buttonRef.current as HTMLButtonElement
+    return () => {
+      ref.removeEventListener('keyup', handleOnKeyUp)
+    } 
+  }, [])
+  return <ButtonStyles {...props} onKeyDown={handleKeyDown} enterPressed={isEnterPressed} ref={buttonRef}>{props.text}</ButtonStyles>;
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -24,7 +48,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   colorMessage: "continue" | "info" | "cancel";
 }
 
-const ButtonStyles = styled.button<ButtonProps>`
+const ButtonStyles = styled.button<ButtonProps & {enterPressed: boolean}>`
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
@@ -54,6 +78,7 @@ const ButtonStyles = styled.button<ButtonProps>`
     return theme.colors.dark2;
   }};
 
+  ${({enterPressed}) => enterPressed ? 'transform: scale(0.9)' : ''};
   :active {
     transform: scale(0.9);
   }
