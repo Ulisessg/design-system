@@ -7,6 +7,7 @@ export { default as Video } from "./components/atoms/Video";
 export { default as Td } from './components/atoms/Td'
 export { default as Th } from './components/atoms/Th'
 export {default as Details} from './components/atoms/Details'
+export { default as Title } from './components/atoms/Title'
 
 // Molecules
 export * from "./components/molecules/Form";
