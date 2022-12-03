@@ -4,23 +4,15 @@ import styled from "styled-components"
 
 const Link: FC<LinkComponentProps> = ({text, target,href,...rest}) =>{
   if(typeof target === 'undefined') {
-    return<LinkNext href={href} legacyBehavior>
-      <LinkNextStyles href={href} text={text} {...rest} >{text}</LinkNextStyles>
-    </LinkNext>
+    return<LinkNextStyles {...rest} href={href}>
+      {text}
+    </LinkNextStyles>
   }
   return (
-    <LinkNext
-          href={href}
-          legacyBehavior
-        >
-          <LinkNextStyles 
-            {...rest}
-            href={href}
-            text={text}
-            target={target}
-            rel="noreferrer noopener"
-          >{text}</LinkNextStyles>
-        </LinkNext>
+    <LinkNextStyles {...rest}
+    href={href}
+    target={target}
+    rel="noreferrer noopener">{text}</LinkNextStyles>
   )
 }
 
@@ -43,7 +35,7 @@ interface LinkComponentProps
   target?: "_blank" | "_self" | "_parent" | "_top"
 }
 
-const LinkNextStyles = styled.a <LinkComponentProps>`
+const LinkNextStyles = styled(LinkNext) <LinkComponentProps>`
   color: ${({ version, theme }) => {
     if (version === "lighter") return
     return theme.colors.dark1
