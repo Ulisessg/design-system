@@ -26,7 +26,15 @@ export default function Button(props: ButtonProps) {
       ref.removeEventListener('keyup', handleOnKeyUp)
     } 
   }, [])
-  return <ButtonStyles {...props} onKeyDown={handleKeyDown} enterPressed={isEnterPressed} ref={buttonRef}>{props.text}</ButtonStyles>;
+  return <ButtonStyles 
+    {...props}
+    onKeyDown={handleKeyDown}
+    enterPressed={isEnterPressed}
+    ref={buttonRef}
+    isDisabled={props.disabled}
+  >
+    {props.text}
+  </ButtonStyles>;
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -48,7 +56,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   colorMessage: "continue" | "info" | "cancel";
 }
 
-const ButtonStyles = styled.button<ButtonProps & {enterPressed: boolean}>`
+const ButtonStyles = styled.button<ButtonProps & {enterPressed: boolean, isDisabled?: boolean}>`
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
@@ -66,21 +74,23 @@ const ButtonStyles = styled.button<ButtonProps & {enterPressed: boolean}>`
     if (size === "100%") return "100%";
   }};
 
-  color: ${({ colorMessage, theme }) => {
+  color: ${({ colorMessage, theme, isDisabled }) => {
+    if(isDisabled) return 'white'
     if (colorMessage === "info") return "black";
     if (colorMessage === "continue") return "white";
     return theme.colors.dark1;
   }};
 
-  background-color: ${({ theme, colorMessage }) => {
+  background-color: ${({ theme, colorMessage, isDisabled }) => {
+    if(isDisabled) return theme.colors.dark3
     if (colorMessage === "cancel") return theme.colors.error;
     if (colorMessage === "info") return theme.colors.warning;
     return theme.colors.dark2;
   }};
 
-  ${({enterPressed}) => enterPressed ? 'transform: scale(0.9)' : ''};
+  ${({enterPressed, isDisabled}) => (enterPressed && !isDisabled) ? 'transform: scale(0.9);' : ''}
   :active {
-    transform: scale(0.9);
+    ${({isDisabled}) => !isDisabled && 'transform: scale(0.9)'}
   }
   :focus,
   :hover {
