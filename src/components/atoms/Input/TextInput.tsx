@@ -14,8 +14,8 @@ import { TextInputProps } from "./InputProps";
  */
  const TextInput: FC<TextInputProps> = (props: TextInputProps): ReactElement => {
   const [checkInvalid, setCheckInvalid] = useState<boolean>(false)
-  const handleFocus = (ev: FocusEvent<HTMLInputElement>) => {
-    if(props.onFocus) props.onFocus(ev)
+  const handleBlur = (ev: FocusEvent<HTMLInputElement>) => {
+    if(props.onBlur) props.onBlur(ev)
     if(checkInvalid === true) return
     setCheckInvalid(true)
   }
@@ -29,7 +29,7 @@ import { TextInputProps } from "./InputProps";
         border={true}
         placeholder={props.placeholder}
         type={props.type}
-        onFocus={handleFocus}
+        onBlur={handleBlur}
         checkInvalid={checkInvalid}
       />
     </LabelStyles>
