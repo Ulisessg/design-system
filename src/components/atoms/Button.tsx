@@ -94,6 +94,9 @@ const ButtonStyles = styled.button<ButtonProps & {enterPressed: boolean, isDisab
   }
   :focus,
   :hover {
-    box-shadow: 0px 1px 5px 0.2px ${({ theme }) => theme.colors.dark3};
+    box-shadow: 0px 1px 5px 0.2px ${({ theme, isDisabled }) => {
+      if(isDisabled) return
+      return theme.colors.dark3
+    }};
   }
 `;
