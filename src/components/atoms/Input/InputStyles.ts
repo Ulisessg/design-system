@@ -18,12 +18,12 @@ const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
   }
 
   &:invalid {
-    /* border: ${borderPixels} solid ${({ theme, checkInvalid }) => {
+    border: ${borderPixels} solid ${({ theme, checkInvalid }) => {
       if(checkInvalid === true) {
         return theme.colors.error
       }
       return theme.colors.dark2
-    }}; */
+    }};
     outline: none;
   }
 `;
