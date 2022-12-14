@@ -1,5 +1,5 @@
-import React, { FC, FocusEvent, ReactElement, useState } from "react";
-import InputStyles, { LabelStyles } from "./InputStyles";
+import React, { ChangeEvent, FC, FocusEvent, FormEvent, ReactElement, useEffect, useState,  } from "react";
+import InputStyles, { LabelStyles, SampStyles, RequiredMark } from "./InputStyles";
 import { TextInputProps } from "./InputProps";
 
 /**
@@ -16,14 +16,41 @@ import { TextInputProps } from "./InputProps";
   const [checkInvalid, setCheckInvalid] = useState<boolean>(false)
   const handleBlur = (ev: FocusEvent<HTMLInputElement>) => {
     if(props.onBlur) props.onBlur(ev)
-    if(checkInvalid === true) return
+    ev.currentTarget.checkValidity()
+    ev.currentTarget.reportValidity()
     setCheckInvalid(true)
   }
   
+  const handleOnInput = (ev: FormEvent<HTMLInputElement>) => {
+    if(props.onInput) props.onInput(ev)
+    setCheckInvalid(true)
+  }
+
+  const handleOnChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    if(props.onChange) props.onChange(ev)
+    ev.currentTarget.checkValidity()
+    ev.currentTarget.reportValidity()
+  }
+
+  useEffect(() => {
+    if(process.env.NODE_ENV !== 'production' && typeof props.placeholder === 'string') console.warn(`Placeholder attribute is
+not recommendable for accessibility purposes.
+      
+More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
+      `);
+  }, [props.placeholder])
 
   return (
     <LabelStyles htmlFor={props.id}>
+      <p>
       {props.label}
+      
+      {typeof props.acceptanceCriteria === 'string' && 
+        <SampStyles>&nbsp;{props.acceptanceCriteria}</SampStyles>}
+      
+      {props.required === true &&
+        <RequiredMark aria-hidden={true}>*</RequiredMark>}
+      </p>
       <InputStyles  
         {...props}
         border={true}
@@ -31,6 +58,9 @@ import { TextInputProps } from "./InputProps";
         type={props.type}
         onBlur={handleBlur}
         checkInvalid={checkInvalid}
+        onInput={handleOnInput}
+        onChange={handleOnChange}
+        aria-required={props.required || false}
       />
     </LabelStyles>
   );

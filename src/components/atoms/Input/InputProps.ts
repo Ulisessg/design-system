@@ -5,8 +5,6 @@ export interface InputElement extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   /** Input id, used for htmlFor prop in label */
   id: string;
-  /** Input placeholder */
-  placeholder: string;
   /** Input name */
   name: string;
   /** Keyboard input mode, mainly for mobile keyboards */
@@ -32,6 +30,14 @@ export interface TextInputProps extends InputElement {
     | "tel"
     | "url"
     | "search";
+    /**
+     * Requeriments to fill input, such as:
+     * 
+     * - Only numbers
+     * 
+     * - Only letters and spaces
+     */
+    acceptanceCriteria?: string
 }
 
 export interface FileInputProps extends InputElement {
