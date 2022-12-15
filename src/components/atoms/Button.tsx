@@ -1,62 +1,63 @@
-import React, { ButtonHTMLAttributes, KeyboardEvent, useState, useRef, useEffect } from "react";
+import React, { KeyboardEvent, useState, useRef, useEffect, forwardRef } from "react";
 import styled from "styled-components";
+import { ComponentProps } from '../../lib'
 
-export default function Button(props: ButtonProps) {
+export default forwardRef<HTMLButtonElement, ButtonProps>(function Button(props: ButtonProps, ref) {
   const [isEnterPressed, setIsEnterPressed] = useState<boolean>(false)
 
-  const buttonRef = useRef<HTMLButtonElement>(null)
   const handleKeyDown = (ev: KeyboardEvent<HTMLButtonElement>): void => {
-    if(ev.key === 'Enter') {
+    if(props.onKeyDown) props.onKeyDown(ev)
+    if(ev.key === 'Enter' || ev.key === ' ') {
       setIsEnterPressed(true)
     }
   }
-  const handleOnKeyUp = (ev: globalThis.KeyboardEvent): void => {
-    if(ev.key === 'Enter') {
+
+  const handleOnKeyUp = (ev: KeyboardEvent<HTMLButtonElement>): void => {
+    if(props.onKeyUp) props.onKeyUp(ev)
+    if(ev.key === 'Enter' || ev.key === ' ') {
       setIsEnterPressed(false)
-      buttonRef.current?.dispatchEvent(new globalThis.KeyboardEvent('click', {
+      ev.target?.dispatchEvent(new globalThis.KeyboardEvent('click', {
         repeat: false
       }))
     }
   }
 
-  useEffect(() => {
-    buttonRef.current?.addEventListener('keyup', handleOnKeyUp)
-    const ref = buttonRef.current as HTMLButtonElement
-    return () => {
-      ref.removeEventListener('keyup', handleOnKeyUp)
-    } 
-  }, [])
   return <ButtonStyles 
     {...props}
     onKeyDown={handleKeyDown}
     enterPressed={isEnterPressed}
-    ref={buttonRef}
+    onKeyUp={handleOnKeyUp}
+    ref={ref}
     isDisabled={props.disabled}
   >
     {props.text}
   </ButtonStyles>;
-}
+})
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentProps<'button'> {
   /** Button text content */
   text: string;
-  /** Button type */
-  type: "button" | "submit" | "reset";
   /** Button width size
+   *  
    *  Small - 160px
+   *  
    *  Large - 200px
+   *  
    *  100% - 100%
    */
   size: "small" | "large" | "100%";
   /** Button color
+   * 
    * Continue - dark2: #0C4B8E
+   * 
    * Info - warning: #EAE509
+   * 
    * Error - error: #ff0e1a
    */
   colorMessage: "continue" | "info" | "cancel";
 }
 
-const ButtonStyles = styled.button<ButtonProps & {enterPressed: boolean, isDisabled?: boolean}>`
+const ButtonStyles = styled.button<{enterPressed: boolean, isDisabled?: boolean, size: ButtonProps['size'], colorMessage: ButtonProps['colorMessage']}>`
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
