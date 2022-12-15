@@ -8,13 +8,14 @@ const InputStyles = styled.input<{ border: boolean, inputInvalid: boolean }>`
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 10px;
-  border: ${borderPixels} solid ${({theme}) => theme.colors.dark2};
+  border: ${borderPixels} solid ${({theme}) => theme.colors.light2};
   :focus, :hover {
-    box-shadow: 0px 0px 5px 3px ${({ theme }) => theme.colors.dark3};
+    box-shadow: 0px 0px 5px 1px ${({ theme }) => theme.colors.light2};
+    outline: 1px solid ${({theme}) => theme.colors.light2};
   }
   &:valid {
     border: ${({ border, theme }) =>
-      border && `${borderPixels} solid ${theme.colors.dark2}`};
+      border && `${borderPixels} solid ${theme.colors.light2}`};
   }
 
   &:invalid {
