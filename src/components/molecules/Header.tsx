@@ -1,9 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
+import { ComponentProps } from '../../lib'
 
-export default function Header({ children }: HeaderProps) {
-  return <HeaderStyles>{children}</HeaderStyles>;
-}
+export default forwardRef<HTMLElement, HeaderProps>(function Header(props, ref) {
+  return <HeaderStyles {...props} ref={ref}>{props.children}</HeaderStyles>;
+})
 
 const HeaderStyles = styled.header<HeaderProps>`
   display: flex;
@@ -14,6 +15,5 @@ const HeaderStyles = styled.header<HeaderProps>`
   box-shadow: 0px 7px 8px 0px ${({ theme }) => theme.colors.shadow};
 `;
 
-type HeaderProps = {
-  children?: React.ReactNode;
+interface HeaderProps  extends ComponentProps<'header'> {
 };
