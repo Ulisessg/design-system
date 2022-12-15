@@ -1,6 +1,6 @@
 {
   "name": "d-system",
-  "version": "0.23.8",
+  "version": "0.23.9",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "rollup -c ./rollup.config.js --environment INCLUDE_DEPS,BUILD:production && node ./postbuild.js",
