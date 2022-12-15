@@ -10,7 +10,7 @@ export default function LoginForm() {
     setShowPassword(e.currentTarget.checked);
   };
   return (
-    <Form title="Iniciar sesión">
+    <Form formTitle="Iniciar sesión">
       <TextInput
         id="1"
         label="Username" type="text" placeholder="Username"

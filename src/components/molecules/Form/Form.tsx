@@ -1,14 +1,15 @@
-import React, { FormHTMLAttributes } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
+import { ComponentProps } from '../../../lib'
 
-export default function Form({ title, children, formAttributes }: LoginFormProps) {
+export default forwardRef<HTMLFormElement, FormProps>(function Form(props, ref) {
   return (
-    <FormContainerStyles {...formAttributes}>
-      <FormTitleStyles>{title}</FormTitleStyles>
-      <InputsContainerStyles>{children}</InputsContainerStyles>
+    <FormContainerStyles {...props} ref={ref}>
+      <FormTitleStyles>{props.formTitle}</FormTitleStyles>
+      <InputsContainerStyles>{props.children}</InputsContainerStyles>
     </FormContainerStyles>
   );
-}
+})
 
 const FormContainerStyles = styled.form`
   display: grid;
@@ -32,10 +33,7 @@ const InputsContainerStyles = styled.div`
   justify-content: stretch;
 `;
 
-type LoginFormProps = {
+interface FormProps extends ComponentProps<'form'> {
   /** Form tile */
-  title: string;
-  children: React.ReactNode;
-  /** Html form element attributes */
-  formAttributes?: FormHTMLAttributes<HTMLFormElement>;
+  formTitle: string;
 };
