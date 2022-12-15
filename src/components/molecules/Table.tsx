@@ -1,14 +1,15 @@
-import React, { ReactNode } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import styled from "styled-components";
+import { ComponentProps } from '../../lib'
 
-export default function Table({ caption, children }: TableProps) {
+export default forwardRef<HTMLTableElement, TableProps>(function Table(props, ref) {
   return (
-    <TableStyles>
-      <caption>{caption}</caption>
-      {children}
+    <TableStyles {...props} ref={ref}>
+      <caption>{props.caption}</caption>
+      {props.children}
     </TableStyles>
   );
-}
+})
 
 const TableStyles = styled.table`
   width: 100%;
@@ -44,7 +45,7 @@ const TableStyles = styled.table`
   }
 `;
 
-interface TableProps {
+interface TableProps extends ComponentProps<'table'> {
   children: ReactNode;
   /** Text for html caption element */
   caption: string;
