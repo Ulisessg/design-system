@@ -1,7 +1,11 @@
+import { ComponentProps, forwardRef } from 'react'
 import styled from 'styled-components'
 
-const Td = styled.td`
-text-align: center;
-`
+export default forwardRef<HTMLTableCellElement, ComponentProps<'td'>>(function Td(props, ref) {
+  return <TdStyles {...props} ref={ref}></TdStyles>
+})
 
-export default Td
+
+const TdStyles = styled.td`
+  text-align: center;
+`
