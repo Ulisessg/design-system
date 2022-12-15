@@ -1,16 +1,20 @@
-import React, { FC } from 'react'
+import React, { FC, forwardRef } from 'react'
 import styled from 'styled-components'
+import { ComponentProps } from '../../lib'
 
-const Details: FC<DetailsProps> = ({ summary, children }) => <>
-  <Container>
-    <DetailsStyles>
-      <Summary>{summary}</Summary>
-      {children}
-    </DetailsStyles>
-  </Container>
+const Details = forwardRef<HTMLDetailsElement, DetailsProps>(function Details({ summary, children, ...props }, ref) {
+
+return <>
+<Container>
+  <DetailsStyles {...props} ref={ref}>
+    <Summary>{summary}</Summary>
+    {children}
+  </DetailsStyles>
+</Container>
 </>
+})
 
-interface DetailsProps {
+interface DetailsProps extends ComponentProps<'details'> {
   /** Text showed in 'summary' html tag */
   summary: string
   children: React.ReactNode
