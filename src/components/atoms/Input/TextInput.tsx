@@ -12,7 +12,7 @@ import { TextInputProps } from "./InputProps";
  * @prop {"none | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";} inputMode - Keyboard input mode, mainly for mobile keyboards
  * @return {import('react').ReactElement} ReactElement
  */
- const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput(props, ref) {
+ const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput({ isInvalidStyle = true, ...props}, ref) {
   const [checkInvalid, setCheckInvalid] = useState<boolean>(false)
   const handleBlur = (ev: FocusEvent<HTMLInputElement>) => {
     if(props.onBlur) props.onBlur(ev)
@@ -57,7 +57,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         placeholder={props.placeholder}
         type={props.type}
         onBlur={handleBlur}
-        checkInvalid={checkInvalid}
+        checkInvalid={isInvalidStyle && checkInvalid}
         onInput={handleOnInput}
         onChange={handleOnChange}
         aria-required={props.required || false}
