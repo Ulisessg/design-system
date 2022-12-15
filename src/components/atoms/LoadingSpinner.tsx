@@ -1,7 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled, { keyframes } from "styled-components";
+import { ComponentProps } from '../../lib'
 
-type LoadingSpinnerProps = {
+interface LoadingSpinnerProps  extends ComponentProps<'div'> {
   /** Spinner size
    * 
    *  Small: width: 40px - height: 40px
@@ -11,9 +12,9 @@ type LoadingSpinnerProps = {
   size: "small" | "large";
 };
 
-export default function LoadingSpinner({ size }: LoadingSpinnerProps) {
-  return <Spinner size={size} />;
-}
+export default forwardRef<HTMLDivElement, LoadingSpinnerProps>(function LoadingSpinner(props, ref) {
+  return <Spinner {...props} size={props.size} ref={ref} />;
+})
 
 const spinKeyframe = keyframes`
   to{
