@@ -10,7 +10,7 @@ const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
   margin-top: 10px;
   border: ${borderPixels} solid ${({theme}) => theme.colors.dark2};
   :focus {
-    box-shadow: 0px 0px 1px 4px ${({ theme }) => theme.colors.light1};
+    box-shadow: 0px 0px 5px 3px ${({ theme }) => theme.colors.dark3};
   }
   &:valid {
     border: ${({ border, theme }) =>
@@ -24,7 +24,7 @@ const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
       }
       return theme.colors.dark2
     }};
-    outline: none;
+    outline: 1px solid ${({theme}) =>  theme.colors.error};
   }
 `;
 
