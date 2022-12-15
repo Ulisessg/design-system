@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const borderPixels = "1.8px";
 
-const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
+const InputStyles = styled.input<{ border: boolean, inputInvalid: boolean }>`
   height: 30px;
   padding-left: 10px;
   border-radius: 5px;
@@ -18,14 +18,15 @@ const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
   }
 
   &:invalid {
-    border: ${borderPixels} solid ${({ theme, checkInvalid }) => {
-      if(checkInvalid === true) {
-        return theme.colors.error
+    ${({theme, inputInvalid}) => {
+      let style: string = ''
+      if(inputInvalid === true) {
+        style += `border: ${borderPixels} solid ${theme.colors.error};`
+        style += 'outline: none;'
+        style += `box-shadow: 0px 0px 2px 1px ${theme.colors.error};`
       }
-      return theme.colors.dark2
+      return style
     }};
-    outline: none;
-    box-shadow: 0px 0px 2px 1px ${({ theme }) => theme.colors.error};
   }
 `;
 

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FocusEvent, FormEvent,  useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import InputStyles, { LabelStyles, SampStyles, RequiredMark } from "./InputStyles";
 import { TextInputProps } from "./InputProps";
 
@@ -12,26 +12,7 @@ import { TextInputProps } from "./InputProps";
  * @prop {"none | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";} inputMode - Keyboard input mode, mainly for mobile keyboards
  * @return {import('react').ReactElement} ReactElement
  */
- const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput({ isInvalidStyle = false, ...props}, ref) {
-  const [checkInvalid, setCheckInvalid] = useState<boolean>(false)
-  const handleBlur = (ev: FocusEvent<HTMLInputElement>) => {
-    if(props.onBlur) props.onBlur(ev)
-    ev.currentTarget.checkValidity()
-    ev.currentTarget.reportValidity()
-    setCheckInvalid(true)
-  }
-  
-  const handleOnInput = (ev: FormEvent<HTMLInputElement>) => {
-    if(props.onInput) props.onInput(ev)
-    setCheckInvalid(true)
-  }
-
-  const handleOnChange = (ev: ChangeEvent<HTMLInputElement>) => {
-    if(props.onChange) props.onChange(ev)
-    ev.currentTarget.checkValidity()
-    ev.currentTarget.reportValidity()
-  }
-
+ const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput({inputInvalid = false,...props}, ref) {
   useEffect(() => {
     if(process.env.NODE_ENV !== 'production' && typeof props.placeholder === 'string') console.warn(`Placeholder attribute is
 not recommendable for accessibility purposes.
@@ -56,10 +37,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         border={true}
         placeholder={props.placeholder}
         type={props.type}
-        onBlur={handleBlur}
-        checkInvalid={(isInvalidStyle ? checkInvalid: false)}
-        onInput={handleOnInput}
-        onChange={handleOnChange}
+        inputInvalid={inputInvalid}
         aria-required={props.required || false}
         ref={ref}
       />
