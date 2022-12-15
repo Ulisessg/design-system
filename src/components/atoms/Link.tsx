@@ -1,24 +1,33 @@
-import React, { AnchorHTMLAttributes, FC } from "react"
+import React, { AnchorHTMLAttributes, FC, forwardRef } from "react"
 import LinkNext, { LinkProps } from "next/link"
 import styled from "styled-components"
+import { ComponentProps } from '../../lib'
 
-const Link: FC<LinkComponentProps> = ({text, target,href,...rest}) =>{
+const Link = forwardRef<HTMLAnchorElement, LinkComponentProps>(function Link({text, target,href,...rest}, ref) {
   if(typeof target === 'undefined') {
-    return<LinkNextStyles {...rest} href={href}>
-      {text}
+    return<LinkNextStyles 
+      {...rest} 
+      href={href}
+      as={LinkNextStyles}
+      ref={ref}
+      >
+        {text}
     </LinkNextStyles>
   }
   return (
     <LinkNextStyles {...rest}
     href={href}
     target={target}
-    rel="noreferrer noopener">{text}</LinkNextStyles>
+    rel="noreferrer noopener"
+    as={LinkNextStyles}
+    ref={ref}
+    >{text}</LinkNextStyles>
   )
-}
+})
 
 export default Link
 
-interface LinkExternalProps extends AnchorHTMLAttributes<HTMLAnchorElement> { }
+interface LinkExternalProps extends ComponentProps<'a'> { }
 
 interface LinkComponentProps
   extends LinkProps,
@@ -35,7 +44,8 @@ interface LinkComponentProps
   target?: "_blank" | "_self" | "_parent" | "_top"
 }
 
-const LinkNextStyles = styled(LinkNext) <LinkComponentProps>`
+const LinkNextStyles = styled(LinkNext)<{version: LinkComponentProps['version']}>`
+  font-size: 20px;
   color: ${({ version, theme }) => {
     if (version === "lighter") return
     return theme.colors.dark1
