@@ -39,7 +39,7 @@ export interface TextInputProps extends InputElement {
      * - Only letters and spaces
      */
     acceptanceCriteria?: string
-    /** Change input border color if is invalid, by default "true" */
+    /** Change input border color if is invalid, by default "false" */
     isInvalidStyle?: boolean
 }
 

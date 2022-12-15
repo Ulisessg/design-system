@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FocusEvent, FormEvent, ReactElement, useEffect, useState } from "react";
+import React, { ChangeEvent, FC, FocusEvent, FormEvent,  useEffect, useState } from "react";
 import InputStyles, { LabelStyles, SampStyles, RequiredMark } from "./InputStyles";
 import { TextInputProps } from "./InputProps";
 
@@ -12,7 +12,7 @@ import { TextInputProps } from "./InputProps";
  * @prop {"none | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";} inputMode - Keyboard input mode, mainly for mobile keyboards
  * @return {import('react').ReactElement} ReactElement
  */
- const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput({ isInvalidStyle = true, ...props}, ref) {
+ const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput({ isInvalidStyle = false, ...props}, ref) {
   const [checkInvalid, setCheckInvalid] = useState<boolean>(false)
   const handleBlur = (ev: FocusEvent<HTMLInputElement>) => {
     if(props.onBlur) props.onBlur(ev)
