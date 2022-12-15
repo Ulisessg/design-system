@@ -1,14 +1,14 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import styled from "styled-components"
+import { ComponentProps } from '../../lib'
 import Link from "../atoms/Link"
 
-export default function Footer ({ children }: FooterProps) {
+export default forwardRef<HTMLElement, FooterProps>(function Footer (props, ref) {
   const hackerEthicsBook =
     "https://archive.org/details/la-etica-hacker/mode/2up"
   return (
-
-    <FooterStyles>
-      {children}
+    <FooterStyles ref={ref}>
+      {props.children}
       <Link
         href={hackerEthicsBook}
         text="Continúa Hackeando 🤖"
@@ -19,10 +19,9 @@ export default function Footer ({ children }: FooterProps) {
       <p>Hecho con amor, café y amor al café ☕</p>
     </FooterStyles>
   )
-}
+})
 
-type FooterProps = {
-  children?: React.ReactNode
+interface FooterProps extends ComponentProps<'footer'> {
 }
 
 const FooterStyles = styled.footer`
