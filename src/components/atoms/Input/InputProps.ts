@@ -1,6 +1,7 @@
-import { InputHTMLAttributes } from "react";
+import { ComponentProps } from '../../../lib';
 
-export interface InputElement extends InputHTMLAttributes<HTMLInputElement> {
+
+export interface InputElement extends ComponentProps<'input'> {
   /** Label text for 'label' element */
   label: string;
   /** Input id, used for htmlFor prop in label */

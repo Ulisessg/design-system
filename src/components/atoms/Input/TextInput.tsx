@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FocusEvent, FormEvent, ReactElement, useEffect, useState,  } from "react";
+import React, { ChangeEvent, FC, FocusEvent, FormEvent, ReactElement, useEffect, useState } from "react";
 import InputStyles, { LabelStyles, SampStyles, RequiredMark } from "./InputStyles";
 import { TextInputProps } from "./InputProps";
 
@@ -12,7 +12,7 @@ import { TextInputProps } from "./InputProps";
  * @prop {"none | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";} inputMode - Keyboard input mode, mainly for mobile keyboards
  * @return {import('react').ReactElement} ReactElement
  */
- const TextInput: FC<TextInputProps> = (props: TextInputProps): ReactElement => {
+ const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput(props, ref) {
   const [checkInvalid, setCheckInvalid] = useState<boolean>(false)
   const handleBlur = (ev: FocusEvent<HTMLInputElement>) => {
     if(props.onBlur) props.onBlur(ev)
@@ -61,10 +61,11 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         onInput={handleOnInput}
         onChange={handleOnChange}
         aria-required={props.required || false}
+        ref={ref}
       />
     </LabelStyles>
   );
-}
+})
 
 export default TextInput
 
