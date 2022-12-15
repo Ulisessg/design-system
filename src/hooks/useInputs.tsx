@@ -44,7 +44,7 @@ function useInputs<InData extends Object>(
       ev.currentTarget.reportValidity()
       setInputsErrors((prev) => ({
         ...prev,
-        [ev.target.name]: true
+        [ev.target.name]: !ev.currentTarget.checkValidity()
       }))
     }
   }
