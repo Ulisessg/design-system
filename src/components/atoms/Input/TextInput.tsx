@@ -57,7 +57,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         placeholder={props.placeholder}
         type={props.type}
         onBlur={handleBlur}
-        checkInvalid={isInvalidStyle && checkInvalid}
+        checkInvalid={(isInvalidStyle ? checkInvalid: false)}
         onInput={handleOnInput}
         onChange={handleOnChange}
         aria-required={props.required || false}

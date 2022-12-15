@@ -9,7 +9,7 @@ const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
   margin-bottom: 10px;
   margin-top: 10px;
   border: ${borderPixels} solid ${({theme}) => theme.colors.dark2};
-  :focus {
+  :focus, :hover {
     box-shadow: 0px 0px 5px 3px ${({ theme }) => theme.colors.dark3};
   }
   &:valid {
@@ -24,7 +24,8 @@ const InputStyles = styled.input<{ border: boolean, checkInvalid?: boolean }>`
       }
       return theme.colors.dark2
     }};
-    outline: 1px solid ${({theme}) =>  theme.colors.error};
+    outline: none;
+    box-shadow: 0px 0px 2px 1px ${({ theme }) => theme.colors.error};
   }
 `;
 
