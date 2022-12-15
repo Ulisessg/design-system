@@ -48,4 +48,6 @@ export interface FileInputProps extends InputElement {
   type: "file" | "image";
   /** File extensions accepted */
   accept: "image/*" | ".pdf";
+  /** Change input border color if is invalid, by default "false" */
+  inputInvalid?: boolean
 }

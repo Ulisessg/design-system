@@ -6,7 +6,7 @@ export default function FileInput(props: FileInputProps) {
   return (
     <LabelStyles htmlFor={props.id}>
       {props.label}
-      <InputStyles {...props} border={false} />
+      <InputStyles {...props} border={false} inputInvalid={props.inputInvalid || false} />
     </LabelStyles>
   );
 }
