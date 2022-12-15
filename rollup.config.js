@@ -10,6 +10,11 @@ import packageJson from "./package.json"
 /** @type {import('rollup').RollupOptions[]}*/
 const exp = [
   {
+    input: 'src/lib.d.ts',
+    output: [{ file: 'dist/lib.d.ts', format: 'cjs' }],
+    plugins: [dts()]
+  },
+  {
     input: "src/index.ts",
     output: [
       {
@@ -31,7 +36,7 @@ const exp = [
     input: "dist/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "cjs" }],
     plugins: [dts()],
-  },
+  }
 ]
 
 

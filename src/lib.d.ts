@@ -1,3 +1,3 @@
 import {ComponentPropsWithRef, HTMLAttributes} from 'react'
 
-export type ComponentProps<Element extends keyof JSX.IntrinsicElements> = ComponentPropsWithRef<Element> & HTMLAttributes<Element> & {}
+declare export type ComponentProps<El extends keyof JSX.IntrinsicElements> = ComponentPropsWithRef<El> & HTMLAttributes<El> & {}

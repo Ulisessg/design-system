@@ -1,4 +1,5 @@
-import { ComponentProps, forwardRef } from 'react'
+import React, {  forwardRef } from 'react'
+import { ComponentProps } from '../../lib'
 import styled from 'styled-components'
 
 const TitleStyles = styled.h1`
