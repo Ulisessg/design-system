@@ -1,12 +1,13 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { TextInput } from "../atoms/Input";
 import randomIdNumber from "../../utils/randomIdNumber";
 import Button from "../atoms/Button";
 import { ButtonProps } from "../atoms/Button";
 import { TextInputProps } from "../atoms/Input/InputProps";
+import { ComponentProps } from '../../lib'
 
-function SearchBar({
+export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
   label,
   id,
   buttonText,
@@ -15,10 +16,11 @@ function SearchBar({
   placeholder,
   inputProps,
   buttonProps,
-}: SearchBarProps) {
+  ...rest
+}, ref) {
   const randomId = randomIdNumber()
   return (
-    <SearchBarStyles>
+    <SearchBarStyles {...rest} ref={ref}>
       <TextInput
         {...inputProps}
         type="search"
@@ -39,7 +41,7 @@ function SearchBar({
       />
     </SearchBarStyles>
   );
-}
+})
 
 const SearchBarStyles = styled.div`
   display: flex;
@@ -53,15 +55,15 @@ const SearchBarStyles = styled.div`
   }
 `;
 
-type SearchBarProps = {
+interface SearchBarProps extends Omit<ComponentProps<'div'>, 'onClick' | 'onChange'> {
   /** Label text for 'label' element */
   label: string;
   /** Input id, used for htmlFor prop in label */
   id: string;
   /** Text for button */
   buttonText: string;
-  /** Input placeholder */
-  placeholder: string;
+  /** Input placeholder, not recommendable for accessibility proposes */
+  placeholder?: string;
   /** Html button element props */
   buttonProps?: ButtonProps;
   /** Html input element props */
@@ -69,5 +71,3 @@ type SearchBarProps = {
   onClick?: ButtonProps["onClick"];
   onChange?: TextInputProps["onChange"];
 };
-
-export default SearchBar;
