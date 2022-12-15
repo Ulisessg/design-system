@@ -15,8 +15,8 @@ const theme: DefaultTheme = {
     light1: "#d3d3d3eb",
     light2: "#189BFA",
     light3: "#5ACFD6",
-    error: "#a50008",
-    warning: "#ecd50d",
+    error: "#ff0e1a",
+    warning: "#EAE509",
   },
 }
 
