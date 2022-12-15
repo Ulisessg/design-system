@@ -15,8 +15,8 @@ const theme: DefaultTheme = {
     light1: "#d3d3d3eb",
     light2: "#189BFA",
     light3: "#5ACFD6",
-    error: "#ff0e1a",
-    warning: "#EAE509",
+    error: "#a50008",
+    warning: "#ecd50d",
   },
 }
 
@@ -41,7 +41,7 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-family: "Roboto", Arial, sans-serif;
+    font-family: "Helvetica";
   };
   #__next {
     overflow-x: hidden;

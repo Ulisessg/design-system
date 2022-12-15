@@ -50,9 +50,9 @@ export interface ButtonProps extends ComponentProps<'button'> {
    * 
    * Continue - dark2: #0C4B8E
    * 
-   * Info - warning: #EAE509
+   * Info - warning: #ecd50d
    * 
-   * Error - error: #ff0e1a
+   * Error - error: white
    */
   colorMessage: "continue" | "info" | "cancel";
 }
@@ -64,29 +64,31 @@ const ButtonStyles = styled.button<{enterPressed: boolean, isDisabled?: boolean,
   font-weight: bold;
   padding: 8px;
   height: auto;
-  font-size: ${({ size }) => {
-    if (size === "small") return "15px";
-    return "20px";
-  }};
+  font-size: 28px;
 
   width: ${({ size }) => {
-    if (size === "small") return "160px";
+    if (size === "small") return "180px";
     if (size === "large") return "200px";
     if (size === "100%") return "100%";
   }};
 
-  color: ${({ colorMessage, theme, isDisabled }) => {
+  border: 2px solid ${({ theme,colorMessage }) => {
+    if(colorMessage === 'info') return theme.colors.warning
+    return theme.colors.dark1
+  }};
+
+  color: ${({ colorMessage, isDisabled }) => {
     if(isDisabled) return 'white'
-    if (colorMessage === "info") return "black";
+    if (colorMessage === "info") return '#000000';
     if (colorMessage === "continue") return "white";
-    return theme.colors.dark1;
+    return 'black';
   }};
 
   background-color: ${({ theme, colorMessage, isDisabled }) => {
     if(isDisabled) return theme.colors.dark3
-    if (colorMessage === "cancel") return theme.colors.error;
+    if (colorMessage === "cancel") return 'white';
     if (colorMessage === "info") return theme.colors.warning;
-    return theme.colors.dark2;
+    return theme.colors.dark1;
   }};
 
   ${({enterPressed, isDisabled}) => (enterPressed && !isDisabled) ? 'transform: scale(0.9);' : ''}
@@ -95,7 +97,7 @@ const ButtonStyles = styled.button<{enterPressed: boolean, isDisabled?: boolean,
   }
   :focus,
   :hover {
-    box-shadow: 0px 1px 5px 0.2px ${({ theme, isDisabled }) => {
+    box-shadow: 0px 1px 6px 4px ${({ theme, isDisabled, colorMessage }) => {
       if(isDisabled) return
       return theme.colors.dark3
     }};
