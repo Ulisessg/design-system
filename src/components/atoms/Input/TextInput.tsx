@@ -40,6 +40,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         inputInvalid={inputInvalid}
         aria-required={props.required || false}
         ref={ref}
+        className={inputInvalid ? 'invalid-input-style': ' '}
       />
     </LabelStyles>
   );

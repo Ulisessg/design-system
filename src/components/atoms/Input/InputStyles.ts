@@ -50,6 +50,11 @@ export const LabelStyles = styled.label<{ htmlFor: string }>`
       }
     }
   }
+  .invalid-input-style {
+    border: ${borderPixels} solid ${({theme}) => theme.colors.error};
+    outline: none;
+    box-shadow: 0px 0px 2px 1px ${({theme}) => theme.colors.error};
+  }
 `;
 
 export const SampStyles = styled.samp`
