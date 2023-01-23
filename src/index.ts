@@ -8,6 +8,7 @@ export { default as Td } from './components/atoms/Td'
 export { default as Th } from './components/atoms/Th'
 export {default as Details} from './components/atoms/Details'
 export { default as Title } from './components/atoms/Title'
+export { default as Select } from './components/atoms/Select'
 
 // Molecules
 export * from "./components/molecules/Form";
