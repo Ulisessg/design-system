@@ -27,7 +27,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
       {props.label}
       
       {typeof props.acceptanceCriteria === 'string' && 
-        <SampStyles>&nbsp;{props.acceptanceCriteria}</SampStyles>}
+        <SampStyles>{props.acceptanceCriteria}</SampStyles>}
       
       {props.required === true &&
         <RequiredMark aria-hidden={true}>*</RequiredMark>}

@@ -1,21 +1,26 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { ComponentProps } from '../../lib';
-import { LabelStyles } from './Input/InputStyles';
+import { LabelStyles, RequiredMark, SampStyles } from './Input/InputStyles';
 
 
-export default forwardRef<HTMLSelectElement, SelectProps>(function Select({ 
-  allowDefaultValue = true,
-...props}, 
+export default forwardRef<HTMLSelectElement, SelectProps>(function Select({allowDefaultValue = true,...props}, 
 ref) {
   return (<LabelStyles htmlFor={props.id}>
+    <p>
+    {props.label}
+    {typeof props.acceptanceCriteria === 'string' && 
+        <SampStyles>{props.acceptanceCriteria}</SampStyles>}
+    {props.required === true &&
+        <RequiredMark aria-hidden={true}>*</RequiredMark>}
+    </p>
   <SelectStyles 
     {...props} 
     ref={ref}
     id={props.id}
     data-default-value={props.defaultValue}  
     data-allow-default={allowDefaultValue}
-    className={props.selectIsInvalid ? `${props.className} select-invalid-style`: `${props.className} `}
+    className={props.selectIsInvalid ? `${props.className || ''} select-invalid-style`: `${props.className || ''} `}
   >
       {props.children}
     </SelectStyles>
@@ -25,16 +30,16 @@ ref) {
 
 
 const SelectStyles = styled.select<{selectIsInvalid?: boolean}>`
-  width: 100%;
-  padding: 18px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 10px;
-  box-shadow: 0px 5px 6px 0px ${({ theme }) => theme.colors.shadow};
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   border: 1.8px solid ${({theme}) => theme.colors.light2};
+  cursor: pointer;
   &:hover, &:focus {
     box-shadow: 0px 0px 5px 1px ${({ theme }) => theme.colors.light2};
-    outline: 2.5px solid ${({theme, selectIsInvalid}) => {
+    outline: 1px solid ${({theme, selectIsInvalid}) => {
       if(selectIsInvalid) return theme.colors.error
       return theme.colors.light2
     }};
@@ -50,7 +55,7 @@ const SelectStyles = styled.select<{selectIsInvalid?: boolean}>`
 
 
 interface SelectProps extends ComponentProps<'select'> {
-  labelText: string
+  label: string
   id: string
   /** Select name */
   name: string
@@ -58,4 +63,8 @@ interface SelectProps extends ComponentProps<'select'> {
   allowDefaultValue?: boolean
   /** Change select border color if is invalid, by default "false" */
   selectIsInvalid?: boolean
+  /**
+   * Requirements to select
+   */
+  acceptanceCriteria?: string
 }
