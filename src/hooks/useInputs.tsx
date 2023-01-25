@@ -1,13 +1,20 @@
-import { useState, ChangeEvent, FocusEvent, useRef } from "react";
+import { useState, ChangeEvent, FocusEvent, useRef, ComponentProps } from "react";
+
 
 function useInputs<InData extends Object>(
+  /** A key-value object with inputs "name" property and their default values, PE: { company: 'Lorem Ipsum',  employee: ''} */
   inputs: InData,
+  /**
+   * Indicates if hook use the browser native "Validity State" API or "onBlur" or "onChange" event
+   * 
+   * More info: https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
+   */
   reportValidity: ReportValidity
 ): UseInputsReturn<InData> {
   const [inputsData, setInputsData] = useState<InData>(inputs);
   const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInputsKeys(inputs))
   const InputsInitialValues = useRef<InData>(inputs)
-
+  
   const restartInputs = (inputName: keyof InData | 'all'): void => {
     if(inputName === 'all') {
       setInputsData(inputs)
@@ -36,37 +43,59 @@ function useInputs<InData extends Object>(
       );
   }
 
-  const onBlur = (ev: FocusEvent<HTMLInputElement>): void => {
+  const selectIsValid = (select: HTMLSelectElement): boolean => {
+    const defaultValue = select.getAttribute('data-default-value')
+    const dataAllowDefaultValue = select.getAttribute('data-allow-default') as string
+    
+    if(typeof defaultValue === 'string' && dataAllowDefaultValue === 'false') {
+      if(select.value.includes(defaultValue)) {
+        return false
+      }
+      return true
+    }
+    return true
+  }
+
+  const onBlur = (ev: InputBlurEvent): void => {    
+    const validity = reportValidity as ReportValidityObject
+    const element = ev.currentTarget
     verifyInputsNames(ev.target.name)
-    const validity = reportValidity as ReportValidityObject    
+    
+
     if(reportValidity === true || validity.onBlur === true) {
-      ev.currentTarget.checkValidity()
-      ev.currentTarget.reportValidity()
+      let isValid: boolean = element.checkValidity()
+      if(element.tagName === 'SELECT') {
+        isValid = selectIsValid(ev.target as HTMLSelectElement)        
+      }
+      element.reportValidity()
       setInputsErrors((prev) => ({
         ...prev,
-        [ev.target.name]: !ev.target.checkValidity()
+        [ev.target.name]: !isValid
       }))
     }
   }
 
-  function onChange({ currentTarget }: InputChangeEvent) {
+  function onChange({ target ,currentTarget }: InputChangeEvent) {
     const inputName = currentTarget.name;
     verifyInputsNames(inputName)
 
     const inputValue = currentTarget.value;
-    setInputsErrors((prev) => ({
-      ...prev,
-      [inputName]: !currentTarget.checkValidity()
-    }))
     setInputsData({
       ...inputsData,
       [inputName]: inputValue,
     });
 
-    let valid: ReportValidityObject = reportValidity as ReportValidityObject 
+    const valid: ReportValidityObject = reportValidity as ReportValidityObject 
     if(reportValidity === true || valid.onChange === true) {
-      currentTarget.checkValidity()
+      let isValid: boolean = currentTarget.checkValidity()
+      if(currentTarget.tagName === 'SELECT') {
+        isValid = selectIsValid(target as HTMLSelectElement)
+      }
       currentTarget.reportValidity()
+      setInputsErrors((prev) => ({
+        ...prev,
+        [inputName]: !isValid
+      }))
     } 
   }
 
@@ -85,8 +114,8 @@ const getInputsKeys = (inputs: any): any => {
   return keys
 }
 
-type InputChangeEvent = ChangeEvent<HTMLInputElement>;
-type InputBlurEvent = FocusEvent<HTMLInputElement>
+type InputChangeEvent = ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>;
+type InputBlurEvent = FocusEvent<HTMLInputElement> | FocusEvent<HTMLSelectElement>
 
 interface UseInputsReturn<IData> {
   inputsData: IData;
@@ -101,7 +130,13 @@ interface UseInputsReturn<IData> {
 
 type InputsErrors<T> = {[k in keyof T]: boolean}
 
+/**
+ * Indicates if hook use the browser native "Validity State" API or "onBlur" event or "onChange" event
+ * 
+ * More info: https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
+ */
 type ReportValidity = boolean | ReportValidityObject
+
 type ReportValidityObject = {
   onChange: boolean
   onBlur: boolean
