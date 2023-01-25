@@ -18,7 +18,7 @@ ref) {
     {...props} 
     ref={ref}
     id={props.id}
-    data-default-value={props.defaultValue}  
+    data-default-value={props.defValue}  
     data-allow-default={allowDefaultValue}
     className={props.selectIsInvalid ? `${props.className || ''} select-invalid-style`: `${props.className || ''} `}
   >
@@ -59,6 +59,8 @@ interface SelectProps extends ComponentProps<'select'> {
   id: string
   /** Select name */
   name: string
+  /** Value by default */
+  defValue?: string
   /** If uses "defaultValue" prop and want to mark as error if still selected, default true (allowed) */
   allowDefaultValue?: boolean
   /** Change select border color if is invalid, by default "false" */

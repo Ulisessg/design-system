@@ -45,7 +45,12 @@ function useInputs<InData extends Object>(
 
   const selectIsValid = (select: HTMLSelectElement): boolean => {
     const defaultValue = select.getAttribute('data-default-value')
+    console.log(defaultValue);
+    console.log(select.value);
+    
+    
     const dataAllowDefaultValue = select.getAttribute('data-allow-default') as string
+    console.log(dataAllowDefaultValue);
     
     if(typeof defaultValue === 'string' && dataAllowDefaultValue === 'false') {
       if(select.value.includes(defaultValue)) {
