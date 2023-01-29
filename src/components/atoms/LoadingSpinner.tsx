@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import styled, { keyframes } from "styled-components";
-import { ComponentProps } from '../../lib'
 
 interface LoadingSpinnerProps  extends ComponentProps<'div'> {
   /** Spinner size

@@ -1,7 +1,6 @@
 import React, { AnchorHTMLAttributes, FC, forwardRef } from "react"
 import LinkNext, { LinkProps } from "next/link"
 import styled from "styled-components"
-import { ComponentProps } from '../../lib'
 
 const Link = forwardRef<HTMLAnchorElement, LinkComponentProps>(function Link({text, target,href,...rest}, ref) {
   if(typeof target === 'undefined') {

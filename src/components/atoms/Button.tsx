@@ -1,6 +1,5 @@
-import React, { KeyboardEvent, useState, useRef, useEffect, forwardRef } from "react";
+import React, { KeyboardEvent, useState, forwardRef } from "react";
 import styled from "styled-components";
-import { ComponentProps } from '../../lib'
 
 export default forwardRef<HTMLButtonElement, ButtonProps>(function Button(props: ButtonProps, ref) {
   const [isEnterPressed, setIsEnterPressed] = useState<boolean>(false)

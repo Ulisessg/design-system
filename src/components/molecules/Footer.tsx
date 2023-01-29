@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react"
 import styled from "styled-components"
-import { ComponentProps } from '../../lib'
+
 import Link from "../atoms/Link"
 
 export default forwardRef<HTMLElement, FooterProps>(function Footer (props, ref) {

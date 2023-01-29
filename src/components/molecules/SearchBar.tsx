@@ -5,7 +5,7 @@ import randomIdNumber from "../../utils/randomIdNumber";
 import Button from "../atoms/Button";
 import { ButtonProps } from "../atoms/Button";
 import { TextInputProps } from "../atoms/Input/InputProps";
-import { ComponentProps } from '../../lib'
+
 
 export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
   label,

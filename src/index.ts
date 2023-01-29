@@ -1,3 +1,9 @@
+import {ComponentPropsWithRef} from 'react'
+
+declare global {
+  type ComponentProps<El extends keyof JSX.IntrinsicElements> = ComponentPropsWithRef<El> & {}
+}
+
 // Atoms
 export * from "./components/atoms/Input";
 export { default as Button } from "./components/atoms/Button";

@@ -1,5 +1,4 @@
 import React, {  forwardRef } from 'react'
-import { ComponentProps } from '../../lib'
 import styled from 'styled-components'
 
 export default forwardRef<HTMLTableCellElement, ComponentProps<'td'>>(function Td(props, ref) {

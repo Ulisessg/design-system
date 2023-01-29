@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FocusEvent, useRef, ComponentProps } from "react";
+import { useState, ChangeEvent, FocusEvent, useRef } from "react";
 
 
 function useInputs<InData extends Object>(

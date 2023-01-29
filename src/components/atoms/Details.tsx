@@ -1,6 +1,5 @@
 import React, { FC, forwardRef } from 'react'
 import styled from 'styled-components'
-import { ComponentProps } from '../../lib'
 
 const Details = forwardRef<HTMLDetailsElement, DetailsProps>(function Details({ summary, children, ...props }, ref) {
 

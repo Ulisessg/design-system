@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { ComponentProps } from '../../lib';
 import { LabelStyles, RequiredMark, SampStyles } from './Input/InputStyles';
 
 

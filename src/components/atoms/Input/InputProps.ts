@@ -1,6 +1,3 @@
-import { ComponentProps } from '../../../lib';
-
-
 export interface InputElement extends ComponentProps<'input'> {
   /** Label text for 'label' element */
   label: string;

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import type { ComponentProps } from '../../lib'
+
 
 const ThStyles = styled.th`
   text-align: center;

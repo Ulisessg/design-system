@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode } from "react";
 import styled from "styled-components";
-import { ComponentProps } from '../../lib'
+
 
 export default forwardRef<HTMLTableElement, TableProps>(function Table(props, ref) {
   return (
