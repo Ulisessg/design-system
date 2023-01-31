@@ -59,7 +59,10 @@ export interface ButtonProps extends ComponentProps<'button'> {
 const ButtonStyles = styled.button<{enterPressed: boolean, isDisabled?: boolean, size: ButtonProps['size'], colorMessage: ButtonProps['colorMessage']}>`
   height: 50px;
   border-radius: 8px;
-  cursor: pointer;
+  cursor: ${({isDisabled}) => {
+    if(isDisabled) return 'initial'
+    return 'pointer'
+  }};
   font-weight: bold;
   padding: 8px;
   height: auto;
@@ -98,7 +101,8 @@ const ButtonStyles = styled.button<{enterPressed: boolean, isDisabled?: boolean,
       if(isDisabled) return
       return theme.colors.dark3
     }};
-    outline: 3px solid ${({theme, colorMessage}) => {
+    outline: 3px solid ${({theme, colorMessage, isDisabled}) => {
+      if(isDisabled) return
       if(colorMessage === 'info') return theme.colors.dark2
       return theme.colors.dark1
     }};
