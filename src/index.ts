@@ -22,6 +22,7 @@ export { default as Footer } from "./components/molecules/Footer";
 export { default as Header } from "./components/molecules/Header";
 export { default as SearchBar } from "./components/molecules/SearchBar";
 export { default as Table } from './components/molecules/Table'
+export { default as Datalist } from './components/molecules/Datalist'
 
 // Pages (design system)
 export * from "./components/pages/404Styles";
