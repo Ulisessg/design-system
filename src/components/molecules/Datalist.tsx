@@ -1,7 +1,6 @@
 import React from 'react'
 import { forwardRef } from 'react'
 import { TextInput } from '../atoms/Input'
-import { TextInputProps } from '../atoms/Input/InputProps'
 
 export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(props, ref) {
   return <>
@@ -11,7 +10,7 @@ export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(
     inputMode={props.inputProps?.inputMode || 'text'}
     label={props.label}
     name={props.name}
-    type={props.inputProps?.type || 'text'}
+    type={props.inputProps?.type as any || 'text'}
     list={`${props.id}-list`}
   />
   <datalist {...props} ref={ref} id={`${props.id}-list`}>
@@ -28,5 +27,5 @@ interface DatalistProps extends ComponentProps<'datalist'> {
   /** Input name */
   name: string;
   /** Input props */
-  inputProps?: TextInputProps
+  inputProps?: ComponentProps<'input'>
 }
