@@ -5,29 +5,9 @@ export interface InputElement extends ComponentProps<'input'> {
   id: string;
   /** Input name */
   name: string;
-  /** Keyboard input mode, mainly for mobile keyboards */
-  inputMode:
-    | "none"
-    | "text"
-    | "tel"
-    | "url"
-    | "email"
-    | "numeric"
-    | "decimal"
-    | "search";
 }
 
 export interface TextInputProps extends InputElement {
-  /** defines information field type */
-  type:
-    | "text"
-    | "date"
-    | "datetime-local"
-    | "email"
-    | "password"
-    | "tel"
-    | "url"
-    | "search";
     /**
      * Requeriments to fill input, such as:
      * 
@@ -38,13 +18,4 @@ export interface TextInputProps extends InputElement {
     acceptanceCriteria?: string
     /** Change input border color if is invalid, by default "false" */
     inputInvalid?: boolean
-}
-
-export interface FileInputProps extends InputElement {
-  /** defines information field type */
-  type: "file" | "image";
-  /** File extensions accepted */
-  accept: "image/*" | ".pdf";
-  /** Change input border color if is invalid, by default "false" */
-  inputInvalid?: boolean
 }

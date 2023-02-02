@@ -1,10 +1,10 @@
 import React from 'react'
 import { forwardRef } from 'react'
-import { TextInput } from '../atoms/Input'
+import { Input } from '../atoms/Input'
 
 export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(props, ref) {
   return <>
-  <TextInput
+  <Input
     {...props.inputProps}
     id={props.id}
     inputMode={props.inputProps?.inputMode || 'text'}

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
-import { TextInput } from "../atoms/Input";
+import { Input } from "../atoms/Input";
 import randomIdNumber from "../../utils/randomIdNumber";
 import Button from "../atoms/Button";
 import { ButtonProps } from "../atoms/Button";
@@ -21,7 +21,7 @@ export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
   const randomId = randomIdNumber()
   return (
     <SearchBarStyles {...rest} ref={ref}>
-      <TextInput
+      <Input
         {...inputProps}
         type="search"
         inputMode="search"
