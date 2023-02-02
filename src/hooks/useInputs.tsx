@@ -9,7 +9,9 @@ function useInputs<InData extends Object>(
    * 
    * More info: https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
    */
-  reportValidity: ReportValidity
+  reportValidity: ReportValidity,
+  /** Modify the input value before setState */
+  onChangeCallback?: (ev: InputChangeEvent, inputValue: string) => string
 ): UseInputsReturn<InData> {
   const [inputsData, setInputsData] = useState<InData>(inputs);
   const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInputsKeys(inputs))
@@ -45,12 +47,7 @@ function useInputs<InData extends Object>(
 
   const selectIsValid = (select: HTMLSelectElement): boolean => {
     const defaultValue = select.getAttribute('data-default-value')
-    console.log(defaultValue);
-    console.log(select.value);
-    
-    
     const dataAllowDefaultValue = select.getAttribute('data-allow-default') as string
-    console.log(dataAllowDefaultValue);
     
     if(typeof defaultValue === 'string' && dataAllowDefaultValue === 'false') {
       if(select.value.includes(defaultValue)) {
@@ -80,11 +77,16 @@ function useInputs<InData extends Object>(
     }
   }
 
-  function onChange({ target ,currentTarget }: InputChangeEvent) {
-    const inputName = currentTarget.name;
+  function onChange(ev: InputChangeEvent) {
+    const inputName = ev.currentTarget.name;
     verifyInputsNames(inputName)
 
-    const inputValue = currentTarget.value;
+    let inputValue: string = ev.currentTarget.value
+
+    if (typeof onChangeCallback === 'function') {
+      inputValue = onChangeCallback(ev, inputValue)
+    }
+
     setInputsData({
       ...inputsData,
       [inputName]: inputValue,
@@ -92,11 +94,11 @@ function useInputs<InData extends Object>(
 
     const valid: ReportValidityObject = reportValidity as ReportValidityObject 
     if(reportValidity === true || valid.onChange === true) {
-      let isValid: boolean = currentTarget.checkValidity()
-      if(currentTarget.tagName === 'SELECT') {
-        isValid = selectIsValid(target as HTMLSelectElement)
+      let isValid: boolean = ev.currentTarget.checkValidity()
+      if(ev.currentTarget.tagName === 'SELECT') {
+        isValid = selectIsValid(ev.target as HTMLSelectElement)
       }
-      currentTarget.reportValidity()
+      ev.currentTarget.reportValidity()
       setInputsErrors((prev) => ({
         ...prev,
         [inputName]: !isValid
