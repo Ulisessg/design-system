@@ -1,6 +1,7 @@
 import React from 'react'
 import { forwardRef } from 'react'
 import { Input } from '../atoms/Input'
+import { InputProps } from '../atoms/Input/InputProps'
 
 export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(props, ref) {
   return <>
@@ -27,5 +28,5 @@ interface DatalistProps extends ComponentProps<'datalist'> {
   /** Input name */
   name: string;
   /** Input props */
-  inputProps?: ComponentProps<'input'>
+  inputProps?: ComponentProps<'input'> & Pick<InputProps, 'acceptanceCriteria' | 'inputInvalid'>
 }

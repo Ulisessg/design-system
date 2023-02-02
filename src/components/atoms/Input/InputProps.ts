@@ -7,7 +7,7 @@ export interface InputElement extends ComponentProps<'input'> {
   name: string;
 }
 
-export interface TextInputProps extends InputElement {
+export interface InputProps extends InputElement {
     /**
      * Requeriments to fill input, such as:
      * 

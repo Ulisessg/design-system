@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from "react";
 import InputStyles, { LabelStyles, SampStyles, RequiredMark } from "./InputStyles";
-import { TextInputProps } from "./InputProps";
+import { InputProps } from "./InputProps";
 
 /**
  * Text Input
- * @typedef {import('./InputProps').TextInputProps} props
+ * @typedef {import('./InputProps').InputProps} props
  * @prop {string} id - Input id used in htmlFor prop in label element
  * @prop {"text" | "date" | "datetime-local" | "email" | "password" | "tel" | "url" | "search"} type - defines information field type
  * @prop {string} label - Input placeholder
@@ -12,7 +12,7 @@ import { TextInputProps } from "./InputProps";
  * @prop {"none | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";} inputMode - Keyboard input mode, mainly for mobile keyboards
  * @return {import('react').ReactElement} ReactElement
  */
- const TextInput: FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(function TextInput({inputInvalid = false,...props}, ref) {
+ const TextInput: FC<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(function TextInput({inputInvalid = false,...props}, ref) {
   useEffect(() => {
     if(process.env.NODE_ENV !== 'production' && typeof props.placeholder === 'string') console.warn(`Placeholder attribute is
 not recommendable for accessibility purposes.

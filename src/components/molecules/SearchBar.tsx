@@ -4,7 +4,7 @@ import { Input } from "../atoms/Input";
 import randomIdNumber from "../../utils/randomIdNumber";
 import Button from "../atoms/Button";
 import { ButtonProps } from "../atoms/Button";
-import { TextInputProps } from "../atoms/Input/InputProps";
+import { InputProps } from "../atoms/Input/InputProps";
 
 
 export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
@@ -67,7 +67,7 @@ interface SearchBarProps extends Omit<ComponentProps<'div'>, 'onClick' | 'onChan
   /** Html button element props */
   buttonProps?: ButtonProps;
   /** Html input element props */
-  inputProps?: TextInputProps;
+  inputProps?: ComponentProps<'input'> & Pick<InputProps, 'acceptanceCriteria' | 'inputInvalid'>;
   onClick?: ButtonProps["onClick"];
-  onChange?: TextInputProps["onChange"];
+  onChange?: InputProps["onChange"];
 };
