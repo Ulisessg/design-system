@@ -4,17 +4,18 @@ import { Input } from '../atoms/Input'
 import { InputProps } from '../atoms/Input/InputProps'
 
 export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(props, ref) {
+  const { inputProps, ...rest } = props
   return <>
   <Input
-    {...props.inputProps}
+    {...inputProps}
     id={props.id}
-    inputMode={props.inputProps?.inputMode || 'text'}
+    inputMode={inputProps?.inputMode || 'text'}
     label={props.label}
     name={props.name}
-    type={props.inputProps?.type as any || 'text'}
+    type={inputProps?.type as any || 'text'}
     list={`${props.id}-list`}
   />
-  <datalist {...props} ref={ref} id={`${props.id}-list`}>
+  <datalist {...rest} ref={ref} id={`${props.id}-list`}>
     {props.children}
   </datalist>
 </>
