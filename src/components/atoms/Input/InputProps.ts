@@ -18,4 +18,5 @@ export interface InputProps extends InputElement {
     acceptanceCriteria?: string
     /** Change input border color if is invalid, by default "false" */
     inputInvalid?: boolean
+    labelProps?: ComponentProps<'label'>
 }

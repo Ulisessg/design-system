@@ -22,7 +22,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
   }, [props.placeholder])
 
   return (
-    <LabelStyles htmlFor={props.id}>
+    <LabelStyles {...props.labelProps} htmlFor={props.id}>
       <p>
       {props.label}
       
@@ -40,7 +40,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         inputInvalid={inputInvalid}
         aria-required={props.required || false}
         ref={ref}
-        className={inputInvalid ? 'invalid-input-style': ' '}
+        className={inputInvalid ? `${props.className ?? ''} invalid-input-style` : ` ${props.className ?? ''}`}
       />
     </LabelStyles>
   );
