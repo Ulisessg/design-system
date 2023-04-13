@@ -124,7 +124,7 @@ const getInputsKeys = (inputs: any): any => {
 type InputChangeEvent = ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>;
 type InputBlurEvent = FocusEvent<HTMLInputElement> | FocusEvent<HTMLSelectElement>
 
-interface UseInputsReturn<IData> {
+export interface UseInputsReturn<IData> {
   inputsData: IData;
   onChange: (e: InputChangeEvent) => void;
   /** Executes inputs validations onBlur event */

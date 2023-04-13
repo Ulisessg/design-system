@@ -32,7 +32,7 @@ const InputsContainerStyles = styled.div`
   justify-content: stretch;
 `;
 
-interface FormProps extends ComponentProps<'form'> {
+export interface FormProps extends ComponentProps<'form'> {
   /** Form tile */
   formTitle: string;
 };

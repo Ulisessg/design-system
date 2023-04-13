@@ -53,7 +53,7 @@ const SelectStyles = styled.select<{selectIsInvalid?: boolean}>`
 `
 
 
-interface SelectProps extends ComponentProps<'select'> {
+export interface SelectProps extends ComponentProps<'select'> {
   label: string
   id: string
   /** Select name */

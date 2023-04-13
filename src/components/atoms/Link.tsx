@@ -28,7 +28,7 @@ export default Link
 
 interface LinkExternalProps extends ComponentProps<'a'> { }
 
-interface LinkComponentProps
+export interface LinkComponentProps
   extends LinkProps,
   Omit<
     LinkExternalProps,

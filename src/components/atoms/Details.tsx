@@ -13,7 +13,7 @@ return <>
 </>
 })
 
-interface DetailsProps extends ComponentProps<'details'> {
+export interface DetailsProps extends ComponentProps<'details'> {
   /** Text showed in 'summary' html tag */
   summary: string
   children: React.ReactNode

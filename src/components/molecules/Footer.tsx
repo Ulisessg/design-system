@@ -21,7 +21,7 @@ export default forwardRef<HTMLElement, FooterProps>(function Footer (props, ref)
   )
 })
 
-interface FooterProps extends ComponentProps<'footer'> {
+export interface FooterProps extends ComponentProps<'footer'> {
 }
 
 const FooterStyles = styled.footer`

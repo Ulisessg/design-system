@@ -55,7 +55,7 @@ const SearchBarStyles = styled.div`
   }
 `;
 
-interface SearchBarProps extends Omit<ComponentProps<'div'>, 'onClick' | 'onChange'> {
+export interface SearchBarProps extends Omit<ComponentProps<'div'>, 'onClick' | 'onChange'> {
   /** Label text for 'label' element */
   label: string;
   /** Input id, used for htmlFor prop in label */

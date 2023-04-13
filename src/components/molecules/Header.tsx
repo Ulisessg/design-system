@@ -15,5 +15,5 @@ const HeaderStyles = styled.header<HeaderProps>`
   box-shadow: 0px 7px 8px 0px ${({ theme }) => theme.colors.shadow};
 `;
 
-interface HeaderProps  extends ComponentProps<'header'> {
+export interface HeaderProps  extends ComponentProps<'header'> {
 };

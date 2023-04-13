@@ -45,7 +45,7 @@ const TableStyles = styled.table`
   }
 `;
 
-interface TableProps extends ComponentProps<'table'> {
+export interface TableProps extends ComponentProps<'table'> {
   children: ReactNode;
   /** Text for html caption element */
   caption: string;

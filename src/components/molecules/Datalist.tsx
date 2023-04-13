@@ -21,7 +21,7 @@ export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(
 </>
 })
 
-interface DatalistProps extends ComponentProps<'datalist'> {
+export interface DatalistProps extends ComponentProps<'datalist'> {
   /** Label text for 'label' element */
   label: string;
   /** Input id, used for htmlFor prop in label */
