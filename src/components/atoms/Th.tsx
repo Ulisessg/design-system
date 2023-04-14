@@ -6,6 +6,10 @@ const ThStyles = styled.th`
   text-align: center;
 `
 
-export default forwardRef<HTMLTableCellElement, ComponentProps<'th'>>(function Th(props, ref) {
+export default forwardRef<HTMLTableCellElement, ThProps>(function Th(props, ref) {
   return <ThStyles {...props} ref={ref}>{props.children}</ThStyles>
 })
+
+export interface ThProps extends ComponentProps<'th'>{
+  
+}

@@ -1,4 +1,26 @@
 import {ComponentPropsWithRef} from 'react'
+// Atoms props
+import type { InputProps } from './components/atoms/Input/InputProps';
+import type { ButtonProps } from './components/atoms/Button';
+import type { DetailsProps } from './components/atoms/Details';
+import type { LinkProps } from 'next/link';
+import type { LoadingSpinnerProps } from './components/atoms/LoadingSpinner';
+import type { SelectProps } from './components/atoms/Select';
+import type { TdProps } from './components/atoms/Td';
+import type { ThProps } from './components/atoms/Th';
+import type { TitleProps } from './components/atoms/Title';
+import type { VideoProps } from './components/atoms/Video';
+
+// Molecules props
+import type { FormProps } from './components/molecules/Form/Form';
+import type { DatalistProps } from './components/molecules/Datalist';
+import type { FooterProps } from './components/molecules/Footer';
+import type { HeaderProps } from './components/molecules/Header';
+import type { SearchBarProps } from './components/molecules/SearchBar';
+import type { TableProps } from './components/molecules/Table';
+
+// Pages props
+import type { GlobalStylesProps } from './components/pages/GlobalStyles';
 
 declare global {
   type ComponentProps<El extends keyof JSX.IntrinsicElements> = ComponentPropsWithRef<El> & {}
@@ -9,7 +31,6 @@ export * from "./components/atoms/Input";
 export { default as Button } from "./components/atoms/Button";
 export { default as Link } from "./components/atoms/Link";
 export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
-export { default as Video } from "./components/atoms/Video";
 export { default as Td } from './components/atoms/Td'
 export { default as Th } from './components/atoms/Th'
 export {default as Details} from './components/atoms/Details'
@@ -36,3 +57,30 @@ export { default as index } from "./pages/index";
 
 // Hooks
 export { default as useInputs } from "./hooks/useInputs";
+
+
+// Components props
+export type {
+  // Atoms props
+  InputProps,
+  ButtonProps,
+  DetailsProps,
+  LinkProps,
+  LoadingSpinnerProps,
+  SelectProps,
+  TdProps,
+  ThProps,
+  TitleProps,
+  VideoProps,
+
+  // Molecules props
+  FormProps,
+  DatalistProps,
+  FooterProps,
+  HeaderProps,
+  SearchBarProps,
+  TableProps,
+
+  // Pages
+  GlobalStylesProps
+}

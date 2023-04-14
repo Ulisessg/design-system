@@ -7,8 +7,12 @@ const TitleStyles = styled.h1`
   text-align: center;
 `
 
-export default forwardRef<HTMLHeadingElement, ComponentProps<'h1'>>(function Title(props, ref) {
+export default forwardRef<HTMLHeadingElement,TitleProps>(function Title(props, ref) {
   return <TitleStyles {...props} ref={ref}>
     {props.children}
   </TitleStyles>
 })
+
+export interface TitleProps extends ComponentProps<'h1'> {
+
+}

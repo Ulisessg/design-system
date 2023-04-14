@@ -62,7 +62,7 @@ const Global = createGlobalStyle`
   };
 `
 
-type GlobalStylesProps = {
+export type GlobalStylesProps = {
   footer?: boolean
   children: ReactNode
   header?: ReactNode

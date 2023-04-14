@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import styled, { keyframes } from "styled-components";
 
-interface LoadingSpinnerProps  extends ComponentProps<'div'> {
+export interface LoadingSpinnerProps  extends ComponentProps<'div'> {
   /** Spinner size
    * 
    *  Small: width: 40px - height: 40px

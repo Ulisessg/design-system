@@ -5,7 +5,7 @@ export default function Video(props: VideoProps) {
   return <VideoStyles controls {...props} />;
 }
 
-type VideoProps = VideoHTMLAttributes<HTMLVideoElement>;
+export type VideoProps = VideoHTMLAttributes<HTMLVideoElement>;
 
 const VideoStyles = styled.video`
   margin: 70px;
