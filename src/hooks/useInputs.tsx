@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FocusEvent, useRef } from "react";
 
 
-function useInputs<InData extends Object>(
+function useInputs<InData extends {[k: string]: string}>(
   /** A key-value object with inputs "name" property and their default values, PE: { company: 'Lorem Ipsum',  employee: ''} */
   inputs: InData,
   /**
@@ -11,7 +11,7 @@ function useInputs<InData extends Object>(
    */
   reportValidity: ReportValidity,
   /** Modify the input value before setState */
-  onChangeCallback?: (ev: InputChangeEvent, inputValue: string) => string
+  onChangeCallback?: TOnChangeCallBack
 ): UseInputsReturn<InData> {
   const [formIsValid, setFormIsValid] = useState<boolean>(false)
   const [inputsData, setInputsData] = useState<InData>(inputs);
@@ -180,14 +180,14 @@ export interface UseInputsReturn<IData> {
   formIsValid: boolean
 }
 
-type InputsErrors<T> = {[k in keyof T]: boolean}
+type InputsErrors<T> = Record<keyof T, boolean>
 
 /**
  * Indicates if hook use the browser native "Validity State" API or "onBlur" event or "onChange" event
  * 
  * More info: https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
  */
-type ReportValidity = boolean | ReportValidityObject
+export type ReportValidity = boolean | ReportValidityObject
 
 type ReportValidityObject = {
   onChange: boolean
@@ -199,4 +199,5 @@ type FGetValidity = (input: HTMLInputElement | HTMLSelectElement) => {
   formIsValid: boolean
 }
 
+export type TOnChangeCallBack = undefined | ((ev: InputChangeEvent, inputValue: string) => string )
 export default useInputs;

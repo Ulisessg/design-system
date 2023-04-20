@@ -1,4 +1,13 @@
 import {ComponentPropsWithRef} from 'react'
+
+// Context imports
+import {
+  UseInputsContext,
+  UseInputsContextProvider,
+  UseInputsContextProps
+} from './context/useInputsContext'
+
+
 // Atoms props
 import type { InputProps } from './components/atoms/Input/InputProps';
 import type { ButtonProps } from './components/atoms/Button';
@@ -58,6 +67,11 @@ export { default as index } from "./pages/index";
 // Hooks
 export { default as useInputs } from "./hooks/useInputs";
 
+// context
+export {
+  UseInputsContext,
+  UseInputsContextProvider
+}
 
 // Components props
 export type {
@@ -82,5 +96,8 @@ export type {
   TableProps,
 
   // Pages
-  GlobalStylesProps
+  GlobalStylesProps,
+
+  // Context
+  UseInputsContextProps
 }
