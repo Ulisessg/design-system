@@ -13,10 +13,32 @@ function useInputs<InData extends Object>(
   /** Modify the input value before setState */
   onChangeCallback?: (ev: InputChangeEvent, inputValue: string) => string
 ): UseInputsReturn<InData> {
+  const [formIsValid, setFormIsValid] = useState<boolean>(false)
   const [inputsData, setInputsData] = useState<InData>(inputs);
   const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInputsKeys(inputs))
-  const InputsInitialValues = useRef<InData>(inputs)
+  const InputsInitialValues = useRef<Map<string, string>>(new Map(Object.entries(inputs as any)))
   
+  const addInput: UseInputsReturn<any>['addInput'] = (inputName, initialValue) => {
+    setInputsData((prev) => ({
+      ...prev,
+      [inputName]: initialValue
+    }))
+    InputsInitialValues.current.set(inputName, initialValue)
+  }
+
+  const removeInput: UseInputsReturn<any>['removeInput'] = (inputName) => {
+    
+    if(typeof InputsInitialValues.current.get(inputName) !== 'string') {
+      throw new Error(`Input name not exists: ${inputName}`)
+    }
+    setInputsData((prev) => {
+      let {[inputName as keyof typeof inputsData]: inputToRemove, ...rest} = prev
+      
+      return rest as any
+    })
+    InputsInitialValues.current.delete(inputName)
+  }
+
   const restartInputs = (inputName: keyof InData | 'all'): void => {
     if(inputName === 'all') {
       setInputsData(inputs)
@@ -25,7 +47,7 @@ function useInputs<InData extends Object>(
     }
     setInputsData((prev) => ({
       ...prev,
-      [inputName]: InputsInitialValues.current[inputName]
+      [inputName]: InputsInitialValues.current.get(inputName as string) as string
     }))
     setInputsErrors((prev) => ({
       ...prev,
@@ -35,40 +57,26 @@ function useInputs<InData extends Object>(
 
   const verifyInputsNames = (inputName: string) => {
     if (!inputName) throw new Error(`Input must have 'name' property`);
-    if (!inputs.hasOwnProperty(inputName))
+    if (!inputsData.hasOwnProperty(inputName))
       throw new Error(
         `Input name does not exist in inputs; input name received: '${inputName}'. input names available: ${JSON.stringify(
-          Object.getOwnPropertyNames(inputs),
+          Object.getOwnPropertyNames(inputsData),
           null,
           2
         )}`
       );
   }
 
-  const selectIsValid = (select: HTMLSelectElement): boolean => {
-    const defaultValue = select.getAttribute('data-default-value')
-    const dataAllowDefaultValue = select.getAttribute('data-allow-default') as string
-    
-    if(typeof defaultValue === 'string' && dataAllowDefaultValue === 'false') {
-      if(select.value.includes(defaultValue)) {
-        return false
-      }
-      return true
-    }
-    return true
-  }
-
-  const onBlur = (ev: InputBlurEvent): void => {    
+  const onBlur = (ev: InputBlurEvent): void => {
     const validity = reportValidity as ReportValidityObject
     const element = ev.currentTarget
     verifyInputsNames(ev.target.name)
     
 
     if(reportValidity === true || validity.onBlur === true) {
-      let isValid: boolean = element.checkValidity()
-      if(element.tagName === 'SELECT') {
-        isValid = selectIsValid(ev.target as HTMLSelectElement)        
-      }
+      const formValidationResult = getInputAndFormValidity(ev.currentTarget)
+      let isValid: boolean = formValidationResult.inputIsValid
+      setFormIsValid(formValidationResult.formIsValid)
       element.reportValidity()
       setInputsErrors((prev) => ({
         ...prev,
@@ -94,10 +102,9 @@ function useInputs<InData extends Object>(
 
     const valid: ReportValidityObject = reportValidity as ReportValidityObject 
     if(reportValidity === true || valid.onChange === true) {
-      let isValid: boolean = ev.currentTarget.checkValidity()
-      if(ev.currentTarget.tagName === 'SELECT') {
-        isValid = selectIsValid(ev.target as HTMLSelectElement)
-      }
+      const formValidationResult = getInputAndFormValidity(ev.currentTarget)
+      let isValid: boolean = formValidationResult.inputIsValid
+      setFormIsValid(formValidationResult.formIsValid)
       ev.currentTarget.reportValidity()
       setInputsErrors((prev) => ({
         ...prev,
@@ -106,7 +113,39 @@ function useInputs<InData extends Object>(
     } 
   }
 
+  
+  const selectIsValid = (select: HTMLSelectElement): boolean => {
+    const defaultValue = select.getAttribute('data-default-value')
+    const dataAllowDefaultValue = select.getAttribute('data-allow-default') as string
+    
+    if(typeof defaultValue === 'string' && dataAllowDefaultValue === 'false') {
+      if(select.value.includes(defaultValue)) {
+        return false
+      }
+      return true
+    }
+    return true
+  }
+
+  const getInputAndFormValidity: FGetValidity = (input) => {
+    const form = input.form as HTMLFormElement
+
+    const inputIsValid: boolean = (() => {
+      if(input.tagName === 'SELECT') {
+        return selectIsValid(input as HTMLSelectElement)
+      }
+      return input.checkValidity()
+    })()
+    return {
+      formIsValid: form?.checkValidity() ?? false,
+      inputIsValid: inputIsValid
+    }
+  }
+
   return {
+    addInput,
+    removeInput,
+    formIsValid,
     inputsErrors,
     inputsData,
     onChange,
@@ -133,6 +172,12 @@ export interface UseInputsReturn<IData> {
   inputsErrors: InputsErrors<IData>
   /** Restart all inputs or just one, input must have 'value' prop with 'inputsData' */
   restartInputs: (inputName: keyof IData | 'all') => void
+  /** Allows you add a new input in hook */
+  addInput: (inputName: string, initialValue: string) => void
+  /** Allows you remove an input from hook, it throws an error if the input doesn't exists */
+  removeInput: (inputName:string) => void
+
+  formIsValid: boolean
 }
 
 type InputsErrors<T> = {[k in keyof T]: boolean}
@@ -147,6 +192,11 @@ type ReportValidity = boolean | ReportValidityObject
 type ReportValidityObject = {
   onChange: boolean
   onBlur: boolean
+}
+
+type FGetValidity = (input: HTMLInputElement | HTMLSelectElement) => {
+  inputIsValid: boolean
+  formIsValid: boolean
 }
 
 export default useInputs;
