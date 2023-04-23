@@ -7,6 +7,7 @@ const initialState: UseInputsContextState = {
   },
   formIsValid: false,
   inputsData: {},
+  inputsInitialValues: new Map(),
   inputsErrors: {}as any,
   onBlur: () => {
     //

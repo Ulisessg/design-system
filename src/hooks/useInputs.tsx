@@ -148,6 +148,7 @@ function useInputs<InData extends {[k: string]: string}>(
     formIsValid,
     inputsErrors,
     inputsData,
+    inputsInitialValues: InputsInitialValues.current,
     onChange,
     onBlur,
     restartInputs
@@ -178,6 +179,8 @@ export interface UseInputsReturn<IData> {
   removeInput: (inputName:string) => void
 
   formIsValid: boolean
+
+  inputsInitialValues: Map<string, string>
 }
 
 type InputsErrors<T> = Record<keyof T, boolean>
