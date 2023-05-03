@@ -9,15 +9,23 @@
     "build-prod": "next build",
     "prepare": "husky install",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "start:expo": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
   },
   "peerDependencies": {
     "next": "13.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "5.3.10"
+    "styled-components": "5.3.10",
+    "expo": "46.0.21",
+    "expo-status-bar": "1.4.4",
+    "react-native": "0.71.7"
   },
   "devDependencies": {
+    "@babel/core": "7.21.8",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "24.1.0",
     "@rollup/plugin-node-resolve": "15.0.2",
@@ -27,9 +35,11 @@
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
     "@types/node": "18.16.3",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.1",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@types/react-native": "0.71.6",
     "@types/styled-components": "5.1.26",
+    "@types/styled-components-react-native": "5.2.1",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.2",
     "husky": "8.0.3",
@@ -39,9 +49,11 @@
     "rollup-plugin-dts": "5.3.0",
     "rollup-plugin-minification": "0.2.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
-    "typescript": "5.0.4"
+    "typescript": "4.9.4"
   },
-  "main": "./dist/index.js",
+  "main": "./src/native/App.tsx",
+  "mainWeb": "./dist/index.js",
+  "mainNative": "./dist/native/index.js",
   "files": [
     "./dist",
     "./README.md"

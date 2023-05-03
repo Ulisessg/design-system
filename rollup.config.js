@@ -9,11 +9,12 @@ import dts from 'rollup-plugin-dts'
 
 /** @type {import('rollup').RollupOptions[]}*/
 const exp = [
+  // Web
   {
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        file: packageJson.mainWeb,
         format: "cjs",
         sourcemap: true,
         interop: 'auto'
@@ -32,7 +33,27 @@ const exp = [
     input: "dist/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "cjs" }],
     plugins: [dts.default()],
-  }
+  },
+  //React native
+  {
+    input: "src/native/index.ts",
+    output: [
+      {
+        file: packageJson.mainNative,
+        format: "cjs",
+        sourcemap: true,
+        interop: 'auto'
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
+      terser(),
+      typescript({ tsconfig: "./tsconfig-build.json" })
+    ],
+    external: ["react", "react-native", "styled-components", "expo", "expo-status-bar"],
+  },
 ]
 
 
