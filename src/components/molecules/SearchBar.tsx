@@ -2,10 +2,9 @@ import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { Input } from "../atoms/Input";
 import randomIdNumber from "../../utils/randomIdNumber";
-import Button from "../atoms/Button";
-import { ButtonProps } from "../atoms/Button";
+import Button from "../atoms/Button/ButtonWeb";
+import { ButtonWebProps as ButtonProps } from "../atoms/Button/Props";
 import { InputProps } from "../atoms/Input/InputProps";
-
 
 export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
   label,
