@@ -1,10 +1,10 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
-import { Input } from "../atoms/Input";
+import Input  from "../atoms/Input/InputWeb";
 import randomIdNumber from "../../utils/randomIdNumber";
 import Button from "../atoms/Button/ButtonWeb";
 import { ButtonWebProps as ButtonProps } from "../atoms/Button/Props";
-import { InputProps } from "../atoms/Input/InputProps";
+import { InputWebProps } from "../atoms/Input/InputProps";
 
 export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
   label,
@@ -66,7 +66,7 @@ export interface SearchBarProps extends Omit<ComponentProps<'div'>, 'onClick' | 
   /** Html button element props */
   buttonProps?: ButtonProps;
   /** Html input element props */
-  inputProps?: ComponentProps<'input'> & Pick<InputProps, 'acceptanceCriteria' | 'inputInvalid'>;
+  inputProps?: ComponentProps<'input'> & Pick<InputWebProps, 'acceptanceCriteria' | 'inputInvalid'>;
   onClick?: ButtonProps["onClick"];
-  onChange?: InputProps["onChange"];
+  onChange?: InputWebProps["onChange"];
 };

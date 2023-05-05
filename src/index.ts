@@ -36,7 +36,7 @@ declare global {
 }
 
 // Atoms
-export * from "./components/atoms/Input";
+export * from "./components/atoms/Input/InputWeb";
 export { default as Button } from "./components/atoms/Button/ButtonWeb";
 export { default as Link } from "./components/atoms/Link";
 export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";

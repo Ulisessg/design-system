@@ -1,6 +1,6 @@
 import React from 'react'
 import { forwardRef } from 'react'
-import { Input } from '../atoms/Input'
+import Input from '../atoms/Input/InputWeb'
 import { InputProps } from '../atoms/Input/InputProps'
 
 export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(props, ref) {

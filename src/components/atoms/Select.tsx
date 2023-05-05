@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { LabelStyles, RequiredMark, SampStyles } from './Input/InputStyles';
+import { LabelStyles, AcceptanceCriteriaStyles, RequiredMark } from './Input/InputWeb' 
 
 
 export default forwardRef<HTMLSelectElement, SelectProps>(function Select({allowDefaultValue = true,...props}, 
@@ -8,8 +8,6 @@ ref) {
   return (<LabelStyles htmlFor={props.id}>
     <p>
     {props.label}
-    {typeof props.acceptanceCriteria === 'string' && 
-        <SampStyles>{props.acceptanceCriteria}</SampStyles>}
     {props.required === true &&
         <RequiredMark aria-hidden={true}>*</RequiredMark>}
     </p>
@@ -23,6 +21,7 @@ ref) {
   >
       {props.children}
     </SelectStyles>
+    <AcceptanceCriteriaStyles>{props.acceptanceCriteria}</ AcceptanceCriteriaStyles>
   </LabelStyles>
   )
 })

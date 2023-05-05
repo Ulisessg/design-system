@@ -1,77 +1,25 @@
-import styled from "styled-components";
+import { css } from "styled-components";
+import theme from '../../theme';
 
-const borderPixels = "1.8px";
+export const borderPixels = "1.8px";
 
-const InputStyles = styled.input<{ border: boolean, inputInvalid: boolean }>`
+export const InputCommonStyles = css`
   height: 30px;
   padding-left: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 10px;
-  border: ${borderPixels} solid ${({theme}) => theme.colors.light2};
-  :focus, :hover {
-    box-shadow: 0px 0px 5px 1px ${({ theme }) => theme.colors.light2};
-    outline: 1px solid ${({theme}) => theme.colors.light2};
-  }
-  &:valid {
-    border: ${({ border, theme }) =>
-      border && `${borderPixels} solid ${theme.colors.light2}`};
-  }
+  border: ${borderPixels} solid ${theme.colors.light2};
+`
 
-  &:invalid {
-    ${({theme, inputInvalid}) => {
-      let style: string = ''
-      if(inputInvalid === true) {
-        style += `border: ${borderPixels} solid ${theme.colors.error};`
-        style += 'outline: none;'
-        style += `box-shadow: 0px 0px 2px 1px ${theme.colors.error};`
-      }
-      return style
-    }};
-  }
-`;
-
-export const LabelStyles = styled.label<{ htmlFor: string }>`
-  display: grid;
+export const LabelCommonStyles = css`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin-top: 10px;
-  & p {
-    display: flex;
-    align-items: center;
-    & samp {
-      margin-left: 3px;
-    }
-    @media screen and (max-width: 300px) {
-      display: grid;
-      justify-items: flex-start;
-      padding: 3px;
-      & samp {
-        margin-top: 10px;
-      }
-    }
-  }
-  .invalid-input-style {
-    border: ${borderPixels} solid ${({theme}) => theme.colors.error};
-    outline: none;
-    box-shadow: 0px 0px 2px 1px ${({theme}) => theme.colors.error};
-  }
-`;
-
-export const SampStyles = styled.samp`
-  display: inline;
-  background-color: ${({theme}) =>theme.colors.light1};
-  border: 2px solid ${({theme}) =>theme.colors.light1};
-  padding: 3px;
-  border-radius: 5px;
-  font-weight: bold;
-  word-break: break-word;
 `
 
-export const RequiredMark = styled.span`
-  color: ${({theme}) => theme.colors.error};
-  font-size: 20px;
-  margin-left: 4px;
-  align-self: center;
+export const commonAcceptanceCriteriaStyles = css`
+  color: ${theme.colors.dark2};
+  font-size: 16px;
 `
-
-export default InputStyles;
