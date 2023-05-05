@@ -11,7 +11,7 @@ import {
 // Atoms props
 import type { InputProps } from './components/atoms/Input/InputProps';
 import type { ButtonWebProps as ButtonProps } from './components/atoms/Button/Props';
-import type { DetailsProps } from './components/atoms/Details';
+import type { DetailsProps } from './components/atoms/Details/DetailsWeb';
 import type { LinkProps } from 'next/link';
 import type { LoadingSpinnerProps } from './components/atoms/LoadingSpinner';
 import type { SelectProps } from './components/atoms/Select';
@@ -42,7 +42,7 @@ export { default as Link } from "./components/atoms/Link";
 export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
 export { default as Td } from './components/atoms/Td'
 export { default as Th } from './components/atoms/Th'
-export {default as Details} from './components/atoms/Details'
+export {default as Details} from './components/atoms/Details/DetailsWeb'
 export { default as Title } from './components/atoms/Title'
 export { default as Select } from './components/atoms/Select'
 
