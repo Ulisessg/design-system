@@ -21,7 +21,7 @@ import type { TitleProps } from './components/atoms/Title';
 import type { VideoProps } from './components/atoms/Video';
 
 // Molecules props
-import type { FormProps } from './components/molecules/Form/Form';
+import type { FormProps } from './components/molecules/Form/FormWeb';
 import type { DatalistProps } from './components/molecules/Datalist';
 import type { FooterProps } from './components/molecules/Footer';
 import type { HeaderProps } from './components/molecules/Header';
@@ -47,7 +47,7 @@ export { default as Title } from './components/atoms/Title'
 export { default as Select } from './components/atoms/Select'
 
 // Molecules
-export * from "./components/molecules/Form";
+export { default as Form } from "./components/molecules/Form/FormWeb";
 export { default as Footer } from "./components/molecules/Footer";
 export { default as Header } from "./components/molecules/Header";
 export { default as SearchBar } from "./components/molecules/SearchBar";
