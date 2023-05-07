@@ -22,7 +22,7 @@ const InputsContainer = styled.View`
   ${InputsContainerCommonStyles}
 `
 
-interface FormNativeProps {
+export interface FormNativeProps {
   children: ReactNode
   formTitle: string
 }

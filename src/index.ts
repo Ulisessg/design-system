@@ -5,7 +5,7 @@ import {
   UseInputsContext,
   UseInputsContextProvider,
   UseInputsContextProps
-} from './context/useInputsContext'
+} from './context/useInputsContext/useInputsContextWeb'
 
 
 // Atoms props
@@ -65,7 +65,7 @@ export { default as _document } from "./pages/_document";
 export { default as index } from "./pages/index";
 
 // Hooks
-export { default as useInputs } from "./hooks/useInputs";
+export { default as useInputs } from "./hooks/useInputs/useInputsWeb";
 
 // context
 export {

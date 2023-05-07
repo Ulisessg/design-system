@@ -23,7 +23,6 @@ export interface InputProps {
      * If you are using Input for React Native you MUST to specify the flags, otherwise no required
      *
      */
-    pattern?: string
 
     required?: boolean
 }
@@ -33,6 +32,6 @@ export type InputWebProps  = ComponentProps<'input'> & InputProps & {
   labelProps?: ComponentProps<'label'>
 }
 
-export type InputNativeProps = TextInputProps & InputProps & {
+export type InputNativeProps = TextInputProps & Omit<InputProps, 'id' | 'name'> & {
 
 }

@@ -5,7 +5,7 @@ import theme from '../../theme'
 const arrowUp = require('./up-arrow.png')
 const arrowDown = require('./down-arrow.png')
 
-const DetailsNative: FC<DetailsProps> = ({label, children}) => {
+const DetailsNative: FC<DetailsNativeProps> = ({label, children}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const handleOnPess = () => {
@@ -73,7 +73,7 @@ const ContentContainer = styled.ScrollView<{isOpen: boolean}>`
   padding: 10px;
 `
 
-export interface DetailsProps {
+export interface DetailsNativeProps {
   label: string
   children: ReactNode
 }

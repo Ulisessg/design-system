@@ -39,7 +39,7 @@ const InputNative: FC<InputNativeProps> = (props) => {
      {(isFocused && props.acceptanceCriteria) &&
       <AcceptanceCriteria 
       >
-        Solo letras y espacios
+        {props.acceptanceCriteria}
       </AcceptanceCriteria>}
   </LabelNativeStyles>
 }
