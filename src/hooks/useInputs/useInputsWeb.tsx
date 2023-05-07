@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, FocusEvent, useRef } from "react";
+import { getInitialInputsErrors, verifyInputsNames } from './common'
 
 
 function useInputs<InData extends {[k: string]: string}>(
@@ -13,10 +14,10 @@ function useInputs<InData extends {[k: string]: string}>(
   /** Modify the input value before setState */
   onChangeCallback?: TOnChangeCallBack
 ): UseInputsReturn<InData> {
+  const InputsInitialValues = useRef<Map<string, string>>(new Map(Object.entries(inputs as any)))
   const [formIsValid, setFormIsValid] = useState<boolean>(false)
   const [inputsData, setInputsData] = useState<InData>(inputs);
-  const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInputsKeys(inputs))
-  const InputsInitialValues = useRef<Map<string, string>>(new Map(Object.entries(inputs as any)))
+  const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInitialInputsErrors(inputs))
   
   const addInput: UseInputsReturn<any>['addInput'] = (inputName, initialValue) => {
     setInputsData((prev) => ({
@@ -24,6 +25,12 @@ function useInputs<InData extends {[k: string]: string}>(
       [inputName]: initialValue
     }))
     InputsInitialValues.current.set(inputName, initialValue)
+    setInputsErrors((prev) => {
+      return {
+        ...prev,
+        [inputName]: false
+      }
+    })
   }
 
   const removeInput: UseInputsReturn<any>['removeInput'] = (inputName) => {
@@ -42,7 +49,7 @@ function useInputs<InData extends {[k: string]: string}>(
   const restartInputs = (inputName: keyof InData | 'all'): void => {
     if(inputName === 'all') {
       setInputsData(inputs)
-      setInputsErrors(getInputsKeys(inputs))
+      setInputsErrors(getInitialInputsErrors(inputs))
       return
     }
     setInputsData((prev) => ({
@@ -55,22 +62,10 @@ function useInputs<InData extends {[k: string]: string}>(
     }))
   }
 
-  const verifyInputsNames = (inputName: string) => {
-    if (!inputName) throw new Error(`Input must have 'name' property`);
-    if (!inputsData.hasOwnProperty(inputName))
-      throw new Error(
-        `Input name does not exist in inputs; input name received: '${inputName}'. input names available: ${JSON.stringify(
-          Object.getOwnPropertyNames(inputsData),
-          null,
-          2
-        )}`
-      );
-  }
-
   const onBlur = (ev: InputBlurEvent): void => {
     const validity = reportValidity as ReportValidityObject
     const element = ev.currentTarget
-    verifyInputsNames(ev.target.name)
+    verifyInputsNames(ev.target.name, inputsData)
     
 
     if(reportValidity === true || validity.onBlur === true) {
@@ -87,7 +82,7 @@ function useInputs<InData extends {[k: string]: string}>(
 
   function onChange(ev: InputChangeEvent) {
     const inputName = ev.currentTarget.name;
-    verifyInputsNames(inputName)
+    verifyInputsNames(inputName, inputsData)
 
     let inputValue: string = ev.currentTarget.value
 
@@ -153,12 +148,6 @@ function useInputs<InData extends {[k: string]: string}>(
     onBlur,
     restartInputs
   };
-}
-
-const getInputsKeys = (inputs: any): any => {
-  let keys: any = {}
-  Object.keys(inputs).forEach((key) => keys[key] = false)
-  return keys
 }
 
 type InputChangeEvent = ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>;

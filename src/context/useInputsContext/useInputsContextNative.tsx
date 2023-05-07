@@ -1,5 +1,9 @@
 import React, {FC, ReactNode, createContext} from 'react';
-import useInputs, { ReportValidity, TOnChangeCallBack } from '../hooks/useInputs'
+import useInputs, {
+  TReportValidity,
+  TonChangeTextCallback,
+  UseInputsNativeReturn 
+} from '../../hooks/useInputs/useInputsNative'
 
 const initialState: UseInputsContextState = {
   addInput: () => {
@@ -7,12 +11,12 @@ const initialState: UseInputsContextState = {
   },
   formIsValid: false,
   inputsData: {},
-  inputsInitialValues: new Map(),
+  InputsInitialValues: new Map(),
   inputsErrors: {}as any,
   onBlur: () => {
     //
   },
-  onChange: () => {
+  onChangeText: () => {
     //
   },
   removeInput: () => {
@@ -48,7 +52,7 @@ interface UseInputsContextState extends ReturnType<typeof useInputs> {
 
 export interface UseInputsContextProps {
   children: ReactNode
-  initialInputs: Record<string, string>
-  reportValidity: ReportValidity
-  onChageCallback: TOnChangeCallBack
+  initialInputs: UseInputsNativeReturn<any>['inputsData']
+  reportValidity: TReportValidity
+  onChageCallback: TonChangeTextCallback
 }
