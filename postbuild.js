@@ -16,6 +16,18 @@ ${data}
   })()
 })
 
+readFile(resolve(cwd(), "dist", "native", "index.js"), (err, data) => {
+  if (err) throw err;
+  (async () => {
+    const newFile = `#!/usr/bin/env node
+${data}
+  `
+    unlink(resolve(cwd(), "dist", "native", "index.js"), () => {
+      writeFile(resolve(cwd(), "dist", "native", "index.js"), newFile, () => { })
+    })
+  })()
+})
+
 copyFileSync(resolve(__dirname, 'src', 'styled.d.ts'), resolve(__dirname, 'dist', 'Theme.d.ts'))
 
 // Images
