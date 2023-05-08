@@ -2,7 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import styled, { css } from 'styled-components/native'
 import { InputCommonStyles, LabelCommonStyles, commonAcceptanceCriteriaStyles } from './InputStyles'
 import { InputNativeProps } from './InputProps'
-import { NativeSyntheticEvent, TextInput, TextInputFocusEventData } from 'react-native'
+import { NativeSyntheticEvent, StyleSheet, TextInput, TextInputFocusEventData } from 'react-native'
 import theme from '../../theme'
 
 const InputNative: FC<InputNativeProps> = (props) => {
@@ -35,6 +35,10 @@ const InputNative: FC<InputNativeProps> = (props) => {
       onBlur={handleOnBlur}
       accessibilityLabelledBy={props.id}
       onChangeText={props.onChangeText}
+      style={[
+        InputNativeStylesRN.input,
+        props.style ?? {}]
+      }
     />
      {(isFocused && props.acceptanceCriteria) &&
       <AcceptanceCriteria 
@@ -56,6 +60,13 @@ const InputNativeStyles = styled.TextInput<{isFocused: boolean} & InputNativePro
   ${({isFocused}) => isFocused && focusStyles};
   ${({inputInvalid}) => inputInvalid && 'border-color: red'};
 `
+
+const InputNativeStylesRN = StyleSheet.create({
+  input: {
+    paddingVertical: theme.spacing,
+  }
+})
+
 const LabelContainer = styled.View`
   display: flex;
   flex-direction: row;
@@ -63,19 +74,19 @@ const LabelContainer = styled.View`
 `
 
 const LabelTextStyles = styled.Text`
-font-size: 18px;
+  font-size: 18px;
 `
 
 const RequiredMarkStyles = styled.Text`
-  margin-left: 10px;
+  margin-left: ${theme.spacing}px;
   color: ${theme.colors.error};
-  font-size: 18px
+  font-size: 18px;
 `
 
 
 const AcceptanceCriteria = styled.Text`
   ${commonAcceptanceCriteriaStyles};
-  margin-bottom: 10px;
+  margin-bottom: ${theme.spacing * 2}px;
 `
 
 const LabelNativeStyles = styled.View`

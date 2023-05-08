@@ -32,45 +32,44 @@ const DetailsNative: FC<DetailsNativeProps> = ({label, children}) => {
 }
 
 const DetailsContainer = styled.View`
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: ${theme.spacing}px;
+  padding: ${theme.spacing}px;
   border: 1px solid ${theme.colors.dark1};
-  margin: 20px 0px;
+  margin: ${theme.spacing * 3}px 0px;
   width: 90%;
 `
 
 const LabelContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  width: 300px;
-  padding: 10px;
+  padding: ${theme.spacing * 2}px;
   border-radius: 20px;
   justify-content: space-between;
   width: 100%;
 `
 
 const LabelText = styled.Text`
-  margin-left: 8px;
+  margin-left: ${theme.spacing}px;
 `
 
 const ArrowContainer = styled.View`
   align-items: center;
-  width: 25px;
-  height: 25px;
+  width: ${theme.spacing * 3}px;
+  height: ${theme.spacing * 3}px;
   justify-content: center;
   border-radius: 20px;
-  padding: 8px;
-  margin-right: 8px;
+  padding: ${theme.spacing}px;
+  margin-right: ${theme.spacing}px;
 `
 
 const ArrowStyles = styled(Image)`
-  width: 20px;
-  height: 20px;
+  width: ${theme.spacing * 3}px;
+  height: ${theme.spacing * 3}px;
 `
 const ContentContainer = styled.ScrollView<{isOpen: boolean}>`
   display: ${({isOpen}) => isOpen ? 'flex': 'none'};
   width: 100%;
-  padding: 10px;
+  padding: ${theme.spacing}px;
 `
 
 export interface DetailsNativeProps {

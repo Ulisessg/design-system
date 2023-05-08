@@ -27,20 +27,15 @@ const Container = styled.div`
 `
 const DetailsStyles = styled.details`
   border-radius: 8px;
-  padding: 10px;
+  padding: ${({theme}) => theme.spacing}px;
   border: 1px solid ${({ theme }) => theme.colors.dark1};
-  margin: 20px 0px;
-  width: 90%;
+  margin: ${({theme}) => theme.spacing * 3}px 0px;
+  width: 100%;
 `
 
 const Summary = styled.summary`
-  details[open] & summary {
-    margin-bottom: 30px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.dark1};;
-    padding-bottom: 20px;
-    width: 90%;
-  }
-  margin-bottom: 5px;
+  padding: ${({theme}) => theme.spacing / 2}px;
+  margin: ${({theme}) => theme.spacing}px;
   &:focus, &:hover {
     cursor: pointer;
   }

@@ -93,15 +93,9 @@ export const LabelStyles = styled.label<{ htmlFor: string }>`
     display: flex;
     flex-direction: row;
     align-items: center;
-    & samp {
-      margin-left: 3px;
-    }
     @media screen and (max-width: 300px) {
       justify-items: flex-start;
       padding: 3px;
-      & samp {
-        margin-top: 10px;
-      }
     }
   }
   .invalid-input-style {

@@ -13,15 +13,15 @@ export default forwardRef<HTMLTableElement, TableProps>(function Table(props, re
 
 const TableStyles = styled.table`
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: ${({theme}) => theme.spacing  * 2}px;
   border: 1px solid black;
-  padding: 15px;
+  padding: ${({theme}) => theme.spacing  * 2}px;
   border-collapse: collapse;
   border-style: hidden;
 
   caption {
     margin: 10px 0px;
-    padding-left: 8px;
+    padding-left: ${({theme}) => theme.spacing}px;
     font-weight: bold;
   }
 
@@ -37,7 +37,7 @@ const TableStyles = styled.table`
 
   th,
   td {
-    padding: 20px;
+    padding: ${({theme}) => theme.spacing  * 3}px;
   }
 
   tfoot {

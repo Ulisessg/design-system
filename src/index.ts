@@ -1,5 +1,8 @@
 import {ComponentPropsWithRef} from 'react'
 
+// Theme
+export {default as theme} from'./components/theme'
+
 // Context imports
 import {
   UseInputsContext,

@@ -1,3 +1,7 @@
+// Theme
+
+export {default as theme} from'../components/theme'
+
 // Types import
 import { ButtonNativeProps as ButtonProps } from '../components/atoms/Button/Props'
 import { InputNativeProps as InputProps } from '../components/atoms/Input/InputProps'

@@ -47,7 +47,7 @@ const SearchBarStyles = styled.div`
   align-items: flex-end;
 
   & button {
-    margin-left: 20px;
+    margin-left: ${({theme}) => theme.spacing  * 3}px;
   }
   & input {
     margin-bottom: 0;

@@ -6,7 +6,7 @@ export interface LoadingSpinnerProps  extends ComponentProps<'div'> {
    * 
    *  Small: width: 40px - height: 40px
    * 
-   *  Large: width: 100px - height: 100px
+   *  Large: width: 104px - height: 104px
    */
   size: "small" | "large";
 };
@@ -22,8 +22,8 @@ const spinKeyframe = keyframes`
 `;
 
 const Spinner = styled.div<LoadingSpinnerProps>`
-  width: ${({ size }) => (size === "small" ? "40px" : "100px")};
-  height: ${({ size }) => (size === "small" ? "40px" : "100px")};
+  width: ${({ size, theme }) => (size === "small" ? `${theme.spacing * 5}px` : `${theme.spacing * 13}px`)};
+  height: ${({ size, theme }) => (size === "small" ? `${theme.spacing * 5}px` : `${theme.spacing * 13}px`)};
   border: 4px solid ${({ theme }) => theme.colors.dark1};
   border-radius: 100%;
   border-left-color: ${({ theme }) => theme.colors.light1};

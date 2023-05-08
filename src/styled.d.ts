@@ -13,5 +13,6 @@ declare module "styled-components" {
       error: string;
       warning: string;
     };
+    spacing: number
   }
 }

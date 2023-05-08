@@ -28,11 +28,11 @@ ref) {
 
 
 const SelectStyles = styled.select<{selectIsInvalid?: boolean}>`
-  height: 30px;
-  padding-left: 10px;
+  height: ${({theme}) => theme.spacing * 4}px;
+  padding-left: ${({theme}) => theme.spacing}px;
   border-radius: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: ${({theme}) => theme.spacing}px;
+  margin-top: ${({theme}) => theme.spacing}px;
   border: 1.8px solid ${({theme}) => theme.colors.light2};
   cursor: pointer;
   &:hover, &:focus {

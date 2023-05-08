@@ -27,16 +27,16 @@ export interface FooterProps extends ComponentProps<'footer'> {
 const FooterStyles = styled.footer`
   display: grid;
   width: 100vw;
-  padding: 30px;
+  padding: ${({theme}) => theme.spacing  * 4}px;
   justify-content: center;
   text-align: center;
-  margin-top: 20px;
+  margin-top: ${({theme}) => theme.spacing  * 3}px;
   box-shadow: 0px -5px 8px 1px ${({ theme }) => theme.colors.shadow};
-  min-height:50px;
+  min-height: ${({theme}) => theme.spacing  * 6}px;
   background-color: ${({ theme }) => theme.colors.light3};
   align-items: center;
   & a {
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: ${({theme}) => theme.spacing  * 3}px;
   }
 `

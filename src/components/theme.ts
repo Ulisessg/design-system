@@ -12,5 +12,6 @@ const theme: DefaultTheme = {
     error: "#ff0e1a",
     warning: "#EAE509",
   },
+  spacing: 8
 }
 export default theme

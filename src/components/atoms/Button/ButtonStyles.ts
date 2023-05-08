@@ -3,18 +3,18 @@ import { ButtonStylesProps } from './Props'
 import theme from '../../theme'
 
 export const ButtonCommonStyles = css<ButtonStylesProps>`
-  height: 50px;
+  height: ${theme.spacing * 7}px;
   border-radius: 8px;
   font-weight: bold;
-  padding: 8px;
+  padding: ${theme.spacing}px;
   height: auto;
   font-size: ${({ size }) => {
     if (size === "small") return "15px";
     return "20px";
   }};
   width: ${({ size }) => {
-    if (size === "small") return "160px";
-    if (size === "large") return "200px";
+    if (size === "small") return `${theme.spacing * 20}px`;
+    if (size === "large") return `${theme.spacing * 25}`;
     if (size === "100%") return "100%";
   }};
   background-color: ${({  colorMessage, isDisabled }) => {

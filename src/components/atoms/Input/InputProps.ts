@@ -32,6 +32,6 @@ export type InputWebProps  = ComponentProps<'input'> & InputProps & {
   labelProps?: ComponentProps<'label'>
 }
 
-export type InputNativeProps = TextInputProps & Omit<InputProps, 'id' | 'name'> & {
+export type InputNativeProps = TextInputProps & Omit<InputProps, 'name'> & {
 
 }
