@@ -1,8 +1,8 @@
 // Types import
-import { ButtonNativeProps } from '../components/atoms/Button/Props'
-import { InputNativeProps } from '../components/atoms/Input/InputProps'
-import { DetailsNativeProps } from '../components/atoms/Details/DetailsNative'
-import { FormNativeProps } from '../components/molecules/Form/FormNative'
+import { ButtonNativeProps as ButtonProps } from '../components/atoms/Button/Props'
+import { InputNativeProps as InputProps } from '../components/atoms/Input/InputProps'
+import { DetailsNativeProps  as DetailsProps} from '../components/atoms/Details/DetailsNative'
+import { FormNativeProps as FormProps } from '../components/molecules/Form/FormNative'
 
 // Context import
 import {
@@ -27,8 +27,8 @@ export {
 
 // Types
 export type {
-  ButtonNativeProps,
-  InputNativeProps,
-  DetailsNativeProps,
-  FormNativeProps
+  ButtonProps,
+  InputProps,
+  DetailsProps,
+  FormProps
 }

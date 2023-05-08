@@ -54,6 +54,11 @@ const exp = [
     ],
     external: ["react", "react-native", "styled-components", "expo", "expo-status-bar"],
   },
+  {
+    input: "dist/native/types/native/index.d.ts",
+    output: [{ file: "dist/native/index.d.ts", format: "cjs" }],
+    plugins: [dts.default()],
+  },
 ]
 
 

@@ -1,3 +1,10 @@
+/**
+ * 
+ * !IMPORTANT
+ * 
+ * Must change "main" value in package.json to target this file and undo the change before publish
+ */
+
 import React from 'react'
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';

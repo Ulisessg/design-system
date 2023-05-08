@@ -9,7 +9,7 @@ import {
 
 
 // Atoms props
-import type { InputProps } from './components/atoms/Input/InputProps';
+import type { InputWebProps as InputProps } from './components/atoms/Input/InputProps';
 import type { ButtonWebProps as ButtonProps } from './components/atoms/Button/Props';
 import type { DetailsProps } from './components/atoms/Details/DetailsWeb';
 import type { LinkProps } from 'next/link';

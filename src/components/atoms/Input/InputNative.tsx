@@ -2,7 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import styled, { css } from 'styled-components/native'
 import { InputCommonStyles, LabelCommonStyles, commonAcceptanceCriteriaStyles } from './InputStyles'
 import { InputNativeProps } from './InputProps'
-import { NativeSyntheticEvent, Text, TextInput, TextInputFocusEventData, View } from 'react-native'
+import { NativeSyntheticEvent, TextInput, TextInputFocusEventData } from 'react-native'
 import theme from '../../theme'
 
 const InputNative: FC<InputNativeProps> = (props) => {
