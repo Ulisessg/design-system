@@ -18,7 +18,7 @@ function useInputs<InData extends {[k: string]: string}>(
   const [formIsValid, setFormIsValid] = useState<boolean>(false)
   const [inputsData, setInputsData] = useState<InData>(inputs);
   const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInitialInputsErrors(inputs))
-  
+
   const addInput: UseInputsReturn<any>['addInput'] = (inputName, initialValue) => {
     setInputsData((prev) => ({
       ...prev,
@@ -48,8 +48,10 @@ function useInputs<InData extends {[k: string]: string}>(
 
   const restartInputs = (inputName: keyof InData | 'all'): void => {
     if(inputName === 'all') {
-      setInputsData(inputs)
-      setInputsErrors(getInitialInputsErrors(inputs))
+      const initValues = Object.fromEntries(InputsInitialValues.current) as InData
+
+      setInputsData(initValues)
+      setInputsErrors(getInitialInputsErrors(initValues))
       return
     }
     setInputsData((prev) => ({
@@ -137,6 +139,14 @@ function useInputs<InData extends {[k: string]: string}>(
     }
   }
 
+  const updateInitialValue = (fieldName: keyof InData, newInitialValue: string) => {
+    const newInitialValues = new Map(InputsInitialValues.current);
+    
+    newInitialValues.set(fieldName as any, newInitialValue);
+  
+    (InputsInitialValues as any).current = newInitialValues;
+  }
+
   return {
     addInput,
     removeInput,
@@ -146,7 +156,8 @@ function useInputs<InData extends {[k: string]: string}>(
     inputsInitialValues: InputsInitialValues.current,
     onChange,
     onBlur,
-    restartInputs
+    restartInputs, 
+    updateInitialValue
   };
 }
 
@@ -166,6 +177,8 @@ export interface UseInputsReturn<IData> {
   addInput: (inputName: string, initialValue: string) => void
   /** Allows you remove an input from hook, it throws an error if the input doesn't exists */
   removeInput: (inputName:string) => void
+
+  updateInitialValue: (inputName: keyof IData, newInitialValue: string) => void
 
   formIsValid: boolean
 

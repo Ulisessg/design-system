@@ -193,6 +193,15 @@ function useInputsNative<InData extends {[k: string]:  {
     } 
   }
 
+  const updateInitialValue = (fieldName: keyof InData, newInitialValue: InputsValues) => {
+    const newInitialValues = new Map(InputsInitialValues.current);
+    
+    newInitialValues.set(fieldName as any, newInitialValue);
+  
+    (InputsInitialValues as any).current = newInitialValues;
+  }
+
+
   return {
     addInput,
     formIsValid,
@@ -203,17 +212,16 @@ function useInputsNative<InData extends {[k: string]:  {
     onChangeText,
     removeInput,
     restartInputs,
+    updateInitialValue
   }
 }
 
 
-export interface UseInputsNativeReturn <T> extends Omit<UseInputsReturn<T>, 'onChange' | 'onBlur' | 'inputsInitialValues'> {
+export interface UseInputsNativeReturn <T> extends Omit<UseInputsReturn<T>, 'onChange' | 'onBlur' | 'inputsInitialValues' | 'updateInitialValue'> {
   onChangeText: TonChangeText
   onBlur: TonBlur
-  InputsInitialValues: Map<keyof T, {
-    value: string,
-    pattern?: string
-  }>
+  InputsInitialValues: Map<keyof T, InputsValues>
+  updateInitialValue: (inputName:string, newInitialValue: InputsValues) => void
 }
 
 export type TonChangeText = (value: string, inputName: string) => void
@@ -224,6 +232,11 @@ export type TonChangeTextCallback = (value: string, inputName: string) => string
 export type TInputsErrors<T> = Record<keyof T, boolean>
 
 export type TReportValidity = boolean | TValidityObject
+
+interface InputsValues  { 
+  value: string; 
+  pattern?: RegExp | undefined; 
+}
 
 type TValidityObject =  {
   onChangeText: boolean

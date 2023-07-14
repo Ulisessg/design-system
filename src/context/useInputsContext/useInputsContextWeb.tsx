@@ -20,6 +20,9 @@ const initialState: UseInputsContextState = {
   },
   restartInputs: () => {
 
+  },
+  updateInitialValue: () => {
+    
   }
 }
 
