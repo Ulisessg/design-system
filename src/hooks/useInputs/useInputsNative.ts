@@ -201,7 +201,6 @@ function useInputsNative<InData extends {[k: string]:  {
     (InputsInitialValues as any).current = newInitialValues;
   }
 
-
   return {
     addInput,
     formIsValid,
@@ -217,7 +216,7 @@ function useInputsNative<InData extends {[k: string]:  {
 }
 
 
-export interface UseInputsNativeReturn <T> extends Omit<UseInputsReturn<T>, 'onChange' | 'onBlur' | 'inputsInitialValues' | 'updateInitialValue'> {
+export interface UseInputsNativeReturn <T> extends Omit<UseInputsReturn<T>, 'onChange' | 'onBlur' | 'inputsInitialValues' | 'updateInitialValue' | 'updateInput'> {
   onChangeText: TonChangeText
   onBlur: TonBlur
   InputsInitialValues: Map<keyof T, InputsValues>

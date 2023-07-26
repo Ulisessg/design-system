@@ -23,6 +23,9 @@ const initialState: UseInputsContextState = {
   },
   updateInitialValue: () => {
     
+  },
+  updateInput: () => {
+    //
   }
 }
 

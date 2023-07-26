@@ -147,6 +147,14 @@ function useInputs<InData extends {[k: string]: string}>(
     (InputsInitialValues as any).current = newInitialValues;
   }
 
+  const updateInput = (inputName: keyof InData, inputValue: string): void => {
+    verifyInputsNames(inputName as any, inputsData)
+    setInputsData({
+      ...inputsData,
+      [inputName]: inputValue,
+    })
+  }
+
   return {
     addInput,
     removeInput,
@@ -156,8 +164,9 @@ function useInputs<InData extends {[k: string]: string}>(
     inputsInitialValues: InputsInitialValues.current,
     onChange,
     onBlur,
-    restartInputs, 
-    updateInitialValue
+    restartInputs,
+    updateInitialValue,
+    updateInput
   };
 }
 
@@ -183,6 +192,8 @@ export interface UseInputsReturn<IData> {
   formIsValid: boolean
 
   inputsInitialValues: Map<string, string>
+
+  updateInput: (inputName: keyof IData, inputValue: string) => void
 }
 
 type InputsErrors<T> = Record<keyof T, boolean>
