@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
 const Details = forwardRef<HTMLDetailsElement, DetailsProps>(function Details({ summary, children, ...props }, ref) {

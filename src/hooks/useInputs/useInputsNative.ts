@@ -44,6 +44,43 @@ function useInputsNative<InData extends {[k: string]:  {
     })
   }
 
+  const checkFormValidity = (inputToIgnore?: string): boolean => {
+    let formValidity = true
+    for (const inputKey in inputsData) {  
+      /** No repeat validation of current input with old value */
+      if(inputKey === inputToIgnore) continue;
+      
+      const inputStored = inputsData[inputKey]
+      const inputStoredValue = inputStored.value
+      const inputStoredMinLenght = inputStored.minLength
+      const inputStoredMaxLenght = inputStored.maxLenght
+
+      if(typeof inputStored.pattern !== 'undefined') {
+        const patternValidation = inputStored.value.match(inputStored.pattern)
+        if(patternValidation === null) {
+          formValidity = false
+          break;
+        }
+      }
+
+      if (typeof inputStoredMinLenght !== 'undefined') {
+        if(inputStoredValue.length < inputStoredMinLenght)  {
+          formValidity = false
+          break;            
+        }
+      }
+
+      if (typeof inputStoredMaxLenght !== 'undefined') {
+        if(inputStoredValue.length > inputStoredMaxLenght) {
+          formValidity = false
+          break;
+        }
+      }
+    }
+    setFormIsValid(formValidity)
+    return formValidity
+  }
+
 
   const removeInput = (inputName: string) => {
     
@@ -103,40 +140,8 @@ function useInputsNative<InData extends {[k: string]:  {
     if(!currentInputIsValid) {
       setFormIsValid(false)
     } else {
-      let otherInputIsInvalid: boolean = false
-      for (const inputKey in inputsData) {  
-        /** No repeat validation of current input with old value */
-        if(inputKey === inputName) continue;
-        
-        const inputStored = inputsData[inputKey]
-        const inputStoredValue = inputStored.value
-        const inputStoredMinLenght = inputStored.minLength
-        const inputStoredMaxLenght = inputStored.maxLenght
-
-        if(typeof inputStored.pattern !== 'undefined') {
-          const patternValidation = inputStored.value.match(inputStored.pattern)
-          if(patternValidation === null) {
-            otherInputIsInvalid = true
-            break;
-          }
-        }
-
-        if (typeof inputStoredMinLenght !== 'undefined') {
-          if(inputStoredValue.length < inputStoredMinLenght)  {
-            otherInputIsInvalid = true
-            break;            
-          }
-        }
-
-        if (typeof inputStoredMaxLenght !== 'undefined') {
-          if(inputStoredValue.length > inputStoredMaxLenght) {
-            otherInputIsInvalid = true
-            break;
-          }
-        }
-
-      }
-      setFormIsValid(!otherInputIsInvalid)      
+      /** Ignore current input to avoid validation with old value */
+      setFormIsValid(!checkFormValidity(inputName))      
     }
 
     return currentInputIsValid
@@ -203,6 +208,7 @@ function useInputsNative<InData extends {[k: string]:  {
 
   return {
     addInput,
+    checkFormValidity,
     formIsValid,
     inputsData,
     inputsErrors,
@@ -216,11 +222,16 @@ function useInputsNative<InData extends {[k: string]:  {
 }
 
 
-export interface UseInputsNativeReturn <T> extends Omit<UseInputsReturn<T>, 'onChange' | 'onBlur' | 'inputsInitialValues' | 'updateInitialValue' | 'updateInput'> {
+export interface UseInputsNativeReturn <T> extends Omit<UseInputsReturn<T>, 'onChange' | 'onBlur' | 'inputsInitialValues' | 'updateInitialValue' | 'updateInput' | 'checkFormValidity'> {
   onChangeText: TonChangeText
   onBlur: TonBlur
   InputsInitialValues: Map<keyof T, InputsValues>
   updateInitialValue: (inputName:string, newInitialValue: InputsValues) => void
+  /**
+   * Re check form validity and update 'formIsValid'
+   * @returns {boolean}
+   */
+  checkFormValidity: (inputToIgnore?: string) => boolean
 }
 
 export type TonChangeText = (value: string, inputName: string) => void

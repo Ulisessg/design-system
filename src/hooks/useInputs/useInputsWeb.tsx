@@ -19,6 +19,25 @@ function useInputs<InData extends {[k: string]: string}>(
   const [inputsData, setInputsData] = useState<InData>(inputs);
   const [inputsErrors, setInputsErrors] = useState<InputsErrors<InData>>(getInitialInputsErrors(inputs))
 
+  const checkFormValidity: UseInputsReturn<InData>['checkFormValidity'] = (inputToIgnore) => {
+    let formValidity: boolean = false
+
+    /**Validate form with first input name */
+    for(let inputName in inputsData) {
+      if(inputToIgnore === inputName) {
+        continue
+      } else {
+        const input = document.getElementsByName(inputName)[0] as HTMLInputElement
+        const form = input.form as HTMLFormElement
+        formValidity = form.reportValidity()
+  
+        break;
+      }
+    }
+    setFormIsValid(formValidity)
+    return formValidity
+  }
+
   const addInput: UseInputsReturn<any>['addInput'] = (inputName, initialValue) => {
     setInputsData((prev) => ({
       ...prev,
@@ -157,6 +176,7 @@ function useInputs<InData extends {[k: string]: string}>(
 
   return {
     addInput,
+    checkFormValidity,
     removeInput,
     formIsValid,
     inputsErrors,
@@ -194,6 +214,11 @@ export interface UseInputsReturn<IData> {
   inputsInitialValues: Map<string, string>
 
   updateInput: (inputName: keyof IData, inputValue: string) => void
+  /**
+   * Re check form validity and update 'formIsValid'
+   * @returns {boolean}
+   */
+  checkFormValidity: (inputToIgnore?: string) => boolean
 }
 
 type InputsErrors<T> = Record<keyof T, boolean>
