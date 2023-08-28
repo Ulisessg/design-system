@@ -9,6 +9,10 @@ const initialState: UseInputsContextState = {
   addInput: () => {
     //
   },
+  // @ts-ignore
+  checkFormValidity: () => {
+    
+  },
   formIsValid: false,
   inputsData: {},
   InputsInitialValues: new Map(),
@@ -27,7 +31,7 @@ const initialState: UseInputsContextState = {
   },
   updateInitialValue: () => {
     
-  }
+  },
 }
 
 export const UseInputsContext = createContext(initialState)

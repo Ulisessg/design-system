@@ -2,6 +2,7 @@ import {ComponentPropsWithRef} from 'react'
 
 // Theme
 export {default as theme} from'./components/theme'
+export * from './utils/constants'
 
 // Context imports
 import {

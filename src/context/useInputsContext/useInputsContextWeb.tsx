@@ -5,6 +5,10 @@ const initialState: UseInputsContextState = {
   addInput: () => {
     //
   },
+  // @ts-ignore
+  checkFormValidity: () => {
+
+  },
   formIsValid: false,
   inputsData: {},
   inputsInitialValues: new Map(),
