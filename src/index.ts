@@ -35,6 +35,9 @@ import type { TableProps } from './components/molecules/Table';
 // Pages props
 import type { GlobalStylesProps } from './components/pages/GlobalStyles';
 
+// Hooks props
+import type {UseInputsReturn, InputBlurEvent, InputChangeEvent} from './hooks/useInputs/useInputsWeb'
+
 declare global {
   type ComponentProps<El extends keyof JSX.IntrinsicElements> = ComponentPropsWithRef<El> & {}
 }
@@ -78,7 +81,7 @@ export {
   UseInputsContextProvider
 }
 
-// Components props
+// Props
 export type {
   // Atoms props
   InputProps,
@@ -102,6 +105,11 @@ export type {
 
   // Pages
   GlobalStylesProps,
+
+  // Hooks
+  UseInputsReturn,
+  InputBlurEvent,
+  InputChangeEvent,
 
   // Context
   UseInputsContextProps

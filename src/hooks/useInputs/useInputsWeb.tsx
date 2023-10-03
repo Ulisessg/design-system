@@ -190,8 +190,8 @@ function useInputs<InData extends {[k: string]: string}>(
   };
 }
 
-type InputChangeEvent = ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>;
-type InputBlurEvent = FocusEvent<HTMLInputElement> | FocusEvent<HTMLSelectElement>
+export type InputChangeEvent = ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>;
+export type InputBlurEvent = FocusEvent<HTMLInputElement> | FocusEvent<HTMLSelectElement>
 
 export interface UseInputsReturn<IData> {
   inputsData: IData;
