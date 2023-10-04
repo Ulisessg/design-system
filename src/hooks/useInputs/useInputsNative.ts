@@ -206,6 +206,15 @@ function useInputsNative<InData extends {[k: string]:  {
     (InputsInitialValues as any).current = newInitialValues;
   }
 
+  const setInputError =  (inputName: keyof InData, error: boolean): void => {
+    verifyInputsNames(inputName as string, inputsData)
+    if(typeof error !== 'boolean') throw new Error('Boolean required')
+    setInputsErrors((prev) =>({
+      ...prev,
+      [inputName]: error
+    }))
+  }
+
   return {
     addInput,
     checkFormValidity,
@@ -217,7 +226,8 @@ function useInputsNative<InData extends {[k: string]:  {
     onChangeText,
     removeInput,
     restartInputs,
-    updateInitialValue
+    updateInitialValue,
+    setInputError
   }
 }
 

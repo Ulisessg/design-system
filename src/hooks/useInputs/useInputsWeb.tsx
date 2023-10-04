@@ -174,6 +174,15 @@ function useInputs<InData extends {[k: string]: string}>(
     })
   }
 
+  const setInputError =  (inputName: keyof InData, error: boolean): void => {
+    verifyInputsNames(inputName as string, inputsData)
+    if(typeof error !== 'boolean') throw new Error('Boolean required')
+    setInputsErrors((prev) =>({
+      ...prev,
+      [inputName]: error
+    }))
+  }
+
   return {
     addInput,
     checkFormValidity,
@@ -186,7 +195,8 @@ function useInputs<InData extends {[k: string]: string}>(
     onBlur,
     restartInputs,
     updateInitialValue,
-    updateInput
+    updateInput,
+    setInputError
   };
 }
 
@@ -219,6 +229,8 @@ export interface UseInputsReturn<IData> {
    * @returns {boolean}
    */
   checkFormValidity: (inputToIgnore?: string) => boolean
+  // Manually set an input error
+  setInputError: (inputName: keyof IData, error: boolean) => void
 }
 
 type InputsErrors<T> = Record<keyof T, boolean>
