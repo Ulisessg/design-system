@@ -4,15 +4,17 @@ export interface InputProps {
   /** Label text for 'label' element */
   label: string;
   /** Input id, used for htmlFor prop in label */
-  id: string;
+  id?: string;
   /** Input name */
-  name: string;
+  name?: string;
   /**
    * Requeriments to fill input, such as:
    * 
    * - Only numbers
    * 
    * - Only letters and spaces
+   * 
+   * This will show the message when input is invalid
    */
     acceptanceCriteria?: string
     /** Change input border color if is invalid, by default "false" */

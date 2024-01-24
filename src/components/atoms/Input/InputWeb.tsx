@@ -1,4 +1,4 @@
-import React, { FC, FocusEvent, useEffect, useState } from "react";
+import React, { FC, FocusEvent, useEffect, useId, useState } from "react";
 import  { borderPixels, InputCommonStyles, LabelCommonStyles, commonAcceptanceCriteriaStyles } from "./InputStyles";
 import { InputWebProps } from "./InputProps";
 import styled from 'styled-components'
@@ -16,16 +16,21 @@ import theme from '../../theme'
  */
  const InputWeb: FC<InputWebProps> = React.forwardRef<HTMLInputElement, InputWebProps>(function InputWeb({inputInvalid = false,...props}, ref) {
   const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(false)
+  const defaultId = useId()
+  const inputId = props.id || defaultId
+  
   const handleOnFocus = (ev: FocusEvent<HTMLInputElement>) => {
     props.onFocus?.(ev);
     if(typeof props.acceptanceCriteria === 'string') {
       setShowAcceptanceCriteria(true)
     }
   }
+
   const handleOnBlur = (ev: FocusEvent<HTMLInputElement>) => {
     props.onBlur?.(ev);
     setShowAcceptanceCriteria(false)
   }
+
   useEffect(() => {
     if(process.env.NODE_ENV !== 'production' && typeof props.placeholder === 'string') console.warn(`Placeholder attribute is
 not recommendable for accessibility purposes.
@@ -35,7 +40,7 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
   }, [props.placeholder])
 
   return (
-    <LabelStyles {...props.labelProps} htmlFor={props.id}>
+    <LabelStyles {...props.labelProps} htmlFor={inputId}>
       <p>
       {props.label}
       
@@ -44,20 +49,20 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
       </p>
       <InputStyles  
         {...props}
+        id={inputId}
         border={true}
-        placeholder={props.placeholder}
         type={props.type}
         inputInvalid={inputInvalid}
         aria-required={props.required || false}
         ref={ref}
-        className={inputInvalid ? `${props.className ?? ''} invalid-input-style` : ` ${props.className ?? ''}`}
+        className={`${props.className ?? ''} ${inputInvalid && 'invalid-input-style'}`}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
+        title={props.acceptanceCriteria || ''}
       />
       <AcceptanceCriteriaStyles 
         style={{visibility: showAcceptanceCriteria ? 'initial' : 'hidden'}}
-        aria-hidden={!showAcceptanceCriteria}
-        aria-live='polite'
+        aria-hidden={true}
       >{props.acceptanceCriteria}</AcceptanceCriteriaStyles>
     </LabelStyles>
   );
