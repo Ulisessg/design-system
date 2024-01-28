@@ -29,19 +29,21 @@ const Global = createGlobalStyle`
     border: 0;
     font-family: "Helvetica";
   };
-  #__next {
+  body {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #__next, #storybook-root {
     overflow-x: hidden;
     min-height: 100vh;
     display: grid;
-    justify-content: center;
     justify-items: center;
   };
   main {
     display: grid;
-    justify-content: center;
     justify-items: center;
-    width: 100vw;
-    align-content: space-between;
+    width: 100%;
+    align-content: space-around;
   };
   html {
     background-color: #fff;
