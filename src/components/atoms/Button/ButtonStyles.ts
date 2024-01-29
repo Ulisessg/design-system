@@ -3,6 +3,7 @@ import { ButtonStylesProps } from './Props'
 import theme from '../../theme'
 
 export const ButtonCommonStyles = css<ButtonStylesProps>`
+  margin-top: ${({theme}) => theme.spacing*2}px;
   height: ${theme.spacing * 7}px;
   border-radius: 8px;
   font-weight: bold;

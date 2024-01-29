@@ -7,7 +7,9 @@ return <>
 <Container>
   <DetailsStyles {...props} ref={ref}>
     <Summary>{summary}</Summary>
-    {children}
+    <ChildrenContainer>
+      {children}
+    </ChildrenContainer>
   </DetailsStyles>
 </Container>
 </>
@@ -21,8 +23,7 @@ export interface DetailsProps extends ComponentProps<'details'> {
 
 const Container = styled.div`
   display: grid;
-  width: 100%;
-  grid-auto-flow: row;
+  width: 90%;
   justify-items: center;
 `
 const DetailsStyles = styled.details`
@@ -39,6 +40,12 @@ const Summary = styled.summary`
   &:focus, &:hover {
     cursor: pointer;
   }
+`
+const ChildrenContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: ${({theme}) => theme.spacing * 3}px;
 `
 
 export default Details
