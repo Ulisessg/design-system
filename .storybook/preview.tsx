@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Preview } from "@storybook/react";
 import GlobalStyles from '../src/components/pages/GlobalStyles.tsx'
+import {withConsole} from '@storybook/addon-console';
 
 const preview: Preview = {
   parameters: {
@@ -16,7 +17,9 @@ const preview: Preview = {
     return <GlobalStyles footer={false}>
       <Story />
     </GlobalStyles>
-  }]
+  },
+  (storyFn, context) => withConsole()(storyFn)(context)
+  ]
 };
 
 export default preview;
