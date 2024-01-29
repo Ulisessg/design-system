@@ -1,8 +1,9 @@
 import React, { FC, FocusEvent, useEffect, useId, useState } from "react";
-import  { borderPixels, InputCommonStyles, LabelCommonStyles, commonAcceptanceCriteriaStyles } from "./InputStyles";
+import  { borderPixels, InputCommonStyles, LabelCommonStyles } from "./InputStyles";
 import { InputWebProps } from "./InputProps";
 import styled from 'styled-components'
 import theme from '../../theme'
+import AcceptanceCriteria from '../AcceptanceCriteria/AcceptanceCriteriaWeb'
 
 /**
  * Text Input
@@ -60,10 +61,10 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         onBlur={handleOnBlur}
         title={props.acceptanceCriteria || ''}
       />
-      <AcceptanceCriteriaStyles 
-        style={{visibility: showAcceptanceCriteria ? 'initial' : 'hidden'}}
-        aria-hidden={true}
-      >{props.acceptanceCriteria}</AcceptanceCriteriaStyles>
+      <AcceptanceCriteria
+        show={showAcceptanceCriteria}
+        text={props.acceptanceCriteria || ''}
+      />
     </LabelStyles>
   );
 })
@@ -110,9 +111,7 @@ export const LabelStyles = styled.label<{ htmlFor: string }>`
   }
 `;
 
-export const AcceptanceCriteriaStyles = styled.samp`
-  ${commonAcceptanceCriteriaStyles}
-`
+
 
 export const RequiredMark = styled.span`
   color: ${theme.colors.error};

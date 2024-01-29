@@ -102,7 +102,8 @@ function useInputs<InData extends {[k: string]: string}>(
   }
 
   function onChange(ev: InputChangeEvent) {
-    const inputName = ev.currentTarget.name;
+    const input = ev.currentTarget
+    const inputName = input.name;
     verifyInputsNames(inputName, inputsData)
 
     let inputValue: string = ev.currentTarget.value
@@ -111,6 +112,11 @@ function useInputs<InData extends {[k: string]: string}>(
       inputValue = onChangeCallback(ev, inputValue)
     }
 
+    if(ev.currentTarget.tagName === 'SELECT') {
+      if(!selectIsValid(input as any)) {
+        setInputError(inputName, true)
+      }
+    }
     setInputsData({
       ...inputsData,
       [inputName]: inputValue,

@@ -52,6 +52,7 @@ export {default as Details} from './components/atoms/Details/DetailsWeb'
 export { default as Title } from './components/atoms/Title'
 export { default as Select } from './components/atoms/Select'
 export {default as TrashCan } from './components/atoms/TrashCan'
+export {default as AcceptanceCriteria } from './components/atoms/AcceptanceCriteria/AcceptanceCriteriaWeb'
 
 // Molecules
 export { default as Form } from "./components/molecules/Form/FormWeb";
