@@ -2,7 +2,6 @@ import {ComponentPropsWithRef} from 'react'
 
 // Theme
 export {default as theme} from'./components/theme'
-export * from './utils/constants'
 
 // Context imports
 import {
@@ -80,6 +79,10 @@ export {
   UseInputsContext,
   UseInputsContextProvider
 }
+
+// Utils
+export {default as capitalize } from './utils/capitalize'
+export * from './utils/constants'
 
 // Props
 export type {
