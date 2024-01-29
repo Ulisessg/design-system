@@ -42,7 +42,7 @@ const Global = createGlobalStyle`
   main {
     display: grid;
     justify-items: center;
-    width: 100%;
+    width: 90%;
     align-content: space-around;
   };
   html {
