@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react"
 import styled from "styled-components"
 
-import Link from "../atoms/Link"
+import Link from "../atoms/Link/Link"
 
 export default forwardRef<HTMLElement, FooterProps>(function Footer (props, ref) {
   const hackerEthicsBook =

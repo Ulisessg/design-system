@@ -1,7 +1,7 @@
 import React from "react";
 import { NextPage } from 'next'
 import { Container } from "../components/pages/404Styles";
-import Link from "../components/atoms/Link";
+import Link from "../components/atoms/Link/Link";
 import styled from "styled-components"
 
 const src = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣳⠦⢖⣒⢲⣲⡦⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀

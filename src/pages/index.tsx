@@ -1,7 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "../components/atoms/Link";
+import Link from "../components/atoms/Link/Link";
 
 const Home: NextPage = () => {
   return (
