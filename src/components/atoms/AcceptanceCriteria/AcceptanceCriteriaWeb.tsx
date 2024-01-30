@@ -10,11 +10,13 @@ const AcceptanceCriteria: FC<AcceptanceCriteriaProps> = (args) => {
  const AcceptanceCriteriaStyles = styled.samp<AcceptanceCriteriaProps>`
   ${commonAcceptanceCriteriaStyles}
   visibility: ${({show}) => show ? 'initial' : 'hidden' };
+  color: ${({error, theme}) =>error ? theme.colors.error: theme.colors.dark2};
 `
 
 interface AcceptanceCriteriaProps extends ComponentProps<'samp'> {
   show: boolean
   text: string
+  error: boolean
 }
 
 export default AcceptanceCriteria
