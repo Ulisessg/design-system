@@ -8,15 +8,18 @@ export interface InputProps {
   /** Input name */
   name?: string;
   /**
-   * Requeriments to fill input, such as:
+   * Display a message about how to fill input as:
    * 
    * - Only numbers
    * 
    * - Only letters and spaces
    * 
-   * This will show the message when input is invalid
    */
     acceptanceCriteria?: string
+    /**
+     * Force show 'acceptanceCriteria'
+     */
+    showAcceptanceCriteria?: boolean
     /** Change input border color if is invalid, by default "false" */
     inputInvalid?: boolean
     /** 

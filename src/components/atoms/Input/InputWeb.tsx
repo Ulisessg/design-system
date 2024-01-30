@@ -16,21 +16,29 @@ import AcceptanceCriteria from '../AcceptanceCriteria/AcceptanceCriteriaWeb'
  * @return {import('react').ReactElement} ReactElement
  */
  const InputWeb: FC<InputWebProps> = React.forwardRef<HTMLInputElement, InputWebProps>(function InputWeb({inputInvalid = false,...props}, ref) {
-  const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(false)
+  const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(props.showAcceptanceCriteria || false)
   const defaultId = useId()
   const inputId = props.id || defaultId
   
   const handleOnFocus = (ev: FocusEvent<HTMLInputElement>) => {
     props.onFocus?.(ev);
-    if(typeof props.acceptanceCriteria === 'string') {
+    if(props.showAcceptanceCriteria === true && typeof props.acceptanceCriteria === 'string') {
       setShowAcceptanceCriteria(true)
     }
   }
 
   const handleOnBlur = (ev: FocusEvent<HTMLInputElement>) => {
     props.onBlur?.(ev);
-    setShowAcceptanceCriteria(false)
+    if(props.showAcceptanceCriteria === false) {
+      setShowAcceptanceCriteria(false)
+    }
   }
+
+  useEffect(() => {
+    if(typeof props.showAcceptanceCriteria === 'boolean') {
+      setShowAcceptanceCriteria(props.showAcceptanceCriteria)
+    }
+  }, [props.showAcceptanceCriteria])
 
   useEffect(() => {
     if(process.env.NODE_ENV !== 'production' && typeof props.placeholder === 'string') console.warn(`Placeholder attribute is
@@ -62,8 +70,9 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         title={props.acceptanceCriteria || ''}
       />
       <AcceptanceCriteria
-        show={showAcceptanceCriteria}
+        show={props.showAcceptanceCriteria || showAcceptanceCriteria}
         text={props.acceptanceCriteria || ''}
+        error={inputInvalid}
       />
     </LabelStyles>
   );
