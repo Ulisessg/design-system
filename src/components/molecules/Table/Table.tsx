@@ -3,13 +3,25 @@ import styled from "styled-components";
 
 
 export default forwardRef<HTMLTableElement, TableProps>(function Table(props, ref) {
-  return (
+  return (<TableContainer>
     <TableStyles {...props} ref={ref}>
       <caption>{props.caption}</caption>
       {props.children}
     </TableStyles>
+  </TableContainer>
   );
 })
+
+const TableContainer = styled.div`
+width: 90%;
+overflow-x: scroll;
+text-align: left;
+box-shadow: 2px 2px 6px 2px ${({ theme }) => theme.colors.shadow};
+margin: 50px 0;
+border: 2px solid ${({ theme }) => theme.colors.shadow};
+border-radius: 20px;
+text-transform: capitalize;
+`
 
 const TableStyles = styled.table`
   width: 100%;
