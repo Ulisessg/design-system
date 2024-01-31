@@ -1,11 +1,16 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useId } from 'react'
 import styled from 'styled-components'
-import { LabelStyles, AcceptanceCriteriaStyles, RequiredMark } from './Input/InputWeb' 
+import { LabelStyles, RequiredMark } from '../Input/InputWeb' 
+import AcceptanceCriteria from '../AcceptanceCriteria/AcceptanceCriteriaWeb'
+import { InputProps } from '../../..'
 
 
 export default forwardRef<HTMLSelectElement, SelectProps>(function Select({allowDefaultValue = true,...props}, 
 ref) {
-  return (<LabelStyles htmlFor={props.id}>
+  const defaultId = useId()
+  const selectId = props.id || defaultId
+
+  return (<LabelStyles htmlFor={selectId}>
     <p>
     {props.label}
     {props.required === true &&
@@ -21,7 +26,11 @@ ref) {
   >
       {props.children}
     </SelectStyles>
-    <AcceptanceCriteriaStyles>{props.acceptanceCriteria}</ AcceptanceCriteriaStyles>
+    <AcceptanceCriteria
+      show={props.selectIsInvalid || props.showAcceptanceCriteria || false}
+      text={props.acceptanceCriteria || ''}
+      error={props.selectIsInvalid || false}
+    />
   </LabelStyles>
   )
 })
@@ -51,20 +60,18 @@ const SelectStyles = styled.select<{selectIsInvalid?: boolean}>`
   }
 `
 
-
 export interface SelectProps extends ComponentProps<'select'> {
   label: string
-  id: string
-  /** Select name */
-  name: string
-  /** Value by default */
+  id?: string
+  /** Select name, required to 'useInputs' hook usage */
+  name?: string
+  /** Value by default, used in 'useInputs' hook */
   defValue?: string
-  /** If uses "defaultValue" prop and want to mark as error if still selected, default true (allowed) */
+  /** Allow select 'defValue' prop as value */
   allowDefaultValue?: boolean
-  /** Change select border color if is invalid, by default "false" */
+  /** Show error styles and trigger error message */
   selectIsInvalid?: boolean
-  /**
-   * Requirements to select
-   */
-  acceptanceCriteria?: string
+  acceptanceCriteria?: InputProps['acceptanceCriteria']
+  showAcceptanceCriteria?: InputProps['showAcceptanceCriteria']
+
 }
