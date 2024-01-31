@@ -14,7 +14,7 @@ const preview: Preview = {
     },
   },
   decorators: [(Story) => {
-    return <GlobalStyles footer={false}>
+    return <GlobalStyles footer={true}>
       <Story />
     </GlobalStyles>
   },
