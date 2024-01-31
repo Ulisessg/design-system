@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import { type ButtonWebProps } from './Button/Props'
+import { type ButtonWebProps } from '../Button/Props'
 import styled from 'styled-components'
 
 const TrashCan: FC<TrashCanProps> = (buttonProps) => (
@@ -34,7 +34,7 @@ const TrashCanStyles = styled.button<TrashCanProps>`
     fill: red;
     outline: 2px solid black;
     border-radius: 2px;
-  }
+  };
 `
 
 interface TrashCanProps extends Omit<ButtonWebProps, 'colorMessage' | 'text' | 'size'> {

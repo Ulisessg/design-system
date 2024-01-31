@@ -7,11 +7,12 @@ export default forwardRef<HTMLElement, HeaderProps>(function Header(props, ref) 
 })
 
 const HeaderStyles = styled.header<HeaderProps>`
-  display: flex;
-  justify-content: space-around;
-  width: 100vw;
+  display: grid;
+  align-items: center;
+  padding-left: ${({theme}) => theme.spacing * 3}px;
+  width: 100%;
+  height: ${({theme}) => theme.spacing * 12}px;
   background-color: ${({ theme }) => theme.colors.light3};
-  padding: 30px;
   box-shadow: 0px 7px 8px 0px ${({ theme }) => theme.colors.shadow};
 `;
 

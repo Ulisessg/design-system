@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
+import type { StorybookConfig } from "@storybook/nextjs";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -9,11 +9,10 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
   ],
   framework: {
-    name: "@storybook/react-webpack5",
+    name: "@storybook/nextjs",
     options: {
-      builder: {
-        useSWC: true,
-      },
+      strictMode: true,
+      nextConfigPath: '../next.config.js',
     },
   },
   docs: {

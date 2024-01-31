@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react"
 import styled from "styled-components"
 
-import Link from "../atoms/Link"
+import Link from "../../atoms/Link/Link"
 
 export default forwardRef<HTMLElement, FooterProps>(function Footer (props, ref) {
   const hackerEthicsBook =
@@ -32,11 +32,11 @@ const FooterStyles = styled.footer`
   text-align: center;
   margin-top: ${({theme}) => theme.spacing  * 3}px;
   box-shadow: 0px -5px 8px 1px ${({ theme }) => theme.colors.shadow};
-  min-height: ${({theme}) => theme.spacing  * 6}px;
+  min-height: ${({theme}) => theme.spacing}px;
   background-color: ${({ theme }) => theme.colors.light3};
-  align-items: center;
+  align-content: space-around;
   & a {
     font-size: 30px;
-    margin-bottom: ${({theme}) => theme.spacing  * 3}px;
+    margin-bottom: ${({theme}) => theme.spacing}px;
   }
 `

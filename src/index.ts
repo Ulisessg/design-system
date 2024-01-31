@@ -2,7 +2,6 @@ import {ComponentPropsWithRef} from 'react'
 
 // Theme
 export {default as theme} from'./components/theme'
-export * from './utils/constants'
 
 // Context imports
 import {
@@ -45,7 +44,7 @@ declare global {
 // Atoms
 export { default as Input}  from "./components/atoms/Input/InputWeb";
 export { default as Button } from "./components/atoms/Button/ButtonWeb";
-export { default as Link } from "./components/atoms/Link";
+export { default as Link } from "./components/atoms/Link/Link";
 export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
 export { default as Td } from './components/atoms/Td'
 export { default as Th } from './components/atoms/Th'
@@ -53,6 +52,7 @@ export {default as Details} from './components/atoms/Details/DetailsWeb'
 export { default as Title } from './components/atoms/Title'
 export { default as Select } from './components/atoms/Select'
 export {default as TrashCan } from './components/atoms/TrashCan'
+export {default as AcceptanceCriteria } from './components/atoms/AcceptanceCriteria/AcceptanceCriteriaWeb'
 
 // Molecules
 export { default as Form } from "./components/molecules/Form/FormWeb";
@@ -80,6 +80,10 @@ export {
   UseInputsContext,
   UseInputsContextProvider
 }
+
+// Utils
+export {default as capitalize } from './utils/capitalize'
+export * from './utils/constants'
 
 // Props
 export type {

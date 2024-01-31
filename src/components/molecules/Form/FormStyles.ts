@@ -6,8 +6,8 @@ export const FormCommonStyles = css`
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  width: 100%;
-  padding: ${theme.spacing * 5}px;
+  width: 90%;
+  padding: 1em;
   border-radius: 10px;
 `
 export const FormTitleCommonStyles = css`

@@ -7,7 +7,6 @@ const Link = forwardRef<HTMLAnchorElement, LinkComponentProps>(function Link({te
     return<LinkNextStyles 
       {...rest} 
       href={href}
-      as={LinkNextStyles}
       ref={ref}
       >
         {text}
@@ -18,7 +17,6 @@ const Link = forwardRef<HTMLAnchorElement, LinkComponentProps>(function Link({te
     href={href}
     target={target}
     rel="noreferrer noopener"
-    as={LinkNextStyles}
     ref={ref}
     >{text}</LinkNextStyles>
   )

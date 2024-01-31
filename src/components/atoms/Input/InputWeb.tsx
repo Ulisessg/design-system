@@ -1,8 +1,9 @@
 import React, { FC, FocusEvent, useEffect, useId, useState } from "react";
-import  { borderPixels, InputCommonStyles, LabelCommonStyles, commonAcceptanceCriteriaStyles } from "./InputStyles";
+import  { borderPixels, InputCommonStyles, LabelCommonStyles } from "./InputStyles";
 import { InputWebProps } from "./InputProps";
 import styled from 'styled-components'
 import theme from '../../theme'
+import AcceptanceCriteria from '../AcceptanceCriteria/AcceptanceCriteriaWeb'
 
 /**
  * Text Input
@@ -15,21 +16,29 @@ import theme from '../../theme'
  * @return {import('react').ReactElement} ReactElement
  */
  const InputWeb: FC<InputWebProps> = React.forwardRef<HTMLInputElement, InputWebProps>(function InputWeb({inputInvalid = false,...props}, ref) {
-  const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(false)
+  const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(props.showAcceptanceCriteria || false)
   const defaultId = useId()
   const inputId = props.id || defaultId
   
   const handleOnFocus = (ev: FocusEvent<HTMLInputElement>) => {
     props.onFocus?.(ev);
-    if(typeof props.acceptanceCriteria === 'string') {
+    if(props.showAcceptanceCriteria === true && typeof props.acceptanceCriteria === 'string') {
       setShowAcceptanceCriteria(true)
     }
   }
 
   const handleOnBlur = (ev: FocusEvent<HTMLInputElement>) => {
     props.onBlur?.(ev);
-    setShowAcceptanceCriteria(false)
+    if(props.showAcceptanceCriteria === false) {
+      setShowAcceptanceCriteria(false)
+    }
   }
+
+  useEffect(() => {
+    if(typeof props.showAcceptanceCriteria === 'boolean') {
+      setShowAcceptanceCriteria(props.showAcceptanceCriteria)
+    }
+  }, [props.showAcceptanceCriteria])
 
   useEffect(() => {
     if(process.env.NODE_ENV !== 'production' && typeof props.placeholder === 'string') console.warn(`Placeholder attribute is
@@ -60,10 +69,11 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         onBlur={handleOnBlur}
         title={props.acceptanceCriteria || ''}
       />
-      <AcceptanceCriteriaStyles 
-        style={{visibility: showAcceptanceCriteria ? 'initial' : 'hidden'}}
-        aria-hidden={true}
-      >{props.acceptanceCriteria}</AcceptanceCriteriaStyles>
+      <AcceptanceCriteria
+        show={props.showAcceptanceCriteria || showAcceptanceCriteria}
+        text={props.acceptanceCriteria || ''}
+        error={inputInvalid}
+      />
     </LabelStyles>
   );
 })
@@ -110,9 +120,7 @@ export const LabelStyles = styled.label<{ htmlFor: string }>`
   }
 `;
 
-export const AcceptanceCriteriaStyles = styled.samp`
-  ${commonAcceptanceCriteriaStyles}
-`
+
 
 export const RequiredMark = styled.span`
   color: ${theme.colors.error};

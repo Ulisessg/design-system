@@ -1,31 +1,32 @@
-import type {Meta, StoryObj} from '@storybook/react'
+import {Meta, StoryObj} from '@storybook/react'
 import ButtonWeb from './ButtonWeb'
 
-// eslint-disable-next-line storybook/story-exports
-const meta: Meta<typeof ButtonWeb> = {
+const meta: Meta<Button> = {
   component: ButtonWeb,
-  args: {
-    text: 'Click Me!',
-    colorMessage: 'continue',
-    size: 'small'
-  },
+  
   argTypes: {
-    colorMessage: {
-      options: ['cancel', 'continue', 'info'],
-      control: {type: 'select'},
-      
+    size: { 
+      type: "select" as any,
+      options: ['small', "large", '100%'],
+      defaultValue: 'small'
     },
-    size: {
-      options: ['small', 'large', '100%'],
-      control: {type: 'select'},
+    colorMessage: {
+      type: 'select' as any,
+      options: ['continue', 'cancel', 'info'],
+      defaultValue: 'continue'
     }
-  }
+  },
 }
-type Story = StoryObj<typeof ButtonWeb>
+
+export default meta
 
 export const Primary: Story = {
   args: {
-    text: 'Click Me!' 
+    text: 'Click Me!',
+    size: 'small',
+    colorMessage: 'continue'
   }
 }
-export default meta
+
+type Story = StoryObj<Button>
+type Button = typeof ButtonWeb
