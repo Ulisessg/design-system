@@ -1,10 +1,10 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
-import Input  from "../atoms/Input/InputWeb";
-import randomIdNumber from "../../utils/randomIdNumber";
-import Button from "../atoms/Button/ButtonWeb";
-import { ButtonWebProps as ButtonProps } from "../atoms/Button/Props";
-import { InputWebProps } from "../atoms/Input/InputProps";
+import Input  from "../../atoms/Input/InputWeb";
+import randomIdNumber from "../../../utils/randomIdNumber";
+import Button from "../../atoms/Button/ButtonWeb";
+import { ButtonWebProps as ButtonProps } from "../../atoms/Button/Props";
+import { InputWebProps } from "../../atoms/Input/InputProps";
 
 export default forwardRef<HTMLDivElement, SearchBarProps>(function SearchBar({
   label,
@@ -57,16 +57,14 @@ const SearchBarStyles = styled.div`
 export interface SearchBarProps extends Omit<ComponentProps<'div'>, 'onClick' | 'onChange'> {
   /** Label text for 'label' element */
   label: string;
-  /** Input id, used for htmlFor prop in label */
-  id: string;
   /** Text for button */
   buttonText: string;
-  /** Input placeholder, not recommendable for accessibility proposes */
-  placeholder?: string;
+  /** Input id, used for htmlFor prop in label */
+  id?: string;
   /** Html button element props */
   buttonProps?: ButtonProps;
   /** Html input element props */
-  inputProps?: ComponentProps<'input'> & Pick<InputWebProps, 'acceptanceCriteria' | 'inputInvalid'>;
+  inputProps?: InputWebProps;
   onClick?: ButtonProps["onClick"];
   onChange?: InputWebProps["onChange"];
 };
