@@ -18,11 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
+    - id: build-publish
       # Manual Checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Set up Node
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
       
@@ -35,4 +36,3 @@ jobs:
           install_command: npm install
           build_command: npm run build-storybook
           path: storybook-static
-          checkout: false
