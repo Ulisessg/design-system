@@ -9,7 +9,7 @@ export default forwardRef<HTMLSelectElement, SelectProps>(function Select({allow
 ref) {
   const defaultId = useId()
   const selectId = props.id || defaultId
-
+  const selectIsInvalid: boolean = props.selectIsInvalid || (!allowDefaultValue && (props.defValue === props.value))
   return (<LabelStyles htmlFor={selectId}>
     <p>
     {props.label}
@@ -22,14 +22,14 @@ ref) {
     id={props.id}
     data-default-value={props.defValue}  
     data-allow-default={allowDefaultValue}
-    className={props.selectIsInvalid ? `${props.className || ''} select-invalid-style`: `${props.className || ''} `}
+    className={selectIsInvalid ? `${props.className || ''} select-invalid-style`: `${props.className || ''} `}
   >
       {props.children}
     </SelectStyles>
     <AcceptanceCriteria
-      show={props.selectIsInvalid || props.showAcceptanceCriteria || false}
+      show={selectIsInvalid || props.showAcceptanceCriteria || false}
       text={props.acceptanceCriteria || ''}
-      error={props.selectIsInvalid || false}
+      error={selectIsInvalid}
     />
   </LabelStyles>
   )
