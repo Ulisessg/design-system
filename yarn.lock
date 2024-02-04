@@ -4023,7 +4023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:7.6.12, @storybook/addon-actions@npm:^7.6.12":
+"@storybook/addon-actions@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/addon-actions@npm:7.6.12"
   dependencies:
@@ -4048,7 +4048,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-console@npm:^3.0.0":
+"@storybook/addon-console@npm:3.0.0":
   version: 3.0.0
   resolution: "@storybook/addon-console@npm:3.0.0"
   dependencies:
@@ -4101,7 +4101,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^7.6.12":
+"@storybook/addon-essentials@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/addon-essentials@npm:7.6.12"
   dependencies:
@@ -4135,7 +4135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-interactions@npm:^7.6.12":
+"@storybook/addon-interactions@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/addon-interactions@npm:7.6.12"
   dependencies:
@@ -4148,7 +4148,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^7.6.12":
+"@storybook/addon-links@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/addon-links@npm:7.6.12"
   dependencies:
@@ -4174,7 +4174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-onboarding@npm:^1.0.11":
+"@storybook/addon-onboarding@npm:1.0.11":
   version: 1.0.11
   resolution: "@storybook/addon-onboarding@npm:1.0.11"
   dependencies:
@@ -4213,7 +4213,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/blocks@npm:7.6.12, @storybook/blocks@npm:^7.6.12":
+"@storybook/blocks@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/blocks@npm:7.6.12"
   dependencies:
@@ -4754,7 +4754,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/nextjs@npm:^7.6.12":
+"@storybook/nextjs@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/nextjs@npm:7.6.12"
   dependencies:
@@ -4928,7 +4928,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:7.6.12, @storybook/react@npm:^7.6.12":
+"@storybook/react@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/react@npm:7.6.12"
   dependencies:
@@ -5007,7 +5007,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/test@npm:^7.6.12":
+"@storybook/test@npm:7.6.12":
   version: 7.6.12
   resolution: "@storybook/test@npm:7.6.12"
   dependencies:
@@ -8620,16 +8620,16 @@ __metadata:
     "@rollup/plugin-node-resolve": "npm:15.1.0"
     "@rollup/plugin-terser": "npm:0.4.3"
     "@rollup/plugin-typescript": "npm:11.1.1"
-    "@storybook/addon-actions": "npm:^7.6.12"
-    "@storybook/addon-console": "npm:^3.0.0"
-    "@storybook/addon-essentials": "npm:^7.6.12"
-    "@storybook/addon-interactions": "npm:^7.6.12"
-    "@storybook/addon-links": "npm:^7.6.12"
-    "@storybook/addon-onboarding": "npm:^1.0.11"
-    "@storybook/blocks": "npm:^7.6.12"
-    "@storybook/nextjs": "npm:^7.6.12"
-    "@storybook/react": "npm:^7.6.12"
-    "@storybook/test": "npm:^7.6.12"
+    "@storybook/addon-actions": "npm:7.6.12"
+    "@storybook/addon-console": "npm:3.0.0"
+    "@storybook/addon-essentials": "npm:7.6.12"
+    "@storybook/addon-interactions": "npm:7.6.12"
+    "@storybook/addon-links": "npm:7.6.12"
+    "@storybook/addon-onboarding": "npm:1.0.11"
+    "@storybook/blocks": "npm:7.6.12"
+    "@storybook/nextjs": "npm:7.6.12"
+    "@storybook/react": "npm:7.6.12"
+    "@storybook/test": "npm:7.6.12"
     "@testing-library/jest-dom": "npm:5.16.5"
     "@testing-library/react": "npm:14.0.0"
     "@testing-library/user-event": "npm:14.4.3"
@@ -8641,7 +8641,7 @@ __metadata:
     "@types/styled-components-react-native": "npm:5.2.1"
     eslint: "npm:8.42.0"
     eslint-config-next: "npm:13.4.4"
-    eslint-plugin-storybook: "npm:^0.6.15"
+    eslint-plugin-storybook: "npm:0.6.15"
     expo: "npm:48.0.19"
     expo-status-bar: "npm:1.4.4"
     husky: "npm:8.0.3"
@@ -8655,7 +8655,7 @@ __metadata:
     rollup-plugin-dts: "npm:5.3.0"
     rollup-plugin-minification: "npm:0.2.0"
     rollup-plugin-peer-deps-external: "npm:2.2.4"
-    storybook: "npm:^7.6.12"
+    storybook: "npm:7.6.12"
     styled-components: "npm:5.3.11"
     typescript: "npm:4.9.4"
   bin:
@@ -9771,7 +9771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-storybook@npm:^0.6.15":
+"eslint-plugin-storybook@npm:0.6.15":
   version: 0.6.15
   resolution: "eslint-plugin-storybook@npm:0.6.15"
   dependencies:
@@ -17964,7 +17964,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:^7.6.12":
+"storybook@npm:7.6.12":
   version: 7.6.12
   resolution: "storybook@npm:7.6.12"
   dependencies:
