@@ -13,7 +13,8 @@ const meta: Meta<TInput> = {
     name: 'username',
     id: '',
     pattern: '^[\\p{L}\\s]+$',
-    minLength: 0
+    minLength: 0,
+    showAcceptanceCriteria: undefined
   },
   argTypes: {
     minLength: {

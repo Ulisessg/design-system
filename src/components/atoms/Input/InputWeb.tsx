@@ -1,4 +1,4 @@
-import React, { FC, FocusEvent, useEffect, useId, useState } from "react";
+import React, { FC, FocusEvent, MouseEvent, useEffect, useId, useRef, useState } from "react";
 import  { borderPixels, InputCommonStyles, LabelCommonStyles } from "./InputStyles";
 import { InputWebProps } from "./InputProps";
 import styled from 'styled-components'
@@ -17,21 +17,51 @@ import AcceptanceCriteria from '../AcceptanceCriteria/AcceptanceCriteriaWeb'
  */
  const InputWeb: FC<InputWebProps> = React.forwardRef<HTMLInputElement, InputWebProps>(function InputWeb({inputInvalid = false,...props}, ref) {
   const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(props.showAcceptanceCriteria || false)
+  const inputIsFocusedRef = useRef<boolean>(false)
   const defaultId = useId()
   const inputId = props.id || defaultId
   
+  console.log(props.showAcceptanceCriteria);
+  
+
+  /**
+   * If props.acceptanceCriteria is defined thats 'show' value
+   * @param {boolean} show
+   * @returns {void}
+   */
+  const handleSetShowAcceptanceCriteria = (show: boolean, mouseEvent?: boolean): void => {
+    if (typeof props.showAcceptanceCriteria === 'boolean') {
+      setShowAcceptanceCriteria(props.showAcceptanceCriteria)
+    } else {
+      if(mouseEvent === true && inputIsFocusedRef.current) {
+        setShowAcceptanceCriteria(true)
+        return
+      }
+       
+      setShowAcceptanceCriteria(show)
+    }
+  }
+
   const handleOnFocus = (ev: FocusEvent<HTMLInputElement>) => {
     props.onFocus?.(ev);
-    if(props.showAcceptanceCriteria === true && typeof props.acceptanceCriteria === 'string') {
-      setShowAcceptanceCriteria(true)
-    }
+    handleSetShowAcceptanceCriteria(true)
+    inputIsFocusedRef.current = true
   }
 
   const handleOnBlur = (ev: FocusEvent<HTMLInputElement>) => {
     props.onBlur?.(ev);
-    if(props.showAcceptanceCriteria === false) {
-      setShowAcceptanceCriteria(false)
-    }
+    handleSetShowAcceptanceCriteria(false)
+    inputIsFocusedRef.current = false
+  }
+
+  const handleOnMouseOver = (ev: MouseEvent<HTMLInputElement>) => {
+    props.onMouseOver?.(ev)
+    handleSetShowAcceptanceCriteria(true, true)
+  }
+
+  const handleOnMouseOut = (ev: MouseEvent<HTMLInputElement>) => {
+    props.onMouseOver?.(ev)
+    handleSetShowAcceptanceCriteria(false, true)
   }
 
   useEffect(() => {
@@ -67,6 +97,8 @@ More info: https://www.smashingmagazine.com/2018/06/placeholder-attribute/
         className={`${props.className ?? ''} ${inputInvalid && 'invalid-input-style'}`}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
+        onMouseOver={handleOnMouseOver}
+        onMouseOut={handleOnMouseOut}
         title={props.acceptanceCriteria || ''}
       />
       <AcceptanceCriteria
