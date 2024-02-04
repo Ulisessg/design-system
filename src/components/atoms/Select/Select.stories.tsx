@@ -21,8 +21,7 @@ const meta: TMeta = {
     id: '',
     name: 'day',
     defValue: daysOfTheWeek[0],
-    acceptanceCriteria: 'Acceptance Criteria⚠️',
-    showAcceptanceCriteria: true
+    acceptanceCriteria: 'Acceptance Criteria⚠️'
   },
   argTypes: {
     defValue: {
@@ -36,7 +35,9 @@ const meta: TMeta = {
 export default meta
 
 export const Primary: Story = {
-  
+  args: {
+    showAcceptanceCriteria:true
+  }
 }
 
 const defValue = daysOfTheWeek[4]
@@ -57,7 +58,7 @@ export const SelectWithHook: Story = {
     defValue: defValue,
     allowDefaultValue: false,
     acceptanceCriteria: '⚠️ Ese dia no está permitido',
-    name: 'day'
+    name: 'day',
   }
 }
 
