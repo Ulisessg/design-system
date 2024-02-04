@@ -1,0 +1,31 @@
+# Workflow name
+name: Validations on pull request
+
+on:
+  # Event for the workflow to run on
+  pull_request:
+    branches:
+      - main
+
+# List of jobs
+jobs:
+  validations:
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      # Manual Checkout
+      - uses: actions/checkout@v4
+
+      # Set up Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      
+      # Clean cache
+      - run: yarn cache clean
+
+      - run: yarn install
+      
+      - run: yarn test
+
+      - run: yarn build-storybook
