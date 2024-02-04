@@ -54,3 +54,23 @@ web-build/
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+
+# Storybook
+## StoryBook build
+storybook-static
+
+
+# Created by https://www.toptal.com/developers/gitignore/api/yarn
+# Edit at https://www.toptal.com/developers/gitignore?templates=yarn
+
+### yarn ###
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# End of https://www.toptal.com/developers/gitignore/api/yarn
