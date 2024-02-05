@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import Input from '../../atoms/Input/InputWeb'
 import { InputWebProps } from '../../atoms/Input/InputProps'
 
-export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(props, ref) {
+const Datalist = forwardRef<HTMLDataListElement, DatalistProps>(function DatalistComponent(props, ref) {
   const { inputProps, ...rest } = props
   const listId = useId()
   return <>
@@ -16,6 +16,8 @@ export default forwardRef<HTMLDataListElement, DatalistProps>(function Datalist(
   </datalist>
 </>
 })
+
+export default Datalist
 
 export interface DatalistProps extends ComponentProps<'datalist'> {
   /** Input props */

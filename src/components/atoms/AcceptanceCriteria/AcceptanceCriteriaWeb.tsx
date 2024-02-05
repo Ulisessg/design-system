@@ -1,6 +1,6 @@
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { commonAcceptanceCriteriaStyles } from '../Input/InputStyles'
-import { FC } from 'react'
 
 const AcceptanceCriteria: FC<AcceptanceCriteriaProps> = (args) => {
   return <AcceptanceCriteriaStyles {...args} aria-hidden={true}>
