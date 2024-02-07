@@ -16,16 +16,16 @@ import type { InputWebProps as InputProps } from './components/atoms/Input/Input
 import type { ButtonWebProps as ButtonProps } from './components/atoms/Button/Props';
 import type { DetailsProps } from './components/atoms/Details/DetailsWeb';
 import type { LinkProps } from 'next/link';
-import type { LoadingSpinnerProps } from './components/atoms/LoadingSpinner';
-import type { SelectProps } from './components/atoms/Select';
+import type { LoadingSpinnerProps } from './components/atoms/LoadingSpinner/LoadingSpinner';
+import type { SelectProps } from './components/atoms/Select/Select';
 import type { TdProps } from './components/atoms/Td';
 import type { ThProps } from './components/atoms/Th';
-import type { TitleProps } from './components/atoms/Title';
+import type { TitleProps } from './components/atoms/Title/Title';
 import type { VideoProps } from './components/atoms/Video';
 
 // Molecules props
 import type { FormProps } from './components/molecules/Form/FormWeb';
-import type { DatalistProps } from './components/molecules/Datalist';
+import type { DatalistProps } from './components/molecules/Datalist/Datalist';
 import type { FooterProps } from './components/molecules/Footer';
 import type { HeaderProps } from './components/molecules/Header';
 import type { SearchBarProps } from './components/molecules/SearchBar';
@@ -45,13 +45,13 @@ declare global {
 export { default as Input}  from "./components/atoms/Input/InputWeb";
 export { default as Button } from "./components/atoms/Button/ButtonWeb";
 export { default as Link } from "./components/atoms/Link/Link";
-export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner";
+export { default as LoadingSpinner } from "./components/atoms/LoadingSpinner/LoadingSpinner";
 export { default as Td } from './components/atoms/Td'
 export { default as Th } from './components/atoms/Th'
 export {default as Details} from './components/atoms/Details/DetailsWeb'
-export { default as Title } from './components/atoms/Title'
-export { default as Select } from './components/atoms/Select'
-export {default as TrashCan } from './components/atoms/TrashCan'
+export { default as Title } from './components/atoms/Title/Title'
+export { default as Select } from './components/atoms/Select/Select'
+export {default as TrashCan } from './components/atoms/TrashCan/TrashCan'
 export {default as AcceptanceCriteria } from './components/atoms/AcceptanceCriteria/AcceptanceCriteriaWeb'
 
 // Molecules
@@ -60,7 +60,7 @@ export { default as Footer } from "./components/molecules/Footer";
 export { default as Header } from "./components/molecules/Header";
 export { default as SearchBar } from "./components/molecules/SearchBar";
 export { default as Table } from './components/molecules/Table'
-export { default as Datalist } from './components/molecules/Datalist'
+export { default as Datalist } from './components/molecules/Datalist/Datalist'
 
 // Pages (design system)
 export * from "./components/pages/404Styles";
