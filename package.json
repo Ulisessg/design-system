@@ -1,6 +1,6 @@
 {
   "name": "d-system",
-  "version": "0.37.0",
+  "version": "0.37.1",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "rollup -c ./rollup.config.js --environment INCLUDE_DEPS,BUILD:production --bundleConfigAsCjs && node ./postbuild.js",
@@ -27,6 +27,7 @@
     "styled-components": ">= 6.1.8"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.2.1",
     "expo": "50.0.6",
     "expo-status-bar": "1.11.1",
     "next": "14.1.0",
@@ -40,6 +41,7 @@
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "11.1.6",
     "@storybook/addon-actions": "7.6.13",

@@ -5,25 +5,13 @@ import styled from 'styled-components'
 import theme from '../../theme'
 import AcceptanceCriteria from '../AcceptanceCriteria/AcceptanceCriteriaWeb'
 
-/**
- * Text Input
- * @typedef {import('./InputProps').InputProps} props
- * @prop {string} id - Input id used in htmlFor prop in label element
- * @prop {"text" | "date" | "datetime-local" | "email" | "password" | "tel" | "url" | "search"} type - defines information field type
- * @prop {string} label - Input placeholder
- * @prop {string} name - Input name
- * @prop {"none | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";} inputMode - Keyboard input mode, mainly for mobile keyboards
- * @return {import('react').ReactElement} ReactElement
- */
+
  const InputWeb: FC<InputWebProps> = React.forwardRef<HTMLInputElement, InputWebProps>(function InputWeb({inputInvalid = false,...props}, ref) {
   const [showAcceptanceCriteria, setShowAcceptanceCriteria] = useState<boolean>(props.showAcceptanceCriteria || false)
   const inputIsFocusedRef = useRef<boolean>(false)
   const defaultId = useId()
   const inputId = props.id || defaultId
   
-  console.log(props.showAcceptanceCriteria);
-  
-
   /**
    * If props.acceptanceCriteria is defined thats 'show' value
    * @param {boolean} show

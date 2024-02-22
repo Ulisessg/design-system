@@ -1,7 +1,9 @@
+import isPropValid from '@emotion/is-prop-valid'
 import React, { ReactNode } from "react"
 import {
   createGlobalStyle,
   ThemeProvider,
+  StyleSheetManager
 } from "styled-components"
 import Footer from "../molecules/Footer"
 import theme from '../theme'
@@ -12,13 +14,24 @@ export default function GlobalStyles ({
   header
 }: GlobalStylesProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Global />
-      {header}
-      <main role="main">{children}</main>
-      {footer && <Footer />}
-    </ThemeProvider>
+    <StyleSheetManager shouldForwardProp={shouldForwardProp}>
+      <ThemeProvider theme={theme}>
+        <Global />
+        {header}
+        <main role="main">{children}</main>
+        {footer && <Footer />}
+      </ThemeProvider>
+    </StyleSheetManager>
   )
+}
+
+function shouldForwardProp(propName: string, target: any) {
+  if (typeof target === "string") {
+      // For HTML elements, forward the prop if it is a valid HTML attribute
+      return isPropValid(propName);
+  }
+  // For other elements, forward all props
+  return true;
 }
 
 const Global = createGlobalStyle`
