@@ -1,8 +1,5 @@
 import {ComponentPropsWithRef} from 'react'
 
-// Theme
-export {default as theme} from'./components/theme'
-
 // Context imports
 import {
   UseInputsContext,
@@ -84,6 +81,15 @@ export {
 // Utils
 export {default as capitalize } from './utils/capitalize'
 export * from './utils/constants'
+
+/**
+ * Theming
+ * 
+ */
+
+import theme from './components/theme'
+export {theme}
+
 
 // Props
 export type {
