@@ -27,6 +27,7 @@ import type { FooterProps } from './components/molecules/Footer';
 import type { HeaderProps } from './components/molecules/Header';
 import type { SearchBarProps } from './components/molecules/SearchBar';
 import type { TableProps } from './components/molecules/Table';
+import type { DetailCardProps } from './components/molecules/DetailCard/DetailCard';
 
 // Pages props
 import type { GlobalStylesProps } from './components/pages/GlobalStyles';
@@ -58,6 +59,7 @@ export { default as Header } from "./components/molecules/Header";
 export { default as SearchBar } from "./components/molecules/SearchBar";
 export { default as Table } from './components/molecules/Table'
 export { default as Datalist } from './components/molecules/DataList/Datalist'
+export { default as DetailCard } from './components/molecules/DetailCard'
 
 // Pages (design system)
 export * from "./components/pages/404Styles";
@@ -112,6 +114,7 @@ export type {
   HeaderProps,
   SearchBarProps,
   TableProps,
+  DetailCardProps,
 
   // Pages
   GlobalStylesProps,
