@@ -15,7 +15,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "cypress:open": "cypress open"
   },
   "peerDependencies": {
     "expo": ">= 48",
@@ -28,13 +29,13 @@
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
-    "expo": "50.0.6",
-    "expo-status-bar": "1.11.1",
-    "next": "14.1.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-native": "0.73.4",
-    "styled-components": "6.1.8"
+    "expo": ">= 48",
+    "expo-status-bar": ">= 1.11.1",
+    "next": ">= 14.1.0",
+    "react": ">= 18.2.0",
+    "react-dom": ">= 18.2.0",
+    "react-native": ">= 0.73.3",
+    "styled-components": ">= 6.1.8"
   },
   "devDependencies": {
     "@babel/core": "7.23.9",
@@ -62,6 +63,7 @@
     "@types/react-native": "0.73.0",
     "@types/styled-components": "5.1.34",
     "@types/styled-components-react-native": "5.2.5",
+    "cypress": "^13.8.1",
     "eslint": "8.56.0",
     "eslint-config-next": "14.1.0",
     "eslint-plugin-storybook": "0.6.15",
