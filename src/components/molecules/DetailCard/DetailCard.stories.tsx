@@ -11,6 +11,9 @@ const meta: Meta<typeof DetailCard> = {
 		description: {
 			type: "string",
 		},
+		link: {
+			type: "string",
+		},
 	},
 };
 
@@ -24,5 +27,6 @@ export const Primary: StoryObj = {
 		title: "Investigating the Effects of Different Soil Types on Plant Growth",
 		description:
 			"Explore how varying soil types influence the growth and development of plants. Understanding how different soils affect plant growth can provide valuable insights for agricultural practices and ecosystem management.",
+		link: "#",
 	},
 };

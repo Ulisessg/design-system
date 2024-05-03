@@ -8,7 +8,7 @@ describe("Detail Card - Atoms", () => {
 		cy.viewport("samsung-s10");
 		cy.mount(
 			<GlobalStyles footer={false}>
-				<DetailCard title="Project: Test" description={description} />
+				<DetailCard title="Project: Test" description={description} link="#" />
 			</GlobalStyles>
 		);
 		cy.get("p").contains("Project: Test");

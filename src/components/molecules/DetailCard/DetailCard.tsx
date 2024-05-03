@@ -3,12 +3,12 @@ import styled, { keyframes } from "styled-components";
 import theme from "../../theme";
 import Link from "../../atoms/Link/Link";
 
-const DetailCard: FC<DetailCardProps> = ({ title, description }) => {
+const DetailCard: FC<DetailCardProps> = ({ title, description, link }) => {
 	return (
 		<Container>
 			<Title>{title}</Title>
 			{description && <Description>{description}</Description>}
-			<LinkStyles href={"#"} text="Detalles →" />
+			<LinkStyles href={link} text="Detalles →" />
 		</Container>
 	);
 };
@@ -63,6 +63,7 @@ const LinkStyles = styled(Link)`
 
 export interface DetailCardProps {
 	title: string;
+	link: string;
 	description?: string;
 }
 
