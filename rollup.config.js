@@ -34,11 +34,7 @@ const exp = [
 		],
 		external: ["react", "react-dom", "styled-components"],
 	},
-	{
-		input: "dist/types/index.d.ts",
-		output: [{ file: "dist/index.d.ts", format: "cjs" }],
-		plugins: [dts.default()],
-	},
+
 	//React native
 	{
 		input: "src/native/index.ts",
@@ -65,8 +61,14 @@ const exp = [
 			"expo-status-bar",
 		],
 	},
+
 	{
-		input: "dist/types/native/index.d.ts",
+		input: "dist/types/src/index.d.ts",
+		output: [{ file: "dist/index.d.ts", format: "cjs" }],
+		plugins: [dts.default()],
+	},
+	{
+		input: "dist/types/src/native/index.d.ts",
 		output: [{ file: "dist/native/index.d.ts", format: "cjs" }],
 		plugins: [dts.default()],
 	},
